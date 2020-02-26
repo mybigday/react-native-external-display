@@ -25,6 +25,7 @@ export default function App() {
       <SafeAreaView
         style={{
           flex: 1,
+          backgroundColor: 'black',
         }}
       >
         {mount && (
