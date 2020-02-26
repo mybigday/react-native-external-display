@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+  // useEffect,
+  useState,
+} from 'react'
 import {
   SafeAreaView,
   // Text,
@@ -9,14 +12,14 @@ import Video from 'react-native-video'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
 
 export default function App() {
-  const [t, setT] = useState(0)
+  // const [t, setT] = useState(0)
   const [info, setInfo] = useState(getScreens())
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
-  useEffect(() => {
-    const interval = setInterval(() => setT(d => d + 1), 1000)
-    return () => clearInterval(interval)
-  }, [])
+  // useEffect(() => {
+  //   const interval = setInterval(() => setT(d => d + 1), 1000)
+  //   return () => clearInterval(interval)
+  // }, [])
   return (
     <>
       <SafeAreaView
