@@ -3,7 +3,7 @@
  * @flow strict-local
  */
 
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   NativeModules,
   requireNativeComponent,
@@ -61,12 +61,13 @@ const ExternalDisplayView = (props: Props) => {
     onScreenDisconnect,
     ...nativeProps
   } = props
+  const [screens, setScreens] = useState(screenInfo)
   useEffect(() => {
     const connect = EventEmitter.addListener(
       '@RNExternalDisplay_screenDidConnect',
       info => {
         if (onScreenConnect) onScreenConnect(info)
-        screenInfo = info
+        setScreens(info)
       },
     )
 
@@ -74,7 +75,7 @@ const ExternalDisplayView = (props: Props) => {
       '@RNExternalDisplay_screenDidChange',
       info => {
         if (onScreenChange) onScreenChange(info)
-        screenInfo = info
+        setScreens(info)
       },
     )
 
@@ -82,7 +83,7 @@ const ExternalDisplayView = (props: Props) => {
       '@RNExternalDisplay_screenDidDisconnect',
       info => {
         if (onScreenDisconnect) onScreenDisconnect(info)
-        screenInfo = info
+        setScreens(info)
       },
     )
 
@@ -93,7 +94,7 @@ const ExternalDisplayView = (props: Props) => {
     }
   }, [])
 
-  const scr = screenInfo[screen] || screenInfo[0]
+  const scr = screens[screen]
   if (!scr && !fallbackInMainScreen) {
     return null
   }
@@ -109,7 +110,7 @@ const ExternalDisplayView = (props: Props) => {
           height: scr.height / scale,
         },
       ]}
-      screen={screen || ''}
+      screen={scr ? screen : ''}
       fallbackInMainScreen={fallbackInMainScreen}
     />
   )
