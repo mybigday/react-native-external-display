@@ -44,9 +44,9 @@
 - (void)updateScreen {
   NSArray *screens = [UIScreen screens];
   int index = [_screen intValue];
-  UIScreen* screen = [screens objectAtIndex:index];
-  if (index > 0 && screen) {
+  if (index > 0 && index < [screens count]) {
     NSLog(@"[RNExternalDisplay] Plug External Display");
+    UIScreen* screen = [screens objectAtIndex:index];
     if (!_window) {
       _window = [[UIWindow alloc] init];
     }
