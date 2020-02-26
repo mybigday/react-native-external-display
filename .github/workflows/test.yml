@@ -1,0 +1,42 @@
+name: CI
+on: [push]
+
+jobs:
+  test-ios:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 13.x
+
+      - name: Run test
+        run: |
+          yarn
+          yarn lint
+          cd packages/RNExternalDisplayExample
+
+          cd ios
+          pod repo update
+          pod install
+          cd -
+          xcodebuild -workspace ios/RNExternalDisplayExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
+  test-android:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 13.x
+      # - name: Setup Android Emulator
+      #   run: |
+      #     $ANDROID_HOME/tools/bin/sdkmanager --install emulator
+      #     $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-28;google_apis;x86"
+      #     echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n Test -k "system-images;android-28;google_apis;x86"
+      #     $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window &
+      - name: Build RNExternalDisplayExample
+        run: |
+          yarn
+          cd packages/RNExternalDisplayExample/android
+          ./gradlew assemblerelease
