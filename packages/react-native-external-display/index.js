@@ -6,7 +6,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   NativeModules,
-  requireNativeComponent,
   NativeEventEmitter,
   DeviceEventEmitter,
   StyleSheet,
@@ -14,6 +13,7 @@ import {
   Dimensions,
 } from 'react-native'
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes'
+import RNExternalDisplay from './ExternalDisplay'
 
 const { RNExternalDisplayEvent } = NativeModules
 
@@ -38,8 +38,6 @@ const styles = {
 }
 
 let screenInfo = RNExternalDisplayEvent.SCREEN_INFO
-
-const RNExternalDisplay = requireNativeComponent('RNExternalDisplay')
 
 type Props = {
   ...ViewProps,
