@@ -9,4 +9,11 @@ module.exports = {
   rules: {
     'import/order': 0,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.json', '.native.js'],
+      },
+    },
+  },
 }
