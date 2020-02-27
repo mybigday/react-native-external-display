@@ -12,7 +12,11 @@
   "repository": "https://github.com/mybigday/react-native-external-display",
   "keywords": [
     "react-native",
-    "external-display"
+    "external-display",
+    "native-module",
+    "native-ui-component",
+    "ios",
+    "android"
   ],
   "license": "MIT"
 }
