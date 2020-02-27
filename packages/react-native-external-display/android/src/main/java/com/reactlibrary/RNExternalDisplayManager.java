@@ -22,22 +22,6 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
   private ExternalDisplayHelper helper;
   private ReactApplicationContext reactContext;
 
-  public static Map<String, Object> getScreenInfo(Display[] displays) {
-    HashMap<String, Object> info = new HashMap<String, Object>();
-    for (Display display : displays) {
-      if (display.getDisplayId() == Display.DEFAULT_DISPLAY) {
-        continue;
-      }
-      HashMap<String, Object> data = new HashMap<String, Object>();
-      DisplayMetrics displayMetrics = new DisplayMetrics();
-      display.getMetrics(displayMetrics);
-      data.put("width",  displayMetrics.widthPixels);
-      data.put("height", displayMetrics.heightPixels);
-      info.put(String.valueOf(display.getDisplayId()), data);
-    }
-    return info;
-  }
-
   public RNExternalDisplayManager(ReactApplicationContext reactContext) {
     super();
     this.reactContext = reactContext;
@@ -80,7 +64,7 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
     sendEvent(
       "@RNExternalDisplay_screenDidConnect",
       Arguments.makeNativeMap(
-        RNExternalDisplayManager.getScreenInfo(displays)
+        ExternalDisplayHelper.getScreenInfo(displays)
       )
     );
   }
@@ -88,7 +72,7 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
     sendEvent(
       "@RNExternalDisplay_screenDidChange",
       Arguments.makeNativeMap(
-        RNExternalDisplayManager.getScreenInfo(displays)
+        ExternalDisplayHelper.getScreenInfo(displays)
       )
     );
   }
@@ -96,7 +80,7 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
     sendEvent(
       "@RNExternalDisplay_screenDidDisconnect",
       Arguments.makeNativeMap(
-        RNExternalDisplayManager.getScreenInfo(displays)
+        ExternalDisplayHelper.getScreenInfo(displays)
       )
     );
   }

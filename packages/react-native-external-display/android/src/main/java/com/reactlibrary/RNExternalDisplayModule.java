@@ -30,7 +30,7 @@ public class RNExternalDisplayModule extends ReactContextBaseJavaModule {
   @Override
   public Map<String, Object> getConstants() {
     HashMap<String, Object> map = new HashMap<String, Object>();
-    map.put("SCREEN_INFO", RNExternalDisplayManager.getScreenInfo(dm.getDisplays()));
+    map.put("SCREEN_INFO", ExternalDisplayHelper.getScreenInfo(dm.getDisplays()));
     return map;
   }
 }

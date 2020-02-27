@@ -35,6 +35,22 @@ class ExternalDisplayScreen extends Presentation {
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 class ExternalDisplayHelper implements DisplayManager.DisplayListener {
+  public static Map<String, Object> getScreenInfo(Display[] displays) {
+    HashMap<String, Object> info = new HashMap<String, Object>();
+    for (Display display : displays) {
+      if (display.getDisplayId() == Display.DEFAULT_DISPLAY) {
+        continue;
+      }
+      HashMap<String, Object> data = new HashMap<String, Object>();
+      DisplayMetrics displayMetrics = new DisplayMetrics();
+      display.getMetrics(displayMetrics);
+      data.put("width",  displayMetrics.widthPixels);
+      data.put("height", displayMetrics.heightPixels);
+      info.put(String.valueOf(display.getDisplayId()), data);
+    }
+    return info;
+  }
+
   public interface Listener {
     void onDisplayAdded(Display[] displays, int displayId);
     void onDisplayChanged(Display[] displays, int displayId);
