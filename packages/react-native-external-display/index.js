@@ -39,6 +39,21 @@ const styles = {
 
 let screenInfo = RNExternalDisplayEvent.SCREEN_INFO
 
+EventEmitter.addListener(
+  '@RNExternalDisplay_screenDidConnect',
+  info => (screenInfo = info),
+)
+
+EventEmitter.addListener(
+  '@RNExternalDisplay_screenDidChange',
+  info => (screenInfo = info),
+)
+
+EventEmitter.addListener(
+  '@RNExternalDisplay_screenDidDisconnect',
+  info => (screenInfo = info),
+)
+
 type Props = {
   ...ViewProps,
   mainScreenStyle?: ViewProps.style,
@@ -131,20 +146,5 @@ type ScreenInfo = {
   },
 }
 export const getScreens = (): ScreenInfo => screenInfo
-
-EventEmitter.addListener(
-  '@RNExternalDisplay_screenDidConnect',
-  info => console.log(screenInfo) || (screenInfo = info),
-)
-
-EventEmitter.addListener(
-  '@RNExternalDisplay_screenDidChange',
-  info => console.log(screenInfo) || (screenInfo = info),
-)
-
-EventEmitter.addListener(
-  '@RNExternalDisplay_screenDidDisconnect',
-  info => console.log(screenInfo) || (screenInfo = info),
-)
 
 export default ExternalDisplayView

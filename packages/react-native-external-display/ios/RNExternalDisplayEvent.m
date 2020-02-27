@@ -57,13 +57,11 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
 
 - (void) handleScreenDidConnectNotification: (NSNotification *)notification{
   NSDictionary* screenInfo = [self getScreenInfo];
-  NSLog(@"Screen info: %@", screenInfo);
   [self sendEventWithName:@"@RNExternalDisplay_screenDidConnect" body:screenInfo];
 }
 
 - (void) handleScreenDidDisconnectNotification: (NSNotification *)notification{
   NSDictionary* screenInfo = [self getScreenInfo];
-  NSLog(@"Screen info: %@", screenInfo);
   [self sendEventWithName:@"@RNExternalDisplay_screenDidDisconnect" body:screenInfo];
 }
 
