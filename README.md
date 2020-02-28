@@ -40,6 +40,10 @@ const screenInfo = getScreens()
 
 > iPod Touch connected to TV via AirPlay
 
+## Known issues
+
+- Not good support for react-native `Modal`, it always show on main screen for Android. It works on iOS.
+
 ## Related projects
 
 - [`react-native-media-player`](https://github.com/mybigday/react-native-media-player)
