@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/mybigday/react-native-external-display/compare/v0.1.5...v0.1.6) (2020-02-28)
+
+
+### Features
+
+* **ios:** add tvos deployment target ([a2faa45](https://github.com/mybigday/react-native-external-display/commit/a2faa453882099e1924564d403d9eb5258e47cbc))
+
+
+
+
+
 ## [0.1.5](https://github.com/mybigday/react-native-external-display/compare/v0.1.4...v0.1.5) (2020-02-28)
 
 
