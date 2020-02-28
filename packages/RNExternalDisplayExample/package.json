@@ -1,6 +1,6 @@
 {
   "name": "RNExternalDisplayExample",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "workspaces": {
     "nohoist": [
@@ -19,11 +19,11 @@
     "@react-navigation/stack": "^5.1.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "react-native-external-display": "^0.1.0",
+    "react-native-external-display": "^0.1.1",
     "react-native-gesture-handler": "^1.6.0",
-    "react-native-video": "^5.0.2",
     "react-native-safe-area-context": "^0.7.3",
-    "react-native-screens": "^2.1.0"
+    "react-native-screens": "^2.1.0",
+    "react-native-video": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

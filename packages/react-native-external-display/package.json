@@ -1,10 +1,8 @@
 {
   "name": "react-native-external-display",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native view renderer in External Display",
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {},
   "author": "Jhen-Jie Hong <developer@jhen.me>",
   "homepage": "https://github.com/mybigday/react-native-external-display",
   "repository": "https://github.com/mybigday/react-native-external-display",
