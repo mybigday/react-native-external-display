@@ -34,10 +34,6 @@
 }
 
 - (void)invalidate {
-  if (_subview) {
-    [_subview removeFromSuperview];
-    _subview = nil;
-  }
   _window = nil;
 }
 
