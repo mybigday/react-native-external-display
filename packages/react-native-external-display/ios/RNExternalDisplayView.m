@@ -52,7 +52,8 @@
     }
     [_window setScreen:screen];
     [_window setFrame:CGRectMake(0, 0, screen.bounds.size.width, screen.bounds.size.height)];
-    [_window insertSubview:_subview atIndex:0];
+    _window.rootViewController = [[UIViewController alloc] init];
+    _window.rootViewController.view = _subview;
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
     [super insertSubview:_subview atIndex:0];
