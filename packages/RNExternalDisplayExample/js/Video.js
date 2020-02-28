@@ -3,7 +3,7 @@ import { SafeAreaView, View, Button } from 'react-native'
 import Video from 'react-native-video'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
 
-export default function App() {
+export default function Example() {
   const [info, setInfo] = useState(getScreens())
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)

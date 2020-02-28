@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, Text, View, Button } from 'react-native'
+import { SafeAreaView, Text, View, Button, Modal } from 'react-native'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
 
+/*
+ *
+ */
 export default function Example() {
   const [t, setT] = useState(0)
   const [info, setInfo] = useState(getScreens())
@@ -29,14 +32,20 @@ export default function Example() {
             onScreenConnect={setInfo}
             onScreenDisconnect={setInfo}
           >
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#333',
-              }}
-            >
-              <Text style={{ color: 'red', fontSize: 40 }}>{t}</Text>
+            {/* Wrap view to avoid error */}
+            <View>
+              <Modal animationType="slide" visible>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#333',
+                  }}
+                >
+                  <Text style={{ color: 'red', fontSize: 40 }}>{t}</Text>
+                </View>
+              </Modal>
             </View>
           </ExternalDisplay>
         )}

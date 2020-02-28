@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from './Home'
 import Video from './Video'
 import SimpleTextInterval from './SimpleTextInterval'
+import Modal from './Modal'
 
 const Stack = createStackNavigator()
 
@@ -30,6 +31,7 @@ function App() {
           component={SimpleTextInterval}
           options={options}
         />
+        <Stack.Screen name="Modal" component={Modal} options={options} />
       </Stack.Navigator>
     </NavigationContainer>
   )

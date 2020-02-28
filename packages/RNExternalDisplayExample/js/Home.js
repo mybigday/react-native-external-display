@@ -20,6 +20,7 @@ export default function Home(props: Props) {
         onPress={() => navigation.push('SimpleTextInterval')}
       />
       <Button title="Video" onPress={() => navigation.push('Video')} />
+      <Button title="Modal" onPress={() => navigation.push('Modal')} />
     </View>
   )
 }
