@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = pkg["license"]
   s.author       = pkg["author"]
   s.platform     = :ios, "9.0"
-  s.source       = { :git => pkg["repository"]["url"], :tag => "master" }
+  s.source       = { :git => pkg["repository"], :tag => "master" }
   s.source_files = "**/*.{h,m}"
   s.requires_arc = true
 
