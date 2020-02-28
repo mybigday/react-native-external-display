@@ -42,6 +42,9 @@
 }
 
 - (void)updateScreen {
+  if (!_subview) {
+    return;
+  }
   NSArray *screens = [UIScreen screens];
   int index = [_screen intValue];
   if (index > 0 && index < [screens count]) {
@@ -61,9 +64,6 @@
 }
 
 - (void)setScreen:(NSString*)screen {
-  if (_subview) {
-    [_subview removeFromSuperview];
-  }
   if (screen != _screen) {
     _window = nil;
   }
@@ -73,6 +73,7 @@
 
 - (void)setFallbackInMainScreen:(BOOL)fallbackInMainScreen {
   _fallbackInMainScreen = fallbackInMainScreen;
+  [self updateScreen];
 }
 
 @end
