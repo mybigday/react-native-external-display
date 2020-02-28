@@ -45,8 +45,10 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
           @"width": @(screen.bounds.size.width),
           @"height": @(screen.bounds.size.height),
           @"mirrored": @(screen.mirroredScreen == UIScreen.mainScreen),
+#if !TARGET_OS_TV
           @"wantsSoftwareDimming": @(screen.wantsSoftwareDimming),
-          //@"maximumFramesPerSecond": @(screen.maximumFramesPerSecond),
+#endif
+          // @"maximumFramesPerSecond": @(screen.maximumFramesPerSecond),
         }
         forKey:[NSString stringWithFormat: @"%ld", [screens indexOfObject:screen]]
       ];
