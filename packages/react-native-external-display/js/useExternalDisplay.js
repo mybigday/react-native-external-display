@@ -16,7 +16,7 @@ export const useExternalDisplay = ({
   onScreenConnect,
   onScreenChange,
   onScreenDisconnect,
-}: ExternalDisplayOptions) => {
+}: ExternalDisplayOptions = {}) => {
   const [screens, setScreens] = useState(getScreens())
 
   useEffect(() => {
