@@ -64,7 +64,8 @@
     UIScreen* screen = [screens objectAtIndex:index];
     _window = [[UIWindow alloc] initWithFrame:screen.bounds];
     UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = _subview;
+    rootViewController.view = [RCTView new];
+    [rootViewController.view insertSubview:_subview atIndex:0];
     _window.rootViewController = rootViewController;
     [_window setScreen:screen];
     [_window makeKeyAndVisible];
