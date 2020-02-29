@@ -17,6 +17,7 @@
     return;
   }
   _subview = subview;
+  [super insertReactSubview:_subview atIndex:atIndex];
   [self updateScreen];
 }
 
@@ -33,9 +34,17 @@
   }
 }
 
+- (void)didUpdateReactSubviews {
+  if (_fallbackInMainScreen && !_window) {
+    [super didUpdateReactSubviews];
+  }
+}
+
 - (void)invalidateWindow {
   if (_window) {
-    [UIApplication.sharedApplication.delegate.window makeKeyAndVisible];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [UIApplication.sharedApplication.delegate.window makeKeyAndVisible];
+    });
   }
   _window = nil;
 }
@@ -59,8 +68,6 @@
     _window.rootViewController = rootViewController;
     [_window setScreen:screen];
     [_window makeKeyAndVisible];
-  } else if (_fallbackInMainScreen) {
-    [super insertSubview:_subview atIndex:0];
   }
 }
 
@@ -70,12 +77,14 @@
   }
   _screen = screen;
   [self updateScreen];
+  [self didUpdateReactSubviews];
 }
 
 - (void)setFallbackInMainScreen:(BOOL)fallbackInMainScreen {
   _fallbackInMainScreen = fallbackInMainScreen;
   if (!_window) {
     [self updateScreen];
+      [self didUpdateReactSubviews];
   }
 }
 
