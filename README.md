@@ -11,27 +11,35 @@
 - [Android - Presentation API](https://developer.android.com/reference/android/app/Presentation)
 
 ```js
-import ExternalDisplay, { getScreens } from 'react-native-external-display'
+import React from 'react'
 import Video from 'react-native-video'
+import ExternalDisplay, {
+  useExternalDisplay,
+} from 'react-native-external-display'
 
-const screenInfo = getScreens()
+function App() {
+  const screens = useExternalDisplay({
+    onScreenConnect: info => {},
+    onScreenDisconnect: info => {},
+  })
 
-<ExternalDisplay
-  mainScreenStyle={{ flex: 1 }}
-  fallbackInMainScreen
-  screen={Object.keys(screenInfo)[0]}
-  onScreenConnect={info => {}}
-  onScreenDisconnect={info => {}}
->
-  <Video
-    source={{
-      uri: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-    }}
-    style={{ flex: 1 }}
-    repeat
-    muted
-  />
-</ExternalDisplay>
+  return (
+    <ExternalDisplay
+      mainScreenStyle={{ flex: 1 }}
+      fallbackInMainScreen
+      screen={Object.keys(screens)[0]}
+    >
+      <Video
+        source={{
+          uri: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+        }}
+        style={{ flex: 1 }}
+        repeat
+        muted
+      />
+    </ExternalDisplay>
+  )
+}
 ```
 
 |                                                No selected screen                                                |                                                     Selected                                                     |

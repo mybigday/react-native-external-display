@@ -12,28 +12,34 @@
 Example
 
 ```js
-import ExternalDisplay, { getScreens } from 'react-native-external-display'
+import React from 'react'
+import ExternalDisplay, { useExternalDisplay } from 'react-native-external-display'
 
-const screenInfo = getScreens()
+function App() {
+  const screens = useExternalDisplay({
+    onScreenConnect: info => {},
+    onScreenDisconnect: info => {},
+  })
 
-<ExternalDisplay
-  mainScreenStyle={{ flex: 1 }}
-  fallbackInMainScreen
-  screen={Object.keys(screenInfo)[0]}
-  onScreenConnect={info => {}}
-  onScreenDisconnect={info => {}}
->
-  <View
-    style={{
-      flex: 1
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#333',
-    }}
-  >
-    <Text style={{ color: 'red', fontSize: 40 }}>External Display</Text>
-  </View>
-</ExternalDisplay>
+  return (
+    <ExternalDisplay
+      mainScreenStyle={{ flex: 1 }}
+      fallbackInMainScreen
+      screen={Object.keys(screens)[0]}
+    >
+      <View
+        style={{
+          flex: 1
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#333',
+        }}
+      >
+        <Text style={{ color: 'red', fontSize: 40 }}>External Display</Text>
+      </View>
+    </ExternalDisplay>
+  )
+}
 ```
 
 ## `getScreens(): ScreenInfo`
@@ -45,6 +51,18 @@ type ScreenInfo = {
     height: number,
     mirrored?: boolean,
   },
+}
+```
+
+## `useExternalDisplay(ExternalDisplayOptions): ScreenInfo`
+
+A react hook to get `ScreenInfo` update.
+
+```flow
+type ExternalDisplayOptions = {
+  onScreenConnect: Function,
+  onScreenChange: Function,
+  onScreenDisconnect: Function,
 }
 ```
 
