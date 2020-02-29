@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { getScreens } from './screens'
 import EventEmitter from './EventEmitter'
 
-type Options = {
+type ExternalDisplayOptions = {
   onScreenConnect: Function,
   onScreenChange: Function,
   onScreenDisconnect: Function,
@@ -16,7 +16,7 @@ export const useExternalDisplay = ({
   onScreenConnect,
   onScreenChange,
   onScreenDisconnect,
-}: Options) => {
+}: ExternalDisplayOptions) => {
   const [screens, setScreens] = useState(getScreens())
 
   useEffect(() => {
