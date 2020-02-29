@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/mybigday/react-native-external-display/compare/v0.1.6...v0.2.0) (2020-02-29)
+
+
+### Bug Fixes
+
+* **android:** Wrap new ReactViewGroup for target external screen view ([44a3f49](https://github.com/mybigday/react-native-external-display/commit/44a3f49202162a8124b6cd519b1c759f63903d61)), closes [#1](https://github.com/mybigday/react-native-external-display/issues/1)
+* **ios:** Wrap new RCTView for target external screen view ([41b6efc](https://github.com/mybigday/react-native-external-display/commit/41b6efcd3992087019e47c67fcfb9a5982c134d2))
+
+
+### Features
+
+* **ios:** always call [super insertReactSubview], and render fallback depends on didUpdateReactSubviews ([a0c2c43](https://github.com/mybigday/react-native-external-display/commit/a0c2c432cd44525b9036ab1b6321a6c6acc5c85e))
+* **ios:** call makeKeyAndVisible for main window after invalidateWindow ([a8bbea2](https://github.com/mybigday/react-native-external-display/commit/a8bbea2bf9330f7d4c89faf7d407749af4602111))
+* **ios:** implement RCTInvalidating method ([e9c2ede](https://github.com/mybigday/react-native-external-display/commit/e9c2ede5318f97518f2c0cec7aabe4e9aff8e2e1))
+
+
+
+
+
 ## [0.1.6](https://github.com/mybigday/react-native-external-display/compare/v0.1.5...v0.1.6) (2020-02-28)
 
 
