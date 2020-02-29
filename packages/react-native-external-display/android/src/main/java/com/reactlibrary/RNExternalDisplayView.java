@@ -100,7 +100,9 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
         if (displayScreen == null) {
           displayScreen = new ExternalDisplayScreen(context, display);
         }
-        displayScreen.setContentView(subview);
+        ReactViewGroup wrap = new ReactViewGroup(context);
+        wrap.addView(subview, 0);
+        displayScreen.setContentView(wrap);
         displayScreen.show();
         return;
       }
