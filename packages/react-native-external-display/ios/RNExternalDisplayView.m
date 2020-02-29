@@ -33,8 +33,15 @@
   }
 }
 
-- (void)invalidate {
+- (void)invalidateWindow {
+  if (_window) {
+    [UIApplication.sharedApplication.delegate.window makeKeyAndVisible];
+  }
   _window = nil;
+}
+
+- (void)invalidate {
+  [self invalidateWindow];
 }
 
 - (void)updateScreen {
@@ -46,13 +53,11 @@
   if (index > 0 && index < [screens count]) {
     // NSLog(@"[RNExternalDisplay] Selected External Display");
     UIScreen* screen = [screens objectAtIndex:index];
-    if (!_window) {
-      _window = [[UIWindow alloc] init];
-    }
+    _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+    UIViewController *rootViewController = [UIViewController new];
+    rootViewController.view = _subview;
+    _window.rootViewController = rootViewController;
     [_window setScreen:screen];
-    [_window setFrame:CGRectMake(0, 0, screen.bounds.size.width, screen.bounds.size.height)];
-    _window.rootViewController = [[UIViewController alloc] init];
-    _window.rootViewController.view = _subview;
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
     [super insertSubview:_subview atIndex:0];
@@ -61,7 +66,7 @@
 
 - (void)setScreen:(NSString*)screen {
   if (screen != _screen) {
-    _window = nil;
+    [self invalidateWindow];
   }
   _screen = screen;
   [self updateScreen];
@@ -69,7 +74,9 @@
 
 - (void)setFallbackInMainScreen:(BOOL)fallbackInMainScreen {
   _fallbackInMainScreen = fallbackInMainScreen;
-  [self updateScreen];
+  if (!_window) {
+    [self updateScreen];
+  }
 }
 
 @end
