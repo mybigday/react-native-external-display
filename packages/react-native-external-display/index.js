@@ -4,27 +4,11 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import {
-  NativeModules,
-  NativeEventEmitter,
-  DeviceEventEmitter,
-  StyleSheet,
-  Platform,
-  Dimensions,
-} from 'react-native'
+import { StyleSheet, Platform, Dimensions } from 'react-native'
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes'
-import RNExternalDisplay from './ExternalDisplay'
-
-const { RNExternalDisplayEvent } = NativeModules
-
-let EventEmitter
-
-if (Platform.OS === 'ios') {
-  RNExternalDisplayEvent.init()
-  EventEmitter = new NativeEventEmitter(RNExternalDisplayEvent)
-} else {
-  EventEmitter = DeviceEventEmitter
-}
+import RNExternalDisplay from './js/ExternalDisplay'
+import EventEmitter from './js/EventEmitter'
+import { getScreens } from './js/screens'
 
 let scale
 if (Platform.OS === 'ios') {
@@ -36,23 +20,6 @@ if (Platform.OS === 'ios') {
 const styles = {
   screen: StyleSheet.absoluteFill,
 }
-
-let screenInfo = RNExternalDisplayEvent.SCREEN_INFO
-
-EventEmitter.addListener(
-  '@RNExternalDisplay_screenDidConnect',
-  info => (screenInfo = info),
-)
-
-EventEmitter.addListener(
-  '@RNExternalDisplay_screenDidChange',
-  info => (screenInfo = info),
-)
-
-EventEmitter.addListener(
-  '@RNExternalDisplay_screenDidDisconnect',
-  info => (screenInfo = info),
-)
 
 type Props = {
   ...ViewProps,
@@ -74,38 +41,48 @@ const ExternalDisplayView = (props: Props) => {
     onScreenDisconnect,
     ...nativeProps
   } = props
-  const [screens, setScreens] = useState(screenInfo)
+  const [screens, setScreens] = useState(getScreens())
   useEffect(() => {
-    const connect = EventEmitter.addListener(
-      '@RNExternalDisplay_screenDidConnect',
-      info => {
-        if (onScreenConnect) onScreenConnect(info)
-        setScreens(info)
-      },
-    )
+    let connect
+    let change
+    let disconnect
 
-    const change = EventEmitter.addListener(
-      '@RNExternalDisplay_screenDidChange',
-      info => {
-        if (onScreenChange) onScreenChange(info)
-        setScreens(info)
-      },
-    )
+    if (onScreenConnect) {
+      connect = EventEmitter.addListener(
+        '@RNExternalDisplay_screenDidConnect',
+        info => {
+          if (onScreenConnect) onScreenConnect(info)
+          setScreens(info)
+        },
+      )
+    }
 
-    const disconnect = EventEmitter.addListener(
-      '@RNExternalDisplay_screenDidDisconnect',
-      info => {
-        if (onScreenDisconnect) onScreenDisconnect(info)
-        setScreens(info)
-      },
-    )
+    if (onScreenChange) {
+      change = EventEmitter.addListener(
+        '@RNExternalDisplay_screenDidChange',
+        info => {
+          if (onScreenChange) onScreenChange(info)
+          setScreens(info)
+        },
+      )
+    }
+
+    if (onScreenDisconnect) {
+      disconnect = EventEmitter.addListener(
+        '@RNExternalDisplay_screenDidDisconnect',
+        info => {
+          if (onScreenDisconnect) onScreenDisconnect(info)
+          setScreens(info)
+        },
+      )
+    }
 
     return () => {
-      connect.remove()
-      change.remove()
-      disconnect.remove()
+      if (connect) connect.remove()
+      if (change) change.remove()
+      if (disconnect) disconnect.remove()
     }
-  }, [])
+  }, [onScreenConnect, onScreenChange, onScreenDisconnect])
 
   const scr = screens[screen]
   if (!scr && !fallbackInMainScreen) {
@@ -138,13 +115,6 @@ ExternalDisplayView.defaultProps = {
   onScreenDisconnect: () => {},
 }
 
-type ScreenInfo = {
-  [screenId: string]: {
-    width: number,
-    height: number,
-    mirrored?: boolean,
-  },
-}
-export const getScreens = (): ScreenInfo => screenInfo
+export { getScreens }
 
 export default ExternalDisplayView
