@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mybigday/react-native-external-display/compare/v0.2.0...v0.3.0) (2020-02-29)
+
+
+### Features
+
+* **js:** implement useExternalDisplay hook ([#5](https://github.com/mybigday/react-native-external-display/issues/5)) ([17792c6](https://github.com/mybigday/react-native-external-display/commit/17792c6ac548f8b003d2d393ac5f8498e55f1f21))
+
+
+
+
+
 # [0.2.0](https://github.com/mybigday/react-native-external-display/compare/v0.1.6...v0.2.0) (2020-02-29)
 
 
