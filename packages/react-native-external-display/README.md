@@ -16,10 +16,7 @@ import React from 'react'
 import ExternalDisplay, { useExternalDisplay } from 'react-native-external-display'
 
 function App() {
-  const screens = useExternalDisplay({
-    onScreenConnect: info => {},
-    onScreenDisconnect: info => {},
-  })
+  const screens = useExternalDisplay()
 
   return (
     <ExternalDisplay
@@ -58,7 +55,7 @@ type ScreenInfo = {
 
 You need to use `Screen` size instead of `Dimensions.get()` if you want to know the external screen size.
 
-## `useExternalDisplay(ExternalDisplayOptions): ScreenInfo`
+## `useExternalDisplay(options?: ExternalDisplayOptions): ScreenInfo`
 
 A react hook to get `ScreenInfo` update.
 

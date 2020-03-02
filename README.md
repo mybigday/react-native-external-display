@@ -18,10 +18,7 @@ import ExternalDisplay, {
 } from 'react-native-external-display'
 
 function App() {
-  const screens = useExternalDisplay({
-    onScreenConnect: info => {},
-    onScreenDisconnect: info => {},
-  })
+  const screens = useExternalDisplay()
 
   return (
     <ExternalDisplay
