@@ -54,6 +54,8 @@ type ScreenInfo = {
 }
 ```
 
+You need to use `ScreenInfo[screenId]` size instead of `Dimensions.get()` if you want to know the external screen size.
+
 ## `useExternalDisplay(ExternalDisplayOptions): ScreenInfo`
 
 A react hook to get `ScreenInfo` update.
