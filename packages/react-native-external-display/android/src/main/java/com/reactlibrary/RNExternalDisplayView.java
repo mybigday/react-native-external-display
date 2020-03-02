@@ -20,6 +20,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
   private ExternalDisplayScreen displayScreen;
   private int screen = -1;
   private View subview;
+  private ReactViewGroup wrap;
 
   public RNExternalDisplayView(Context context, ExternalDisplayHelper helper) {
     super(context);
@@ -66,16 +67,12 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
 
   public void onDropInstance() {
     if (subview != null) {
-      ViewGroup parent = (ViewGroup) subview.getParent();
-      if (parent != null) {
-        parent.removeView(subview);
+      if (wrap != null) {
+        wrap.removeViewAt(0);
       }
       subview = null;
     }
-    if (displayScreen != null) {
-      displayScreen.hide();
-      displayScreen = null;
-    }
+    destroyScreen();
   }
 
   @Override
@@ -99,8 +96,10 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
       if (display != null) {
         if (displayScreen == null) {
           displayScreen = new ExternalDisplayScreen(context, display);
+          wrap = new ReactViewGroup(context);
+        } else {
+          wrap.removeViewAt(0);
         }
-        ReactViewGroup wrap = new ReactViewGroup(context);
         wrap.addView(subview, 0);
         displayScreen.setContentView(wrap);
         displayScreen.show();
@@ -108,29 +107,35 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
       }
     }
     if (fallbackInMainScreen == true) {
+      if (wrap != null) {
+        wrap.removeViewAt(0);
+      }
       super.addView(subview, 0);
     }
   }
 
+  private void destroyScreen() {
+    if (displayScreen != null) {
+      displayScreen.hide();
+      displayScreen = null;
+      wrap = null;
+    }
+  }
+
   public void setScreen(String screen) {
-    if (subview != null) {
-      ViewGroup parent = (ViewGroup) subview.getParent();
-      if (parent != null) {
-        parent.removeView(subview);
-      }
+    if (subview != null && wrap != null) {
+      wrap.removeViewAt(0);
+    } else {
+      removeViewAt(0);
     }
     try {
       int nextScreen = Integer.parseInt(screen);
-      if (nextScreen != this.screen && displayScreen != null) {
-        displayScreen.hide();
-        displayScreen = null;
+      if (nextScreen != this.screen) {
+        destroyScreen();
       }
       this.screen = nextScreen;
     } catch (NumberFormatException e) {
-      if (displayScreen != null) {
-        displayScreen.hide();
-        displayScreen = null;
-      }
+      destroyScreen();
       this.screen = -1;
     }
     updateScreen();
