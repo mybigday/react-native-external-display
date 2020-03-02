@@ -6,6 +6,7 @@ import Home from './Home'
 import Video from './Video'
 import SimpleTextInterval from './SimpleTextInterval'
 import Modal from './Modal'
+import ScreenSize from './ScreenSize'
 
 const Stack = createStackNavigator()
 
@@ -32,6 +33,11 @@ function App() {
           options={options}
         />
         <Stack.Screen name="Modal" component={Modal} options={options} />
+        <Stack.Screen
+          name="ScreenSize"
+          component={ScreenSize}
+          options={options}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

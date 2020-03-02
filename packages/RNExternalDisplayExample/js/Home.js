@@ -21,6 +21,10 @@ export default function Home(props: Props) {
       />
       <Button title="Video" onPress={() => navigation.push('Video')} />
       <Button title="Modal" onPress={() => navigation.push('Modal')} />
+      <Button
+        title="ScreenSize"
+        onPress={() => navigation.push('ScreenSize')}
+      />
     </View>
   )
 }
