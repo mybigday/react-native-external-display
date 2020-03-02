@@ -72,7 +72,7 @@ type ExternalDisplayOptions = {
 
 ## `useScreenSize(): Screen`
 
-A react hook to get current used screen size. (rendered in <ExternalDisplay />)
+A react hook to get current used screen size. (rendered in `<ExternalDisplay />`)
 
 It will get `null` if it rendered as fallback in main screen.
 
