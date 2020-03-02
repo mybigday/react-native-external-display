@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.externaldisplay;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

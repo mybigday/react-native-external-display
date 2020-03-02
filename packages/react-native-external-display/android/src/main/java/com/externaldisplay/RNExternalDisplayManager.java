@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.externaldisplay;
 
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.ThemedReactContext;
