@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/mybigday/react-native-external-display/compare/v0.4.1...v0.4.2) (2020-03-02)
+
+
+### Bug Fixes
+
+* **android:** should check child count before removeViewAt for wrap view group ([042d1f2](https://github.com/mybigday/react-native-external-display/commit/042d1f238453ed27ba42edac651a293b1329ce9e))
+
+
+
+
+
 ## [0.4.1](https://github.com/mybigday/react-native-external-display/compare/v0.4.0...v0.4.1) (2020-03-02)
 
 
