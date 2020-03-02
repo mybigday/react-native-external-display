@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/mybigday/react-native-external-display/compare/v0.4.0...v0.4.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* **android:** parent view group issue on change screen ([76e732f](https://github.com/mybigday/react-native-external-display/commit/76e732fb985c2ede4474f31a0c00253dd44fdbec))
+
+
+
+
+
 # [0.4.0](https://github.com/mybigday/react-native-external-display/compare/v0.3.1...v0.4.0) (2020-03-02)
 
 
