@@ -45,16 +45,18 @@ function App() {
 ## `getScreens(): ScreenInfo`
 
 ```flow
+type Screen = {
+  id: string,
+  width: number,
+  height: number,
+  mirrored?: boolean,
+}
 type ScreenInfo = {
-  [screenId: string]: {
-    width: number,
-    height: number,
-    mirrored?: boolean,
-  },
+  [screenId: string]: Screen,
 }
 ```
 
-You need to use `ScreenInfo[screenId]` size instead of `Dimensions.get()` if you want to know the external screen size.
+You need to use `Screen` size instead of `Dimensions.get()` if you want to know the external screen size.
 
 ## `useExternalDisplay(ExternalDisplayOptions): ScreenInfo`
 
@@ -67,6 +69,12 @@ type ExternalDisplayOptions = {
   onScreenDisconnect: Function,
 }
 ```
+
+## `useScreenSize(): Screen`
+
+A react hook to get current used screen size. (rendered in <ExternalDisplay />)
+
+It will get `null` if it rendered as fallback in main screen.
 
 ## `<ExternalDisplay />`
 

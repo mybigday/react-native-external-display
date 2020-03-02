@@ -38,12 +38,14 @@ class ExternalDisplayHelper implements DisplayManager.DisplayListener {
   public static Map<String, Object> getScreenInfo(Display[] displays) {
     HashMap<String, Object> info = new HashMap<String, Object>();
     for (Display display : displays) {
+      int displayId = display.getDisplayId();
       if (display.getDisplayId() == Display.DEFAULT_DISPLAY) {
         continue;
       }
       HashMap<String, Object> data = new HashMap<String, Object>();
       DisplayMetrics displayMetrics = new DisplayMetrics();
       display.getMetrics(displayMetrics);
+      data.put("id", displayId);
       data.put("width",  displayMetrics.widthPixels);
       data.put("height", displayMetrics.heightPixels);
       info.put(String.valueOf(display.getDisplayId()), data);

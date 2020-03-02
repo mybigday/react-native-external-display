@@ -3,16 +3,21 @@
  * @flow strict-local
  */
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes'
 import RNExternalDisplay from './js/ExternalDisplay'
 import { getScreens } from './js/screens'
+import type { Screen } from './js/screens'
 import { useExternalDisplay } from './js/useExternalDisplay'
 
 const styles = {
   screen: StyleSheet.absoluteFill,
 }
+
+const ScreenContext = React.createContext(null)
+
+export const useScreenSize = (): Screen => useContext(ScreenContext)
 
 type Props = {
   ...ViewProps,
@@ -40,20 +45,22 @@ const ExternalDisplayView = (props: Props) => {
     return null
   }
   return (
-    <RNExternalDisplay
-      pointerEvents={!scr ? 'box-none' : 'auto'}
-      {...nativeProps}
-      style={[
-        !scr && mainScreenStyle,
-        scr && styles.screen,
-        scr && {
-          width: scr.width,
-          height: scr.height,
-        },
-      ]}
-      screen={scr ? screen : ''}
-      fallbackInMainScreen={fallbackInMainScreen}
-    />
+    <ScreenContext.Provider value={scr}>
+      <RNExternalDisplay
+        pointerEvents={!scr ? 'box-none' : 'auto'}
+        {...nativeProps}
+        style={[
+          !scr && mainScreenStyle,
+          scr && styles.screen,
+          scr && {
+            width: scr.width,
+            height: scr.height,
+          },
+        ]}
+        screen={scr ? screen : ''}
+        fallbackInMainScreen={fallbackInMainScreen}
+      />
+    </ScreenContext.Provider>
   )
 }
 

@@ -38,10 +38,12 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
 -(NSDictionary *)getScreenInfo {
   NSArray *screens = [UIScreen screens];
   NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
+  NSUInteger index = 0;
   for (UIScreen* screen in screens) {
     if (screen != UIScreen.mainScreen) {
       [screenInfo
         setValue:@{
+          @"id": @(index),
           @"width": @(screen.bounds.size.width),
           @"height": @(screen.bounds.size.height),
           @"mirrored": @(screen.mirroredScreen == UIScreen.mainScreen),
@@ -50,9 +52,10 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
 #endif
           // @"maximumFramesPerSecond": @(screen.maximumFramesPerSecond),
         }
-        forKey:[NSString stringWithFormat: @"%ld", [screens indexOfObject:screen]]
+        forKey:[NSString stringWithFormat: @"%ld", index]
       ];
     }
+    index++;
   }
   return screenInfo;
 }

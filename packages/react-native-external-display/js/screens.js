@@ -13,12 +13,14 @@ listenEvent({
   onScreenDisconnect: info => (screenInfo = info),
 })
 
-type ScreenInfo = {
-  [screenId: string]: {
-    width: number,
-    height: number,
-    mirrored?: boolean,
-  },
+export type Screen = {
+  id: string,
+  width: number,
+  height: number,
+  mirrored?: boolean,
+}
+export type ScreenInfo = {
+  [screenId: string]: Screen,
 }
 
 export const getScreens = (): ScreenInfo => screenInfo
