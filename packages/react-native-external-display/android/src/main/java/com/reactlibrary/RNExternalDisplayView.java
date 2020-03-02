@@ -63,11 +63,14 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
     if (index > 0) return;
     View child = getChildAt(index);
     super.removeView(child);
+    if (wrap != null && wrap.getChildCount() > 0) {
+      wrap.removeViewAt(0);
+    }
   }
 
   public void onDropInstance() {
     if (subview != null) {
-      if (wrap != null) {
+      if (wrap != null && wrap.getChildCount() > 0) {
         wrap.removeViewAt(0);
       }
       subview = null;
@@ -97,7 +100,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
         if (displayScreen == null) {
           displayScreen = new ExternalDisplayScreen(context, display);
           wrap = new ReactViewGroup(context);
-        } else {
+        } else if (wrap.getChildCount() > 0) {
           wrap.removeViewAt(0);
         }
         wrap.addView(subview, 0);
@@ -107,7 +110,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
       }
     }
     if (fallbackInMainScreen == true) {
-      if (wrap != null) {
+      if (wrap != null && wrap.getChildCount() > 0) {
         wrap.removeViewAt(0);
       }
       super.addView(subview, 0);
@@ -123,7 +126,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
   }
 
   public void setScreen(String screen) {
-    if (subview != null && wrap != null) {
+    if (subview != null && wrap != null && wrap.getChildCount() > 0) {
       wrap.removeViewAt(0);
     } else {
       removeViewAt(0);
