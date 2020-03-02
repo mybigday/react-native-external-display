@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/mybigday/react-native-external-display/compare/v0.3.1...v0.4.0) (2020-03-02)
+
+
+### Features
+
+* **js:** expose scaled screen size depends on main screen ([d565881](https://github.com/mybigday/react-native-external-display/commit/d5658810a011cc6e5e5b424952bdb39adfceca47))
+* **js:** implement useScreenSize hook ([15bccc9](https://github.com/mybigday/react-native-external-display/commit/15bccc90ed5183f23fcb0a6f46311dc8e7ce806f))
+
+
+
+
+
 ## [0.3.1](https://github.com/mybigday/react-native-external-display/compare/v0.3.0...v0.3.1) (2020-03-01)
 
 
