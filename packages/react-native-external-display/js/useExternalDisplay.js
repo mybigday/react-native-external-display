@@ -4,7 +4,7 @@
  */
 import { useState, useEffect } from 'react'
 import { getScreens } from './screens'
-import EventEmitter from './EventEmitter'
+import listenEvent from './EventEmitter'
 
 type ExternalDisplayOptions = {
   onScreenConnect: Function,
@@ -20,30 +20,20 @@ export const useExternalDisplay = ({
   const [screens, setScreens] = useState(getScreens())
 
   useEffect(() => {
-    const connect = EventEmitter.addListener(
-      '@RNExternalDisplay_screenDidConnect',
-      info => {
+    const { connect, change, disconnect } = listenEvent({
+      onScreenConnect: info => {
         setScreens(info)
         if (onScreenConnect) onScreenConnect(info)
       },
-    )
-
-    const change = EventEmitter.addListener(
-      '@RNExternalDisplay_screenDidChange',
-      info => {
+      onScreenChange: info => {
         setScreens(info)
         if (onScreenChange) onScreenChange(info)
       },
-    )
-
-    const disconnect = EventEmitter.addListener(
-      '@RNExternalDisplay_screenDidDisconnect',
-      info => {
+      onScreenDisconnect: info => {
         setScreens(info)
         if (onScreenDisconnect) onScreenDisconnect(info)
       },
-    )
-
+    })
     return () => {
       connect.remove()
       change.remove()

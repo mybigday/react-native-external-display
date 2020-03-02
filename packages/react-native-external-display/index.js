@@ -4,18 +4,11 @@
  */
 
 import React from 'react'
-import { StyleSheet, Platform, Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes'
 import RNExternalDisplay from './js/ExternalDisplay'
 import { getScreens } from './js/screens'
 import { useExternalDisplay } from './js/useExternalDisplay'
-
-let scale
-if (Platform.OS === 'ios') {
-  scale = 1
-} else {
-  ;({ scale } = Dimensions.get('screen'))
-}
 
 const styles = {
   screen: StyleSheet.absoluteFill,
@@ -54,8 +47,8 @@ const ExternalDisplayView = (props: Props) => {
         !scr && mainScreenStyle,
         scr && styles.screen,
         scr && {
-          width: scr.width / scale,
-          height: scr.height / scale,
+          width: scr.width,
+          height: scr.height,
         },
       ]}
       screen={scr ? screen : ''}
