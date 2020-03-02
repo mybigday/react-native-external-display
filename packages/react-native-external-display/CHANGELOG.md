@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mybigday/react-native-external-display/compare/v0.4.2...v0.5.0) (2020-03-02)
+
+
+### Bug Fixes
+
+* **android:** update build.gradle ([236c5ab](https://github.com/mybigday/react-native-external-display/commit/236c5ab0c431528431876109687ee2e9da97e3aa))
+
+
+### Features
+
+* **android:** update package name ([63b547e](https://github.com/mybigday/react-native-external-display/commit/63b547e5808c89a7ab4f74e02156eaa0ae424eb4))
+
+
+
+
+
 ## [0.4.2](https://github.com/mybigday/react-native-external-display/compare/v0.4.1...v0.4.2) (2020-03-02)
 
 
