@@ -1768,9 +1768,9 @@
     shortid "^2.2.15"
 
 "@react-navigation/stack@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.1.0.tgz#04ac64170da864efafb42b0468491ac605c6e0cc"
-  integrity sha512-hbNn4s8Sp6JDN4SCabhYKW2XaQVo8zm6hYkI/IwthOWbzpfsYNfHnYQR9+6GjtC2Y2mHHv3yJAM4d3lmbx/FiA==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.1.1.tgz#4fff1dc3fec66d7b71cfc31691d6e83d8777d5f8"
+  integrity sha512-tQV4SNESAeqViItGFT8bLrCGWxYfSjw4uXGrCokzSBOMtrdUwINwXDqo40LZt/KZOT0kVN6MdzHq57ILB1LsGA==
   dependencies:
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
