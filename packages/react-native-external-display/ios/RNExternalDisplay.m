@@ -41,7 +41,7 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
       RCTLogError(@"Detected two or more RNExternalDisplayView to register the same screen id': %@.", screenId);
     }
     if (![viewScreenId isEqualToString:@""]) {
-      screenId =viewScreenId;
+      screenId = viewScreenId;
     }
   }
 }

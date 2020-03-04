@@ -32,6 +32,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
   @Override
   public void addView(View child, int index) {
     if (index > 0) {
+      // TODO: Log to console
       FLog.e(ReactConstants.TAG, "RNExternalDisplayView only allowed one child view.");
       return;
     }
@@ -142,6 +143,10 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
       this.screen = -1;
     }
     updateScreen();
+  }
+
+  public int getScreen() {
+    return this.screen;
   }
 
   public void setFallbackInMainScreen(boolean value) {
