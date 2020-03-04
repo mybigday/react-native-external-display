@@ -1,6 +1,7 @@
 #import "RNExternalDisplay.h"
 #import "RNExternalDisplayView.h"
 #import <React/RCTUIManager.h>
+#import <React/RCTLog.h>
 
 @implementation RNExternalDisplay
 {
@@ -15,6 +16,7 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
 - (UIView *)view
 {
   RNExternalDisplayView *view = [RNExternalDisplayView new];
+  view.delegate = self;
   if (!_views) {
     _views = [NSPointerArray weakObjectsPointerArray];
   }
@@ -28,6 +30,20 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
     [view invalidate];
   }
   _views = nil;
+}
+
+- (void) checkScreen
+{
+  NSString *screenId = @"";
+  for (RNExternalDisplayView *view in _views) {
+    NSString *viewScreenId = [view screen];
+    if (![viewScreenId isEqualToString:@""] && [screenId isEqualToString:viewScreenId]) {
+      RCTLogError(@"Detected two or more RNExternalDisplayView to register the same screen id': %@.", screenId);
+    }
+    if (![viewScreenId isEqualToString:@""]) {
+      screenId =viewScreenId;
+    }
+  }
 }
 
 @end

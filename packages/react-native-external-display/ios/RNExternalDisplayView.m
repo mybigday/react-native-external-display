@@ -77,15 +77,20 @@
     [self invalidateWindow];
   }
   _screen = screen;
+  [self.delegate checkScreen];
   [self updateScreen];
   [self didUpdateReactSubviews];
+}
+
+- (NSString *)screen {
+  return _screen;
 }
 
 - (void)setFallbackInMainScreen:(BOOL)fallbackInMainScreen {
   _fallbackInMainScreen = fallbackInMainScreen;
   if (!_window) {
     [self updateScreen];
-      [self didUpdateReactSubviews];
+    [self didUpdateReactSubviews];
   }
 }
 
