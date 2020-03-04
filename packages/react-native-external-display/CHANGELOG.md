@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/mybigday/react-native-external-display/compare/v0.5.0...v0.5.1) (2020-03-04)
+
+
+### Features
+
+* **android:** Log error when detected two or more RNExternalDisplayView to register the same screen id ([7d10933](https://github.com/mybigday/react-native-external-display/commit/7d10933eb23df9d957bfc006dc13dd07ddda9e9c))
+* **ios:** Log error when detected two or more RNExternalDisplayView to register the same screen id ([ccabd0f](https://github.com/mybigday/react-native-external-display/commit/ccabd0fc2372879b04979259bc50b807957aa5c2))
+
+
+
+
+
 # [0.5.0](https://github.com/mybigday/react-native-external-display/compare/v0.4.2...v0.5.0) (2020-03-02)
 
 
