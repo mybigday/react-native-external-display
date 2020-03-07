@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/mybigday/react-native-external-display/compare/v0.5.1...v0.5.2) (2020-03-07)
+
+
+### Bug Fixes
+
+* **ios:** screen info initial constants ([5b2ec75](https://github.com/mybigday/react-native-external-display/commit/5b2ec757d558521a571b236a0d0604ecd7dbec15))
+
+
+
+
+
 ## [0.5.1](https://github.com/mybigday/react-native-external-display/compare/v0.5.0...v0.5.1) (2020-03-04)
 
 
