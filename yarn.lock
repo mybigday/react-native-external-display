@@ -1788,9 +1788,9 @@
     use-subscription "^1.4.0"
 
 "@react-navigation/native@^5.0.8":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.2.0.tgz#67bb144799eb9d506ea8eb1f2b7dbe654a4e0070"
-  integrity sha512-Y/m4sbKj3+D1SmaidjiO168hqTW5l7aOAZwS6c62Pl31XqQuoJavyFFLotMK2dHcnuhjBBixQCltNlaWr6wbyw==
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.2.3.tgz#2e2ec88396d2be96d11f9430b4af6dcea34029b0"
+  integrity sha512-fQfW506n9eTwBGiUbuxSvI7DTBXwR3IqAlooBCUHRJC0WiuSUm3aGg6eESJc8nW1A64hu33i/ITf10mn3Ec6Tg==
   dependencies:
     "@react-navigation/core" "^5.4.0"
 
