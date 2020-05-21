@@ -1775,12 +1775,12 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
-"@react-navigation/core@^5.7.0":
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.7.0.tgz#11cca7c663fc72708c37a09c8cede9861dae0d1f"
-  integrity sha512-dVnfmTiOWV9YwaTq2BSDUgwUK1G1WkpD+w4oXqKCcy1LtJb+HWWUz5xiCdR1TtxvgaQn+RISxKm8yZAXVWPbXQ==
+"@react-navigation/core@^5.8.1":
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.8.1.tgz#4f0d744a10eec7dc8bfad2901eec5fb9623b0972"
+  integrity sha512-jm8eKtpYzhaBj6pz/keCALWuPjfkjghoaJdYXoCEEdSk4o1rCjNrSQ9laA6IB0aWiKEuDBAsyi2N2AP15ASE0Q==
   dependencies:
-    "@react-navigation/routers" "^5.4.4"
+    "@react-navigation/routers" "^5.4.6"
     escape-string-regexp "^4.0.0"
     nanoid "^3.1.5"
     query-string "^6.12.1"
@@ -1788,16 +1788,16 @@
     use-subscription "^1.4.0"
 
 "@react-navigation/native@^5.0.8":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.4.0.tgz#59165d033b2c5c24b5413fe0e64a02a9882734a3"
-  integrity sha512-Le2892zPQnSg1xNAoPWKsb8A60h0gp1xpwbbA/LHL4g2gRhTxa/SudmVATdF26I8ZVJRF5ZH9qXa2V3qu9+BtQ==
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.4.2.tgz#256d4f67aa97083de9c8ff52cdc77ac039b66350"
+  integrity sha512-HS8yPbFvjCDZ029b5YOuJauaFxPP1BUrvOHTArQEEHv+gguWaS3WwdtrJFNXP2OM/GOE8Bbqw4naGC7FVmmhIw==
   dependencies:
-    "@react-navigation/core" "^5.7.0"
+    "@react-navigation/core" "^5.8.1"
 
-"@react-navigation/routers@^5.4.4":
-  version "5.4.4"
-  resolved "https://registry.yarnpkg.com/@react-navigation/routers/-/routers-5.4.4.tgz#3b5e1a55edb73a506a82db59081ad434c0ce1aab"
-  integrity sha512-Q8ZIubVYc1569JOs2oMWbhNXBNzZHvRfP5cEZ6/ksj9cPF7DkwOXsAdF0b+Oe0ei0f7OaK9LTRmfiNdtAPWVzw==
+"@react-navigation/routers@^5.4.6":
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/@react-navigation/routers/-/routers-5.4.6.tgz#7d0d6209f7e40fc36e4fecb5e34f20d866272a32"
+  integrity sha512-qGJN3wzrP+pSl0cspC8vYd3aR+0egXhURn5lVahAsLk0zXMStWCTAIPB1lttIx2hOpeaVNkrD61Lp6yDaF3TBQ==
   dependencies:
     nanoid "^3.1.5"
 
