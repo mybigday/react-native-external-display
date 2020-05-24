@@ -25,7 +25,7 @@
     "react-native": "0.61.5",
     "react-native-debugger-open": "^0.3.24",
     "react-native-gesture-handler": "^1.6.0",
-    "react-native-safe-area-context": "^1.0.0",
+    "react-native-safe-area-context": "^2.0.0",
     "react-native-screens": "^2.1.0",
     "react-native-version": "^4.0.0",
     "react-native-video": "^5.0.2",
