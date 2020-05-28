@@ -21,7 +21,7 @@
     "react-native": "0.61.5",
     "react-native-external-display": "^0.5.2",
     "react-native-gesture-handler": "^1.6.0",
-    "react-native-safe-area-context": "^2.0.0",
+    "react-native-safe-area-context": "^3.0.1",
     "react-native-screens": "^2.1.0",
     "react-native-video": "^5.0.2"
   },

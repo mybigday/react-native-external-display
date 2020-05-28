@@ -7164,10 +7164,10 @@ react-native-iphone-x-helper@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
 
-react-native-safe-area-context@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-2.0.3.tgz#d89b60336ea2a1e9e2ff64fcac7b226aea0af370"
-  integrity sha512-KMYfJNLyPEFnYbpZiViqa9wHqVXZdZTebhs4tGER8YPvLRc4Qp7mUSfhDVnlNG/xG1denO1ehTAZQZ1fogxJeg==
+react-native-safe-area-context@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.0.1.tgz#ceaf1d5d38b2af042bbc8325425ba560d678a95c"
+  integrity sha512-sdSfS1hKQuuMutzz88I5MXGv3P9OJykxai+oy3V8yJtrm6sUmexVEeeTAKUsohPFpsFaZRoWqUlDccPRkPgJNA==
 
 react-native-screens@^2.1.0:
   version "2.8.0"
