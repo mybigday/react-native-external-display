@@ -182,8 +182,8 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-safe-area-context (0.7.3):
-    - React
+  - react-native-safe-area-context (3.1.8):
+    - React-Core
   - react-native-video (5.0.2):
     - React
     - react-native-video/Video (= 5.0.2)
@@ -224,13 +224,13 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - RNCMaskedView (0.1.7):
+  - RNCMaskedView (0.1.10):
     - React
-  - RNExternalDisplay (0.4.2):
+  - RNExternalDisplay (0.5.2):
     - React
-  - RNGestureHandler (1.6.0):
+  - RNGestureHandler (1.8.0):
     - React
-  - RNScreens (2.2.0):
+  - RNScreens (2.11.0):
     - React
   - Yoga (1.14.0)
 
@@ -354,7 +354,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
+  react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -366,10 +366,10 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
-  RNExternalDisplay: 2c2af65305f599bc9488cba8d0b381d5de81dfcc
-  RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
-  RNScreens: 812b79d384e2bea7eebc4ec981469160d4948fd5
+  RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNExternalDisplay: 5d04d37b669e320cc78e1b358598199674a718ae
+  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
+  RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: 7deb5ca57d6c2312a95cc1b67d5927ea25fc489c
