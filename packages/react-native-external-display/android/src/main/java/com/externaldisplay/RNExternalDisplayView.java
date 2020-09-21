@@ -81,11 +81,17 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
 
   @Override
   public void onHostResume() {
+    updateScreen();
   }
 
   @Override
   public void onHostPause() {
-    onDropInstance();
+    if (subview != null) {
+      if (wrap != null && wrap.getChildCount() > 0) {
+        wrap.removeViewAt(0);
+      }
+    }
+    destroyScreen();
   }
 
   @Override
