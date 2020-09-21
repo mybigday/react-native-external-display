@@ -55,6 +55,10 @@ function App() {
 
 - Not good support for react-native `Modal`, it always show on main screen for Android
 
+## About iPad Split View / Slide Over
+
+If you want the app works on iPad Split View and External screen, the app should be main screen (on left as Split View), It doesn't work on right side or as Slide Over, because it wouldn't receive `UIScreenDidConnectNotification` event.
+
 ## Related projects
 
 - [`react-native-media-player`](https://github.com/mybigday/react-native-media-player)
