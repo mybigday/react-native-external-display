@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/mybigday/react-native-external-display/compare/v0.5.4...v0.5.5) (2020-09-25)
+
+
+### Bug Fixes
+
+* **ios:** react dependency for support Xcode 12 ([01fc079](https://github.com/mybigday/react-native-external-display/commit/01fc079e8721cf9ea4242b2812536ad53ffa474b))
+
+
+
+
+
 ## [0.5.4](https://github.com/mybigday/react-native-external-display/compare/v0.5.3...v0.5.4) (2020-09-21)
 
 
