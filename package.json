@@ -21,7 +21,7 @@
     "eslint": "^7.0.0",
     "lerna": "^3.20.2",
     "metro-react-native-babel-preset": "^0.63.0",
-    "react": "16.9.0",
+    "react": "16.13.1",
     "react-native": "0.61.5",
     "react-native-debugger-open": "^0.3.24",
     "react-native-gesture-handler": "^1.6.0",
