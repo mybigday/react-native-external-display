@@ -13,6 +13,8 @@ import com.facebook.react.common.ReactConstants;
 import android.view.Display;
 import android.util.DisplayMetrics;
 
+import java.util.ArrayList;
+
 public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEventListener {
   Context context;
   private boolean fallbackInMainScreen = false;
@@ -77,6 +79,12 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
       subview = null;
     }
     destroyScreen();
+  }
+
+  @Override
+  public void addChildrenForAccessibility(ArrayList<View> outChildren) {
+          // This solves an accessibility bug originally addressed in RN
+          // Reference: https://github.com/mybigday/react-native-external-display/issues/211
   }
 
   @Override
