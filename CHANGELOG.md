@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6](https://github.com/mybigday/react-native-external-display/compare/v0.5.5...v0.5.6) (2020-12-12)
+
+
+### Bug Fixes
+
+* **android:** crash with accessibility enabled ([#216](https://github.com/mybigday/react-native-external-display/issues/216)) ([bca12a8](https://github.com/mybigday/react-native-external-display/commit/bca12a84b01f622f69b83832a1ac1bc65e1269ec))
+
+
+
+
+
 ## [0.5.5](https://github.com/mybigday/react-native-external-display/compare/v0.5.4...v0.5.5) (2020-09-25)
 
 
