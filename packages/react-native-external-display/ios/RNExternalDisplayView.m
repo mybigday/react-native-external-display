@@ -51,6 +51,7 @@
 
 - (void)invalidate {
   [self invalidateWindow];
+  [self.delegate removeView:self];
 }
 
 - (void)updateScreen {

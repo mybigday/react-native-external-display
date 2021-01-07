@@ -15,5 +15,6 @@
 @protocol RNExternalDisplayViewInteractor <NSObject>
 
 - (void)checkScreen;
+- (void)removeView:(RNExternalDisplayView*)target;
 
 @end

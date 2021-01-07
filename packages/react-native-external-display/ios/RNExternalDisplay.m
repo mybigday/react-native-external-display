@@ -46,4 +46,15 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
   }
 }
 
+- (void)removeView:(RNExternalDisplayView*)target
+{
+  NSUInteger index = 0;
+  for (RNExternalDisplayView *view in _views) {
+    if (view == target) {
+      [_views removePointerAtIndex:index];
+    }
+    index++;
+  }
+}
+
 @end
