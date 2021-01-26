@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.8](https://github.com/mybigday/react-native-external-display/compare/v0.5.7...v0.5.8) (2021-01-26)
+
+
+### Bug Fixes
+
+* **android:** thread looper issue if JSI modules enabled ([#230](https://github.com/mybigday/react-native-external-display/issues/230)) ([74ad50b](https://github.com/mybigday/react-native-external-display/commit/74ad50bb3f3abaa05d2ac74c8e20fb0ce70e50bf))
+
+
+
+
+
 ## [0.5.6](https://github.com/mybigday/react-native-external-display/compare/v0.5.5...v0.5.6) (2020-12-12)
 
 
