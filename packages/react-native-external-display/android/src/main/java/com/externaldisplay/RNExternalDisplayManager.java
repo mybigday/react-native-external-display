@@ -29,7 +29,6 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
   public RNExternalDisplayManager(ReactApplicationContext reactContext) {
     super();
     this.reactContext = reactContext;
-    this.helper = new ExternalDisplayHelper(reactContext, this);
   }
 
   @Override
@@ -39,6 +38,9 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
 
   @Override
   public RNExternalDisplayView createViewInstance(ThemedReactContext context) {
+    if (this.helper == null) {
+      this.helper = new ExternalDisplayHelper(reactContext, this);
+    }
     RNExternalDisplayView view = new RNExternalDisplayView(context, this.helper);
     views.put(view, view);
     return view;
