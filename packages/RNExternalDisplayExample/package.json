@@ -17,7 +17,7 @@
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^5.0.8",
     "@react-navigation/stack": "^5.1.0",
-    "react": "16.9.0",
+    "react": "17.0.2",
     "react-native": "0.61.5",
     "react-native-external-display": "^0.5.8",
     "react-native-gesture-handler": "^1.6.0",
