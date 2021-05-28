@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/mybigday/react-native-external-display/compare/v0.5.8...v0.5.9) (2021-05-28)
+
+
+### Features
+
+* **android:** remove build tools version ([#298](https://github.com/mybigday/react-native-external-display/issues/298)) ([a6d5a3e](https://github.com/mybigday/react-native-external-display/commit/a6d5a3eff3613d43d1d3c8e40310fdff4b167377))
+* **ci:** allow pull_request ([3671a45](https://github.com/mybigday/react-native-external-display/commit/3671a4538e4e93bfc9d21041dde53bd60b5fc6c0))
+
+
+### Reverts
+
+* Revert "chore(deps): bump react-native-screens from 2.18.1 to 3.1.0 (#274)" ([4b1621f](https://github.com/mybigday/react-native-external-display/commit/4b1621fa983c1a2d64c6846891da873629e6157e)), closes [#274](https://github.com/mybigday/react-native-external-display/issues/274)
+
+
+
+
+
 ## [0.5.8](https://github.com/mybigday/react-native-external-display/compare/v0.5.7...v0.5.8) (2021-01-26)
 
 

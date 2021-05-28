@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/mybigday/react-native-external-display/compare/v0.5.8...v0.5.9) (2021-05-28)
+
+
+### Features
+
+* **android:** remove build tools version ([#298](https://github.com/mybigday/react-native-external-display/issues/298)) ([a6d5a3e](https://github.com/mybigday/react-native-external-display/commit/a6d5a3eff3613d43d1d3c8e40310fdff4b167377))
+
+
+
+
+
 ## [0.5.8](https://github.com/mybigday/react-native-external-display/compare/v0.5.7...v0.5.8) (2021-01-26)
 
 
