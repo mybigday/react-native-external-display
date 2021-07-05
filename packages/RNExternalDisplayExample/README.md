@@ -2,11 +2,15 @@
 
 ## Usage
 
+```bash
+yarn install
+```
+
 #### ios
 
 ```bash
-$ cd ios && pod install && cd -
-$ react-native run-ios
+npx pod-install ios
+yarn ios
 ```
 
 - On simulator, click `Hardware -> External displays`
@@ -15,7 +19,7 @@ $ react-native run-ios
 #### android
 
 ```bash
-$ react-native run-android
+yarn android
 ```
 
 - For debug, click `Setting -> Developer options -> Simulate secondary displays`
