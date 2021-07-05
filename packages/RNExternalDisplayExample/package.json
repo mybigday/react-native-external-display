@@ -14,23 +14,20 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "@react-native-community/masked-view": "^0.1.6",
-    "@react-navigation/native": "^5.0.8",
-    "@react-navigation/stack": "^5.1.0",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.5",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-external-display": "^0.5.9",
-    "react-native-gesture-handler": "^1.6.0",
-    "react-native-safe-area-context": "^3.0.2",
-    "react-native-screens": "^2.1.0",
-    "react-native-video": "^5.0.2"
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^3.4.0",
+    "react-native-video": "^5.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/runtime": "^7.9.0",
     "metro-react-native-babel-preset": "^0.66.0"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }

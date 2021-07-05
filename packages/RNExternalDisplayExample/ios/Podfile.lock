@@ -307,8 +307,9 @@ PODS:
     - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScreens (2.18.1):
+  - RNScreens (3.4.0):
     - React-Core
+    - React-RCTImage
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -365,7 +366,7 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../../../node_modules/@react-native-community/masked-view`)"
   - RNExternalDisplay (from `../../react-native-external-display/ios`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
-  - RNScreens (from `../../../node_modules/react-native-screens`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -445,7 +446,7 @@ EXTERNAL SOURCES:
   RNGestureHandler:
     :path: "../../../node_modules/react-native-gesture-handler"
   RNScreens:
-    :path: "../../../node_modules/react-native-screens"
+    :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -491,7 +492,7 @@ SPEC CHECKSUMS:
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNExternalDisplay: 9dcc03550b5cc77c23de721366b5ec3c7b6832ba
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  RNScreens: 21b73c94c9117e1110a79ee0ee80c93ccefed8ce
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
