@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RNExternalDisplayExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNExternalDisplayExampleTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -18,7 +17,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* RNExternalDisplayExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNExternalDisplayExampleTests.m */; };
 		44C992527F1DFDA7A2982541 /* libPods-RNExternalDisplayExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2782728369FF2F3124E746 /* libPods-RNExternalDisplayExample.a */; };
 		55EAC84AE3CC145C59B59C7F /* libPods-RNExternalDisplayExample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFC38F61A00DF27DE44BE77 /* libPods-RNExternalDisplayExample-tvOSTests.a */; };
-		737AFECDD01404FA6A2FDE37 /* libPods-RNExternalDisplayExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D7F1D2966589998D0B949D /* libPods-RNExternalDisplayExampleTests.a */; };
+		8A295FA3D28B4CEBB4D6ECBA /* libPods-RNExternalDisplayExample-RNExternalDisplayExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A45E4ECA042D137458ACA43B /* libPods-RNExternalDisplayExample-RNExternalDisplayExampleTests.a */; };
+		AA126B2926933AA1000CC5A6 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA126B2826933AA1000CC5A6 /* File.swift */; };
+		AA126B2B269341D2000CC5A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA126B2A269341D2000CC5A6 /* LaunchScreen.storyboard */; };
 		C351D81521AE155737CA1526 /* libPods-RNExternalDisplayExample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9915221C7AAD407C3B7290F8 /* libPods-RNExternalDisplayExample-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +48,10 @@
 		13B07F961A680F5B00A75B9A /* RNExternalDisplayExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNExternalDisplayExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RNExternalDisplayExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RNExternalDisplayExample/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNExternalDisplayExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNExternalDisplayExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNExternalDisplayExample/main.m; sourceTree = "<group>"; };
+		155FA5E312FBBE4AB9250E25 /* Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.release.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* RNExternalDisplayExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RNExternalDisplayExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RNExternalDisplayExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RNExternalDisplayExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		670C4EAD134422D332D26AB6 /* Pods-RNExternalDisplayExample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExample-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExample-tvOS/Pods-RNExternalDisplayExample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -60,9 +61,13 @@
 		8FB94F9C3E6B2239095A78AF /* Pods-RNExternalDisplayExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExampleTests.release.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		9915221C7AAD407C3B7290F8 /* libPods-RNExternalDisplayExample-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNExternalDisplayExample-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B1560651A085748FD5FD52D /* Pods-RNExternalDisplayExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExample.debug.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExample/Pods-RNExternalDisplayExample.debug.xcconfig"; sourceTree = "<group>"; };
+		A45E4ECA042D137458ACA43B /* libPods-RNExternalDisplayExample-RNExternalDisplayExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNExternalDisplayExample-RNExternalDisplayExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA126B2826933AA1000CC5A6 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		AA126B2A269341D2000CC5A6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RNExternalDisplayExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA126B2C26934512000CC5A6 /* RNExternalDisplayExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNExternalDisplayExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC0C33C3A70E52131608E3F3 /* Pods-RNExternalDisplayExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C07B1BA069198B7F8161C9D1 /* Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA2782728369FF2F3124E746 /* libPods-RNExternalDisplayExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNExternalDisplayExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1D7F1D2966589998D0B949D /* libPods-RNExternalDisplayExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNExternalDisplayExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFC38F61A00DF27DE44BE77 /* libPods-RNExternalDisplayExample-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNExternalDisplayExample-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65B7E8F614B67655C9FF39B /* Pods-RNExternalDisplayExample-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNExternalDisplayExample-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-RNExternalDisplayExample-tvOSTests/Pods-RNExternalDisplayExample-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -74,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				737AFECDD01404FA6A2FDE37 /* libPods-RNExternalDisplayExampleTests.a in Frameworks */,
+				8A295FA3D28B4CEBB4D6ECBA /* libPods-RNExternalDisplayExample-RNExternalDisplayExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,13 +130,15 @@
 		13B07FAE1A68108700A75B9A /* RNExternalDisplayExample */ = {
 			isa = PBXGroup;
 			children = (
+				AA126B2C26934512000CC5A6 /* RNExternalDisplayExample-Bridging-Header.h */,
+				AA126B2A269341D2000CC5A6 /* LaunchScreen.storyboard */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				AA126B2826933AA1000CC5A6 /* File.swift */,
 			);
 			name = RNExternalDisplayExample;
 			sourceTree = "<group>";
@@ -144,7 +151,7 @@
 				CA2782728369FF2F3124E746 /* libPods-RNExternalDisplayExample.a */,
 				9915221C7AAD407C3B7290F8 /* libPods-RNExternalDisplayExample-tvOS.a */,
 				DAFC38F61A00DF27DE44BE77 /* libPods-RNExternalDisplayExample-tvOSTests.a */,
-				D1D7F1D2966589998D0B949D /* libPods-RNExternalDisplayExampleTests.a */,
+				A45E4ECA042D137458ACA43B /* libPods-RNExternalDisplayExample-RNExternalDisplayExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,6 +208,8 @@
 				E65B7E8F614B67655C9FF39B /* Pods-RNExternalDisplayExample-tvOSTests.release.xcconfig */,
 				AC0C33C3A70E52131608E3F3 /* Pods-RNExternalDisplayExampleTests.debug.xcconfig */,
 				8FB94F9C3E6B2239095A78AF /* Pods-RNExternalDisplayExampleTests.release.xcconfig */,
+				C07B1BA069198B7F8161C9D1 /* Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.debug.xcconfig */,
+				155FA5E312FBBE4AB9250E25 /* Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -216,6 +225,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				2CA5AEB0F2EC7B2B26FADC54 /* [CP] Embed Pods Frameworks */,
+				7D53787F07D6ED7CEC2C9DDA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +248,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				514D89558BFD6E1982DB407B /* [CP] Embed Pods Frameworks */,
+				D23A56294AE534882407F48D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,6 +315,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = C6EUM5DVB3;
+						LastSwiftMigration = 1130;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -351,7 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				AA126B2B269341D2000CC5A6 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +400,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		2CA5AEB0F2EC7B2B26FADC54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -423,6 +455,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		514D89558BFD6E1982DB407B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample/Pods-RNExternalDisplayExample-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample/Pods-RNExternalDisplayExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		78C32BBD83CE7268069E65F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -438,7 +488,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RNExternalDisplayExampleTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -467,6 +517,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7D53787F07D6ED7CEC2C9DDA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests/Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CC9506722D2008225C66C601 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -487,6 +555,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D23A56294AE534882407F48D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample/Pods-RNExternalDisplayExample-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNExternalDisplayExample/Pods-RNExternalDisplayExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -543,6 +629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				AA126B2926933AA1000CC5A6 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,23 +666,12 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = RNExternalDisplayExample;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC0C33C3A70E52131608E3F3 /* Pods-RNExternalDisplayExampleTests.debug.xcconfig */;
+			baseConfigurationReference = C07B1BA069198B7F8161C9D1 /* Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = C6EUM5DVB3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -618,8 +694,9 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FB94F9C3E6B2239095A78AF /* Pods-RNExternalDisplayExampleTests.release.xcconfig */;
+			baseConfigurationReference = 155FA5E312FBBE4AB9250E25 /* Pods-RNExternalDisplayExample-RNExternalDisplayExampleTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = C6EUM5DVB3;
@@ -642,10 +719,12 @@
 			baseConfigurationReference = 9B1560651A085748FD5FD52D /* Pods-RNExternalDisplayExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = C6EUM5DVB3;
 				INFOPLIST_FILE = RNExternalDisplayExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -654,6 +733,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RNExternalDisplayExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNExternalDisplayExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -663,9 +745,11 @@
 			baseConfigurationReference = 6DC87ED9DCB260DD0EC7DC9A /* Pods-RNExternalDisplayExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C6EUM5DVB3;
 				INFOPLIST_FILE = RNExternalDisplayExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -674,6 +758,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RNExternalDisplayExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNExternalDisplayExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
