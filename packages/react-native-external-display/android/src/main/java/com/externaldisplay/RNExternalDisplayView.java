@@ -72,6 +72,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
   }
 
   public void onDropInstance() {
+    ((ReactContext) getContext()).removeLifecycleEventListener(this);
     if (subview != null) {
       if (wrap != null && wrap.getChildCount() > 0) {
         wrap.removeViewAt(0);
