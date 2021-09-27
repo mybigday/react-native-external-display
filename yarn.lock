@@ -1903,9 +1903,9 @@
     react-is "^16.13.0"
 
 "@react-navigation/native@^6.0.2":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.3.tgz#18058e6149e827b2b3368696951109dfbf6a8a1f"
-  integrity sha512-MhmM773fyrM9zFXRIHpfyPvtnlVY+sGbWZMsY7uuLy6gu4UOhKNWu7K/N7WZT55Omz+9j8VhcaN0cK32tchrgw==
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.4.tgz#8a9710ce4e9b903ea12c4a4fce8709f5a37e15fe"
+  integrity sha512-497dGGDIZ8hDCPGj6GXZvLGHk6NvZk5k4r1cjwgqcXwutK5fS7sgD0dZP52NTQC3GvLe8PZNv6AEdMIqFrZK6A==
   dependencies:
     "@react-navigation/core" "^6.0.2"
     escape-string-regexp "^4.0.0"
