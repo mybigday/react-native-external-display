@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.11](https://github.com/mybigday/react-native-external-display/compare/v0.5.10...v0.5.11) (2021-11-11)
+
+
+### Features
+
+* **ios:** Support change screen mode to highest width mode ([#375](https://github.com/mybigday/react-native-external-display/issues/375)) ([287d015](https://github.com/mybigday/react-native-external-display/commit/287d015e51f4fddecb9e2776db7c97ea41f03c00))
+
+
+
+
+
 ## [0.5.10](https://github.com/mybigday/react-native-external-display/compare/v0.5.9...v0.5.10) (2021-07-29)
 
 
