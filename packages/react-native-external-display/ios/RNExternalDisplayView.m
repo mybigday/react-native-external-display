@@ -54,6 +54,10 @@
   [self.delegate removeView:self];
 }
 
+#if defined(TARGET_OS_TV) && TARGET_OS_TV == 1
+  #define MA_APPLE_TV
+#endif
+
 - (void)updateScreen {
   if (!_subview) {
     return;
@@ -64,6 +68,7 @@
     // NSLog(@"[RNExternalDisplay] Selected External Display");
     UIScreen* screen = [screens objectAtIndex:index];
 
+#if !defined(MA_APPLE_TV)
     __block UIScreenMode *highestWidthMode = NULL;
 
     [screen.availableModes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -74,6 +79,7 @@
 
     screen.currentMode = highestWidthMode;
     screen.overscanCompensation = UIScreenOverscanCompensationScale;
+#endif
 
     _window = [[UIWindow alloc] initWithFrame:screen.bounds];
     UIViewController *rootViewController = [UIViewController new];
