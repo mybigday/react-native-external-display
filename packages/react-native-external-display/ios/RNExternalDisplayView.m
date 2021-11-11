@@ -63,6 +63,18 @@
   if (index > 0 && index < [screens count]) {
     // NSLog(@"[RNExternalDisplay] Selected External Display");
     UIScreen* screen = [screens objectAtIndex:index];
+
+    __block UIScreenMode *highestWidthMode = NULL;
+
+    [screen.availableModes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+      UIScreenMode *currentModeInLoop = obj;
+      if (!highestWidthMode || currentModeInLoop.size.width > highestWidthMode.size.width)
+        highestWidthMode = currentModeInLoop;
+    }];
+
+    screen.currentMode = highestWidthMode;
+    screen.overscanCompensation = UIScreenOverscanCompensationScale;
+
     _window = [[UIWindow alloc] initWithFrame:screen.bounds];
     UIViewController *rootViewController = [UIViewController new];
     rootViewController.view = [RCTView new];
