@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.12](https://github.com/mybigday/react-native-external-display/compare/v0.5.11...v0.5.12) (2021-11-11)
+
+
+### Bug Fixes
+
+* **tvos:** ignore availableModes check ([76634ad](https://github.com/mybigday/react-native-external-display/commit/76634ad07b5d29fa86d27dbd0bd6202c9ce155c1))
+
+
+
+
+
 ## [0.5.11](https://github.com/mybigday/react-native-external-display/compare/v0.5.10...v0.5.11) (2021-11-11)
 
 
