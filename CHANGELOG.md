@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.14](https://github.com/mybigday/react-native-external-display/compare/v0.5.13...v0.5.14) (2021-12-14)
+
+
+### Bug Fixes
+
+* **android:** clear subview on removeViewAt during lifecycle ([395f557](https://github.com/mybigday/react-native-external-display/commit/395f5573df10d6ea2b85630b5b660e1d930d2a65))
+
+
+
+
+
 ## [0.5.13](https://github.com/mybigday/react-native-external-display/compare/v0.5.12...v0.5.13) (2021-12-13)
 
 
