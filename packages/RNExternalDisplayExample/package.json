@@ -18,7 +18,7 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^5.1.0",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.62.3",
     "react-native-external-display": "^0.5.14",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-safe-area-context": "^3.0.2",
