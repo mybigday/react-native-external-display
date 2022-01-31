@@ -6,11 +6,28 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2.4.0
-
       - uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.x
-
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2.1.7
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Cache pods
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            packages/RNExternalDisplayExample/ios/Pods
+            packages/RNExternalDisplayExample/ios/build
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
       - name: Run test
         run: |
           yarn
@@ -29,6 +46,16 @@ jobs:
       - uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.x
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2.1.7
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       # - name: Setup Android Emulator
       #   run: |
       #     $ANDROID_HOME/tools/bin/sdkmanager --install emulator
