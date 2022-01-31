@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SafeAreaView, View, Button } from 'react-native'
-import Video from 'react-native-video'
+import Video from '@fugood/react-native-video'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
 
 export default function Example() {

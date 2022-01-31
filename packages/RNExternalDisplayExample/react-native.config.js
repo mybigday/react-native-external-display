@@ -1,10 +1,10 @@
 module.exports = {
   dependencies: {
-    'react-native-video': {
+    '@fugood/react-native-video': {
       platforms: {
         android: {
           sourceDir:
-            '../../../node_modules/react-native-video/android-exoplayer',
+            '../../../node_modules/@fugood/react-native-video/android-exoplayer',
         },
       },
     },
