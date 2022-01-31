@@ -6,19 +6,21 @@
  */
 const path = require('path')
 /* eslint-disable import/no-extraneous-dependencies */
-const blacklist = require('metro-config/src/defaults/blacklist')
+const exclusionList = require('metro-config/src/defaults/exclusionList')
 
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
+        inlineRequires: true,
       },
     }),
   },
   resolver: {
-    blacklistRE: blacklist([
+    blockList: exclusionList([
+      /android\/.*/,
+      /ios\/.*/,
       new RegExp(path.resolve('../../node_modules/react/.*')),
       new RegExp(path.resolve('../../node_modules/react-native/.*')),
     ]),

@@ -1,5 +1,5 @@
 {
-  "name": "RNExternalDisplayExample",
+  "name": "rnexternaldisplayexample",
   "version": "0.5.14",
   "private": true,
   "workspaces": {
@@ -17,8 +17,8 @@
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^5.1.0",
-    "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react": "17.0.2",
+    "react-native": "0.66.4",
     "react-native-external-display": "^0.5.14",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-safe-area-context": "^3.0.2",
@@ -26,8 +26,8 @@
     "react-native-video": "^5.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
     "metro-react-native-babel-preset": "^0.66.0"
   },
   "jest": {

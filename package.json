@@ -10,8 +10,8 @@
     "postinstall": "yarnw-sync-deps && yarn --ignore-scripts"
   },
   "dependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
     "@fugood/eslint-config-react": "^0.3.0",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^6.0.2",
@@ -21,8 +21,8 @@
     "eslint": "^7.0.0",
     "lerna": "^4.0.0",
     "metro-react-native-babel-preset": "^0.66.0",
-    "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react": "17.0.2",
+    "react-native": "0.66.4",
     "react-native-debugger-open": "^0.3.24",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-safe-area-context": "^3.0.2",
