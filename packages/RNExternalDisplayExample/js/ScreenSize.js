@@ -15,12 +15,20 @@ const InScreen = () => {
         backgroundColor: '#333',
       }}
     >
-      <Text style={{ color: 'red', fontSize: 40 }}>ID: {id || '(Main)'}</Text>
       <Text style={{ color: 'red', fontSize: 40 }}>
-        Width: {width || '(Main)'}
+        ID:
+        {' '}
+        {id || '(Main)'}
       </Text>
       <Text style={{ color: 'red', fontSize: 40 }}>
-        Height: {height || '(Main)'}
+        Width: 
+        {' '}
+        {width || '(Main)'}
+      </Text>
+      <Text style={{ color: 'red', fontSize: 40 }}>
+        Height: 
+        {' '}
+        {height || '(Main)'}
       </Text>
     </View>
   )
