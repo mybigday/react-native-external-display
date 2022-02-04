@@ -67,3 +67,14 @@ If you want the app works on iPad Split View and External screen, the app should
 ## License
 
 [MIT](LICENSE.md)
+
+---
+
+<p align="center">
+  <a href="https://bricks.tools">
+    <img width="90px" src="https://avatars.githubusercontent.com/u/17320237?s=200&v=4">
+  </a>
+  <p align="center">
+    Built and maintained by <a href="https://bricks.tools">BRICKS</a>.
+  </p>
+</p>
