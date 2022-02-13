@@ -155,7 +155,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
     if (subview != null && wrap != null && wrap.getChildCount() > 0) {
       wrap.removeViewAt(0);
     } else {
-      removeViewAt(0);
+      removeView(subview);
     }
     try {
       int nextScreen = Integer.parseInt(screen);
