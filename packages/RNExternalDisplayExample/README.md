@@ -10,7 +10,7 @@ $ react-native run-ios
 ```
 
 - On simulator, click `Hardware -> External displays`
-- On read device, use AirPlay or Lightning to HDMI cable to connect second display.
+- On real device, use AirPlay or Lightning to HDMI cable to connect second display.
 
 #### android
 
@@ -19,3 +19,4 @@ $ react-native run-android
 ```
 
 - For debug, click `Setting -> Developer options -> Simulate secondary displays`
+- On real device, use Chromecast or some adapter to connect second display.
