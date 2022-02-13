@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.16](https://github.com/mybigday/react-native-external-display/compare/v0.5.15...v0.5.16) (2022-02-13)
+
+
+### Bug Fixes
+
+* **android:** mount child view issue on switch display ([95be339](https://github.com/mybigday/react-native-external-display/commit/95be3394c8f19dafed296e3e78ba53f3cac00f26))
+
+
+
+
+
 ## [0.5.15](https://github.com/mybigday/react-native-external-display/compare/v0.5.14...v0.5.15) (2022-02-13)
 
 
