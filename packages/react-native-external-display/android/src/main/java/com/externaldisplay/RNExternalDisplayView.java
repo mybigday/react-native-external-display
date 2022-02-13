@@ -145,6 +145,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
   private void destroyScreen() {
     if (displayScreen != null) {
       displayScreen.hide();
+      displayScreen.dismiss();
       displayScreen = null;
       wrap = null;
     }
