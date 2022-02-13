@@ -17,7 +17,7 @@ if (Platform.OS === 'ios') {
   scale = 1
   EventEmitter = new NativeEventEmitter(RNExternalDisplayEvent)
 } else {
-  ;({ scale } = Dimensions.get('screen'))
+  ;({ scale } = Dimensions.get('window'))
   EventEmitter = DeviceEventEmitter
 }
 
