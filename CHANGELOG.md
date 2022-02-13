@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.15](https://github.com/mybigday/react-native-external-display/compare/v0.5.14...v0.5.15) (2022-02-13)
+
+
+### Bug Fixes
+
+* **android:** call dismiss on destroy screen ([84a7fdb](https://github.com/mybigday/react-native-external-display/commit/84a7fdbbb6d803a56ab124f88221a222a0d27776))
+* **android:** scale on external display ([#413](https://github.com/mybigday/react-native-external-display/issues/413)) ([90b1da6](https://github.com/mybigday/react-native-external-display/commit/90b1da60c12c231e1e91f7d352d3b362ccd2db47))
+
+
+### Features
+
+* **ci:** add cache for yarn and ios build ([4f853fd](https://github.com/mybigday/react-native-external-display/commit/4f853fd89e6f9ded7ff60ad351f7dba4d73506c9))
+
+
+
+
+
 ## [0.5.14](https://github.com/mybigday/react-native-external-display/compare/v0.5.13...v0.5.14) (2021-12-14)
 
 
