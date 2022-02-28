@@ -23,7 +23,7 @@
     "react-native-external-display": "^0.5.16",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-safe-area-context": "^3.0.2",
-    "react-native-screens": "^2.1.0"
+    "react-native-screens": "^3.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
