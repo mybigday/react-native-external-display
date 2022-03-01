@@ -5,7 +5,7 @@ jobs:
   test-ios:
     runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.0.0
         with:
           node-version: 16.x
@@ -42,7 +42,7 @@ jobs:
   test-android:
     runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.0.0
         with:
           node-version: 16.x
