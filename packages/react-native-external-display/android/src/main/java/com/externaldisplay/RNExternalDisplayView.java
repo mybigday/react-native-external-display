@@ -23,6 +23,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
   private int screen = -1;
   private View subview;
   private ReactViewGroup wrap;
+  private boolean pausedWithDisplayScreen = false;
 
   public RNExternalDisplayView(Context context, ExternalDisplayHelper helper) {
     super(context);
@@ -92,9 +93,10 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
 
   @Override
   public void onHostResume() {
-    if (displayScreen == null) {
+    if (displayScreen == null && !pausedWithDisplayScreen) {
       return;
     }
+    pausedWithDisplayScreen = false;
     updateScreen();
   }
 
@@ -103,6 +105,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
     if (displayScreen == null) {
       return;
     }
+    pausedWithDisplayScreen = true;
     if (subview != null) {
       if (wrap != null && wrap.getChildCount() > 0) {
         wrap.removeViewAt(0);
