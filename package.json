@@ -27,7 +27,7 @@
     "react-native-debugger-open": "^0.3.24",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-safe-area-context": "^4.2.2",
-    "react-native-screens": "^2.1.0",
+    "react-native-screens": "^3.13.1",
     "react-native-version": "^4.0.0",
     "yarn-workspace-sync-deps": "^0.3.0"
   }
