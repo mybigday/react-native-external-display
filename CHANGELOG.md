@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.17](https://github.com/mybigday/react-native-external-display/compare/v0.5.16...v0.5.17) (2022-05-17)
+
+
+### Bug Fixes
+
+* **android:** connected screen not resume if host resumed ([8a01beb](https://github.com/mybigday/react-native-external-display/commit/8a01beb927bfd5d86be563a627fae4ae3567eb68))
+
+
+
+
+
 ## [0.5.16](https://github.com/mybigday/react-native-external-display/compare/v0.5.15...v0.5.16) (2022-02-13)
 
 
