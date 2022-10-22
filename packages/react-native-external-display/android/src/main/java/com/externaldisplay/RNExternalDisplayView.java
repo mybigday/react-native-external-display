@@ -3,7 +3,7 @@ package com.externaldisplay;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import com.facebook.react.views.view.ReactViewGroup;
+import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactContext;
 import android.widget.LinearLayout;
@@ -15,14 +15,14 @@ import android.util.DisplayMetrics;
 
 import java.util.ArrayList;
 
-public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEventListener {
+public class RNExternalDisplayView extends ReactRootView implements LifecycleEventListener {
   Context context;
   private boolean fallbackInMainScreen = false;
   private ExternalDisplayHelper helper;
   private ExternalDisplayScreen displayScreen;
   private int screen = -1;
   private View subview;
-  private ReactViewGroup wrap;
+  private ReactRootView wrap;
   private boolean pausedWithDisplayScreen = false;
 
   public RNExternalDisplayView(Context context, ExternalDisplayHelper helper) {
@@ -126,7 +126,7 @@ public class RNExternalDisplayView extends ReactViewGroup implements LifecycleEv
       if (display != null) {
         if (displayScreen == null) {
           displayScreen = new ExternalDisplayScreen(context, display);
-          wrap = new ReactViewGroup(context);
+          wrap = new ReactRootView(context);
         } else if (wrap.getChildCount() > 0) {
           wrap.removeViewAt(0);
         }
