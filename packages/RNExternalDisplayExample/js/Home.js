@@ -25,6 +25,10 @@ export default function Home(props: Props) {
         title="ScreenSize"
         onPress={() => navigation.push('ScreenSize')}
       />
+      <Button
+        title="ScrollView"
+        onPress={() => navigation.push('ScrollView')}
+      />
     </View>
   )
 }

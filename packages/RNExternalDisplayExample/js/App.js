@@ -7,6 +7,7 @@ import Video from './Video'
 import SimpleTextInterval from './SimpleTextInterval'
 import Modal from './Modal'
 import ScreenSize from './ScreenSize'
+import ScrollView from './ScrollView'
 
 const Stack = createStackNavigator()
 
@@ -36,6 +37,11 @@ function App() {
         <Stack.Screen
           name="ScreenSize"
           component={ScreenSize}
+          options={options}
+        />
+        <Stack.Screen
+          name="ScrollView"
+          component={ScrollView}
           options={options}
         />
       </Stack.Navigator>
