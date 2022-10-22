@@ -1,5 +1,5 @@
 require 'json'
-pkg = JSON.parse(File.read('../package.json'))
+pkg = JSON.parse(File.read('./package.json'))
 
 Pod::Spec.new do |s|
   s.name         = "RNExternalDisplay"
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.tvos.deployment_target = "10.0"
   s.source       = { :git => pkg["repository"], :tag => "master" }
-  s.source_files = "**/*.{h,m}"
+  s.source_files = "ios/**/*.{h,m}"
   s.requires_arc = true
 
   s.dependency "React-Core"

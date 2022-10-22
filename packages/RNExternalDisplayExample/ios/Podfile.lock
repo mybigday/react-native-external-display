@@ -416,7 +416,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../../../node_modules/@react-native-community/masked-view`)"
-  - RNExternalDisplay (from `../../react-native-external-display/ios`)
+  - RNExternalDisplay (from `../../react-native-external-display`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../../../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -504,7 +504,7 @@ EXTERNAL SOURCES:
   RNCMaskedView:
     :path: "../../../node_modules/@react-native-community/masked-view"
   RNExternalDisplay:
-    :path: "../../react-native-external-display/ios"
+    :path: "../../react-native-external-display"
   RNGestureHandler:
     :path: "../../../node_modules/react-native-gesture-handler"
   RNScreens:
@@ -558,7 +558,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
   ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNExternalDisplay: b91faa602d56e29527c2b2295ea4d2f2e17fadcb
+  RNExternalDisplay: 96590e3b044ed07a572bc1854ddfa70a0abc46f7
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
