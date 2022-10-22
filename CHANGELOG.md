@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.18](https://github.com/mybigday/react-native-external-display/compare/v0.5.17...v0.5.18) (2022-10-22)
+
+
+### Bug Fixes
+
+* **android:** ScrollView is not working on external display ([#578](https://github.com/mybigday/react-native-external-display/issues/578)) ([9b58849](https://github.com/mybigday/react-native-external-display/commit/9b5884946099c9a633a48173f77b9bf5ee43652f))
+
+
+### Features
+
+* **example:** add scroll view example ([e7f6605](https://github.com/mybigday/react-native-external-display/commit/e7f6605b520b202dbc2b9af7924d5d164f123361))
+* **ios:** move podspec to root dir of package ([3f0ac9a](https://github.com/mybigday/react-native-external-display/commit/3f0ac9a8d6be7ae30a83d731b6839119ffd4e61e))
+
+
+
+
+
 ## [0.5.17](https://github.com/mybigday/react-native-external-display/compare/v0.5.16...v0.5.17) (2022-05-17)
 
 
