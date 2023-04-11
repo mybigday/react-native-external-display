@@ -16,7 +16,7 @@
     "@fugood/react-native-video": "^5.1.3",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^6.0.2",
-    "@react-navigation/stack": "^5.1.0",
+    "@react-navigation/stack": "^6.3.16",
     "babel-plugin-closure-elimination": "^1.3.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^7.0.0",
