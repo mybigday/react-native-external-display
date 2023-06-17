@@ -2,6 +2,9 @@
 #import "RNExternalDisplayView.h"
 #import <React/RCTUIManager.h>
 #import <React/RCTLog.h>
+#ifdef RCT_NEW_ARCH_ENABLED
+#import "RNExternalDisplaySpec/RNExternalDisplaySpec.h"
+#endif
 
 @implementation RNExternalDisplay
 {
@@ -56,5 +59,14 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
     index++;
   }
 }
+
+// Thanks to this guard, we won't compile this code when we build for the old architecture.
+#ifdef RCT_NEW_ARCH_ENABLED
+- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
+{
+    return std::make_shared<facebook::react::NativeRNExternalDisplaySpecJSI>(params);
+}
+#endif
 
 @end

@@ -6,7 +6,7 @@
 import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes'
-import RNExternalDisplay from './js/ExternalDisplay'
+import RNExternalDisplay from './js/NativeRNExternalDisplay'
 import { getScreens } from './js/screens'
 import type { Screen } from './js/screens'
 import { useExternalDisplay } from './js/useExternalDisplay'
