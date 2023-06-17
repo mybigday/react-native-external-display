@@ -56,6 +56,11 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 17
       # - name: Setup Android Emulator
       #   run: |
       #     $ANDROID_HOME/tools/bin/sdkmanager --install emulator
