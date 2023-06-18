@@ -1,12 +1,10 @@
 import {
   NativeEventEmitter,
   DeviceEventEmitter,
-  NativeModules,
   Platform,
   Dimensions,
 } from 'react-native'
-
-const { RNExternalDisplayEvent } = NativeModules
+import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent'
 
 let scale
 let EventEmitter
@@ -31,8 +29,13 @@ const handleScreensChange = info =>
     return result
   }, {})
 
+
 export const getInitialScreens = () =>
-  handleScreensChange(RNExternalDisplayEvent.SCREEN_INFO)
+  handleScreensChange(
+    RNExternalDisplayEvent.getInitialScreens?.().SCREEN_INFO ||
+    // Old architecture:
+    RNExternalDisplayEvent.SCREEN_INFO,
+  )
 
 export default function listenEvent({
   onScreenConnect,
