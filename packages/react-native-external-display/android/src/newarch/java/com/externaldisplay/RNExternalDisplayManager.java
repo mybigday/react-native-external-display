@@ -9,6 +9,8 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactApplicationContext;
 
+
+import com.facebook.react.views.view.ReactViewGroup;
 import com.facebook.common.logging.FLog;
 import com.facebook.react.common.ReactConstants;
 

@@ -21,7 +21,7 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
   private ExternalDisplayHelper helper;
   private ExternalDisplayScreen displayScreen;
   private int screen = -1;
-  private View subview;
+  private ArrayList<View> subviews = new ArrayList<View>();
   private ReactRootView wrap;
   private boolean pausedWithDisplayScreen = false;
 
@@ -34,12 +34,7 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
 
   @Override
   public void addView(View child, int index) {
-    if (index > 0) {
-      // TODO: Log to console
-      FLog.e(ReactConstants.TAG, "RNExternalDisplayView only allowed one child view.");
-      return;
-    }
-    subview = child;
+    subviews.add(index, child);
     updateScreen();
   }
 
@@ -49,12 +44,12 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
 
   @Override
   public int getChildCount() {
-    return subview != null ? 1 : 0;
+    return subviews.size();
   }
 
   @Override
   public View getChildAt(int index) {
-    return subview;
+    return subviews.get(index);
   }
 
   @Override
@@ -67,19 +62,19 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
     if (index > 0) return;
     View child = getChildAt(index);
     super.removeView(child);
-    if (child == subview) {
-      subview = null;
-    }
+    subviews.remove(index);
     if (wrap != null && wrap.getChildCount() > 0) {
-      wrap.removeViewAt(0);
+      for (int i = 0; i < wrap.getChildCount(); i++) {
+        wrap.removeViewAt(i);
+      }
     }
   }
 
   public void onDropInstance() {
     ((ReactContext) getContext()).removeLifecycleEventListener(this);
-    if (subview != null) {
-      if (wrap != null && wrap.getChildCount() > 0) {
-        wrap.removeViewAt(0);
+    if (wrap != null && wrap.getChildCount() > 0) {
+      for (int i = 0; i < wrap.getChildCount(); i++) {
+        wrap.removeViewAt(i);
       }
     }
     destroyScreen();
@@ -106,9 +101,9 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
       return;
     }
     pausedWithDisplayScreen = true;
-    if (subview != null) {
-      if (wrap != null && wrap.getChildCount() > 0) {
-        wrap.removeViewAt(0);
+    if (wrap != null) {
+      for (int i = 0; i < wrap.getChildCount(); i++) {
+        wrap.removeViewAt(i);
       }
     }
     destroyScreen();
@@ -120,7 +115,7 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
   }
 
   public void updateScreen() {
-    if (subview == null) return;
+    if (getChildCount() == 0) return;
     if (screen > 0) {
       Display display = helper.getDisplay(screen);
       if (display != null) {
@@ -128,20 +123,37 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
           displayScreen = new ExternalDisplayScreen(context, display);
           wrap = new ReactRootView(context);
         } else if (wrap.getChildCount() > 0) {
-          wrap.removeViewAt(0);
+          for (int i = 0; i < wrap.getChildCount(); i++) {
+            wrap.removeViewAt(i);
+          }
         }
-        wrap.addView(subview, 0);
+        for (int i = 0; i < subviews.size(); i++) {
+        View subview = subviews.get(i);
+          if (subview.getParent() != null) {
+            // Make sure removed from parent
+            ((ViewGroup) subview.getParent()).removeView(subview);
+          }
+          wrap.addView(subview, i);
+        }
         displayScreen.setContentView(wrap);
         displayScreen.show();
         return;
       }
     }
     if (fallbackInMainScreen == true) {
-      if (wrap != null && wrap.getChildCount() > 0) {
-        wrap.removeViewAt(0);
+      if (wrap != null) {
+        for (int i = 0; i < wrap.getChildCount(); i++) {
+          wrap.removeViewAt(i);
+        }
       }
-      super.removeView(subview);
-      super.addView(subview, 0);
+      for (int i = 0; i < subviews.size(); i++) {
+        View subview = subviews.get(i);
+        if (subview.getParent() != null) {
+          // Make sure removed from parent
+          ((ViewGroup) subview.getParent()).removeView(subview);
+        }
+        super.addView(subview, i);
+      }
     }
   }
 
@@ -155,10 +167,14 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
   }
 
   public void setScreen(String screen) {
-    if (subview != null && wrap != null && wrap.getChildCount() > 0) {
-      wrap.removeViewAt(0);
+    if (getChildCount() > 0 && wrap != null && wrap.getChildCount() > 0) {
+      for (int i = 0; i < wrap.getChildCount(); i++) {
+        wrap.removeViewAt(i);
+      }
     } else {
-      removeView(subview);
+      for (View subview : subviews) {
+        removeView(subview);
+      }
     }
     try {
       int nextScreen = Integer.parseInt(screen);
