@@ -21,7 +21,7 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^7.0.0",
     "lerna": "^7.0.0",
-    "metro-react-native-babel-preset": "0.73.10",
+    "metro-react-native-babel-preset": "0.76.6",
     "react": "18.2.0",
     "react-native": "0.71.11",
     "react-native-debugger-open": "^0.3.24",
