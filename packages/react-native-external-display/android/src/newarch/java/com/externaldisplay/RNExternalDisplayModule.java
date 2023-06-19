@@ -34,4 +34,7 @@ public class RNExternalDisplayModule extends NativeRNExternalDisplayEventSpec {
     map.putMap("SCREEN_INFO", Arguments.makeNativeMap(ExternalDisplayHelper.getScreenInfo(dm.getDisplays())));
     return map;
   }
+
+  @Override
+  public void init() {}
 }
