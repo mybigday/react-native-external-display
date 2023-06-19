@@ -676,6 +676,8 @@ PODS:
     - RCTRequired
     - RCTTypeSafety
     - React-Core
+    - React-graphics
+    - React-RCTFabric
     - ReactCommon/turbomodule/core
   - React-RCTBlob (0.71.11):
     - hermes-engine
@@ -752,7 +754,13 @@ PODS:
     - React-logger (= 0.71.11)
     - React-perflogger (= 0.71.11)
   - RNExternalDisplay (0.5.18):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
     - React-Core
+    - React-RCTFabric
+    - ReactCommon/turbomodule/core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -931,7 +939,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: c511d4cd0210f416cb5c289bd5ae6b36d909b048
-  FBReactNativeSpec: a911fb22def57aef1d74215e8b6b8761d25c1c54
+  FBReactNativeSpec: 489f54d2f849db05f2cd70f575eba660f48337b7
   Flipper: 26fc4b7382499f1281eb8cb921e5c3ad6de91fe0
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 2dc99b02f658daf147069aad9dbd29d8feb06d30
@@ -951,7 +959,7 @@ SPEC CHECKSUMS:
   RCTTypeSafety: a01aca2dd3b27fa422d5239252ad38e54e958750
   React: 741b4f5187e7a2137b69c88e65f940ba40600b4b
   React-callinvoker: 72ba74b2d5d690c497631191ae6eeca0c043d9cf
-  React-Codegen: b059ec3325c74576514bf37e34723dffd1703b07
+  React-Codegen: c7c359cae5b349d5bf1543acd151e6781b1343d5
   React-Core: 72bb19702c465b6451a40501a2879532bec9acee
   React-CoreModules: ffd19b082fc36b9b463fedf30955138b5426c053
   React-cxxreact: 8b3dd87e3b8ea96dd4ad5c7bac8f31f1cc3da97f
@@ -966,7 +974,7 @@ SPEC CHECKSUMS:
   React-perflogger: e706562ab7eb8eb590aa83a224d26fa13963d7f2
   React-RCTActionSheet: 57d4bd98122f557479a3359ad5dad8e109e20c5a
   React-RCTAnimation: ccf3ef00101ea74bda73a045d79a658b36728a60
-  React-RCTAppDelegate: d0c28a35c65e9a0aef287ac0dafe1b71b1ac180c
+  React-RCTAppDelegate: 757d21537189b573eec42b8f0df886fd8bd57a80
   React-RCTBlob: 1700b92ece4357af0a49719c9638185ad2902e95
   React-RCTFabric: e6f198f05196b684964d64994b4d21baa538b89b
   React-RCTImage: f2e4904566ccccaa4b704170fcc5ae144ca347bf
@@ -975,14 +983,14 @@ SPEC CHECKSUMS:
   React-RCTSettings: ed5ac992b23e25c65c3cc31f11b5c940ae5e3e60
   React-RCTText: c9dfc6722621d56332b4f3a19ac38105e7504145
   React-RCTVibration: f09f08de63e4122deb32506e20ca4cae6e4e14c1
-  React-rncore: 1c8071a9ed027008dd2ef0723f832c7e99ab8dc9
+  React-rncore: fcf3558280eaeac247a24b81c8715aa351ae3172
   React-runtimeexecutor: 4817d63dbc9d658f8dc0ec56bd9b83ce531129f0
   ReactCommon: 08723d2ed328c5cbcb0de168f231bc7bae7f8aa1
-  RNExternalDisplay: ce3af6f556d8e2d2a1dfe23b41ddf1728e9ded15
+  RNExternalDisplay: 4c751b3e4152aeb6db9c971bf0b1f7b6a42b10c0
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: f7decafdc5e8c125e6fa0da38a687e35238420fa
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: bcb0bda9d89d1f6b0636acdfb1eecc521c0df6bb
+PODFILE CHECKSUM: 733e900d648fe203c5b1180475468a5f3de15098
 
 COCOAPODS: 1.11.3
