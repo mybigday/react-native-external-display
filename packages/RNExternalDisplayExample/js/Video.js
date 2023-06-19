@@ -1,9 +1,16 @@
+// @flow
+
 import React, { useState } from 'react'
 import { SafeAreaView, View, Button } from 'react-native'
 import Video from '@fugood/react-native-video'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
 
-export default function Example() {
+type Props = {
+  onBack: () => void,
+}
+
+export default function Example(props: Props) {
+  const { onBack } = props
   const [info, setInfo] = useState(getScreens())
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
@@ -36,11 +43,12 @@ export default function Example() {
           </ExternalDisplay>
         )}
       </View>
-      <Button onPress={() => setOn(d => !d)} title={on ? 'OFF' : 'ON'} />
+      <Button onPress={() => setOn((d) => !d)} title={on ? 'OFF' : 'ON'} />
       <Button
-        onPress={() => setMount(d => !d)}
+        onPress={() => setMount((d) => !d)}
         title={mount ? 'UNMOUNT' : 'MOUNT'}
       />
+      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }

@@ -1,8 +1,15 @@
+// @flow
+
 import React, { useState, useRef } from 'react'
 import { SafeAreaView, View, Text, Button, ScrollView } from 'react-native'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
 
-export default function Example() {
+type Props = {
+  onBack: () => void,
+}
+
+export default function Example(props: Props) {
+  const { onBack } = props
   const [info, setInfo] = useState(getScreens())
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
@@ -65,6 +72,7 @@ export default function Example() {
         onPress={() => setMount(d => !d)}
         title={mount ? 'UNMOUNT' : 'MOUNT'}
       />
+      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }
