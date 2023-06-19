@@ -14,5 +14,19 @@
     "ios",
     "android"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "codegenConfig": {
+    "libraries": [
+      {
+        "name": "RNExternalDisplaySpec",
+        "type": "modules",
+        "jsSrcsDir": "js"
+      },
+      {
+        "name": "RNExternalDisplayEventSpec",
+        "type": "modules",
+        "jsSrcsDir": "js"
+      }
+    ]
+  }
 }

@@ -29,6 +29,7 @@ const handleScreensChange = info =>
     return result
   }, {})
 
+console.log(RNExternalDisplayEvent)
 
 export const getInitialScreens = () =>
   handleScreensChange(
