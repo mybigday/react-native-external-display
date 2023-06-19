@@ -831,7 +831,7 @@ DEPENDENCIES:
   - React-rncore (from `../node_modules/react-native/ReactCommon`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNExternalDisplay (from `../../../node_modules/react-native-external-display`)
+  - RNExternalDisplay (from `../node_modules/react-native-external-display`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -930,7 +930,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNExternalDisplay:
-    :path: "../../../node_modules/react-native-external-display"
+    :path: "../node_modules/react-native-external-display"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 

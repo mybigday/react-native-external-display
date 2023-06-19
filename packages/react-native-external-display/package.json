@@ -16,17 +16,8 @@
   ],
   "license": "MIT",
   "codegenConfig": {
-    "libraries": [
-      {
-        "name": "RNExternalDisplaySpec",
-        "type": "modules",
-        "jsSrcsDir": "js"
-      },
-      {
-        "name": "RNExternalDisplayEventSpec",
-        "type": "modules",
-        "jsSrcsDir": "js"
-      }
-    ]
+    "name": "RNExternalDisplaySpec",
+    "type": "all",
+    "jsSrcsDir": "./js/"
   }
 }

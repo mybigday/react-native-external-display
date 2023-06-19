@@ -2,9 +2,6 @@
 #import "RNExternalDisplayView.h"
 #import <React/RCTUIManager.h>
 #import <React/RCTLog.h>
-#ifdef RCT_NEW_ARCH_ENABLED
-#import "RNExternalDisplaySpec.h"
-#endif
 
 @implementation RNExternalDisplay
 {
@@ -59,13 +56,5 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
     index++;
   }
 }
-
-#ifdef RCT_NEW_ARCH_ENABLED
-- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
-    (const facebook::react::ObjCTurboModule::InitParams &)params
-{
-    return std::make_shared<facebook::react::NativeRNExternalDisplaySpecJSI>(params);
-}
-#endif
 
 @end

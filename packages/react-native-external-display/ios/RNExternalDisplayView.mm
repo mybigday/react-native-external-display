@@ -2,6 +2,11 @@
 #import "UIView+React.h"
 #import "RCTShadowView.h"
 #import <React/RCTLog.h>
+#ifdef RCT_NEW_ARCH_ENABLED
+#import <React/RCTFabricComponentsPlugins.h>
+#import <react/renderer/components/RNExternalDisplaySpec/ComponentDescriptors.h>
+#import <react/renderer/components/RNExternalDisplaySpec/Props.h>
+#endif
 
 @implementation RNExternalDisplayView {
   UIWindow *_window;
@@ -113,4 +118,20 @@
   }
 }
 
+#pragma mark-- Fabric specific
+#ifdef RCT_NEW_ARCH_ENABLED
++ (facebook::react::ComponentDescriptorProvider)componentDescriptorProvider
+{
+  return facebook::react::concreteComponentDescriptorProvider<
+      facebook::react::RNExternalDisplayComponentDescriptor>();
+}
+#endif
+
 @end
+
+#ifdef RCT_NEW_ARCH_ENABLED
+Class<RCTComponentViewProtocol> RNExternalDisplayCls(void)
+{
+  return RNExternalDisplayView.class;
+}
+#endif

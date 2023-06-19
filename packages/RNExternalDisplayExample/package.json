@@ -5,7 +5,8 @@
   "workspaces": {
     "nohoist": [
       "react-native",
-      "react-native/**"
+      "react-native/**",
+      "react-native-external-display"
     ]
   },
   "scripts": {

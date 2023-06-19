@@ -1,7 +1,7 @@
 #import <React/RCTBridgeModule.h>
 #import "RNExternalDisplayEvent.h"
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RNExternalDisplayEventSpec.h"
+#import <RNExternalDisplaySpec/RNExternalDisplaySpec.h>
 #endif
 
 @interface RNExternalDisplayEvent () <RCTBridgeModule>
