@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F01969824049F9D0073CC3A /* RNExternalDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F01969724049F9D0073CC3A /* RNExternalDisplayView.m */; };
+		7F01969824049F9D0073CC3A /* RNExternalDisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F01969724049F9D0073CC3A /* RNExternalDisplayView.mm */; };
 		7F01969E2404C6DC0073CC3A /* RNExternalDisplayEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F01969D2404C6DC0073CC3A /* RNExternalDisplayEvent.mm */; };
 		B3E7B58A1CC2AC0600A0062D /* RNExternalDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNExternalDisplay.mm */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNExternalDisplay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNExternalDisplay.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F01969624049F900073CC3A /* RNExternalDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplayView.h; sourceTree = "<group>"; };
-		7F01969724049F9D0073CC3A /* RNExternalDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNExternalDisplayView.m; sourceTree = "<group>"; };
+		7F01969724049F9D0073CC3A /* RNExternalDisplayView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objcpp; path = RNExternalDisplayView.mm; sourceTree = "<group>"; };
 		7F01969C2404C6C90073CC3A /* RNExternalDisplayEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplayEvent.h; sourceTree = "<group>"; };
 		7F01969D2404C6DC0073CC3A /* RNExternalDisplayEvent.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objcpp; path = RNExternalDisplayEvent.mm; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNExternalDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplay.h; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 				7F01969D2404C6DC0073CC3A /* RNExternalDisplayEvent.mm */,
 				7F01969C2404C6C90073CC3A /* RNExternalDisplayEvent.h */,
 				7F01969624049F900073CC3A /* RNExternalDisplayView.h */,
-				7F01969724049F9D0073CC3A /* RNExternalDisplayView.m */,
+				7F01969724049F9D0073CC3A /* RNExternalDisplayView.mm */,
 				B3E7B5881CC2AC0600A0062D /* RNExternalDisplay.h */,
 				B3E7B5891CC2AC0600A0062D /* RNExternalDisplay.mm */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -124,7 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F01969E2404C6DC0073CC3A /* RNExternalDisplayEvent.mm in Sources */,
-				7F01969824049F9D0073CC3A /* RNExternalDisplayView.m in Sources */,
+				7F01969824049F9D0073CC3A /* RNExternalDisplayView.mm in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNExternalDisplay.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
