@@ -96,7 +96,13 @@
   }
 }
 
+
+- (NSString *)screen {
+  return _screen;
+}
+
 - (void)setScreen:(NSString*)screen {
+  NSLog(@"[RNExternalDisplay] setScreen: %@", screen);
   if (screen != _screen) {
     [self invalidateWindow];
   }
@@ -104,10 +110,6 @@
   [self.delegate checkScreen];
   [self updateScreen];
   [self didUpdateReactSubviews];
-}
-
-- (NSString *)screen {
-  return _screen;
 }
 
 - (void)setFallbackInMainScreen:(BOOL)fallbackInMainScreen {
@@ -120,6 +122,52 @@
 
 #pragma mark-- Fabric specific
 #ifdef RCT_NEW_ARCH_ENABLED
+
+using namespace facebook::react;
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+  if (self = [super initWithFrame:frame]) {
+    static const auto defaultProps = std::make_shared<const RNExternalDisplayProps>();
+    _props = defaultProps;
+  }
+
+  return self;
+}
+
+- (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
+{
+  if (index > 0) {
+    // TODO: _subviews
+    RCTLogError(@"RNExternalDisplayView only allowed one child view.");
+    return;
+  }
+  _subview = childComponentView;
+  [super mountChildComponentView:childComponentView index:index];
+  [super insertReactSubview:_subview atIndex:index];
+  [self updateScreen];
+}
+
+- (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
+{
+  [super unmountChildComponentView:childComponentView index:index];
+}
+
+- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
+{
+  const auto &oldViewProps = *std::static_pointer_cast<RNExternalDisplayProps const>(_props);
+  const auto &newViewProps = *std::static_pointer_cast<RNExternalDisplayProps const>(props);
+
+  if (oldViewProps.screen != newViewProps.screen) {
+    [self setScreen:[NSString stringWithUTF8String:newViewProps.screen.c_str()]];
+  }
+  if (oldViewProps.fallbackInMainScreen != newViewProps.fallbackInMainScreen) {
+    [self setFallbackInMainScreen:newViewProps.fallbackInMainScreen];
+  }
+
+  [super updateProps:props oldProps:oldProps];
+}
+
 + (facebook::react::ComponentDescriptorProvider)componentDescriptorProvider
 {
   return facebook::react::concreteComponentDescriptorProvider<
