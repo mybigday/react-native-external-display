@@ -7,7 +7,7 @@ type Props = {
   onBack: () => void,
 }
 
-export default function Example(props) {
+export default function Example(props: Props) {
   const { onBack } = props
   const [info, setInfo] = useState(getScreens())
   const [on, setOn] = useState(true)

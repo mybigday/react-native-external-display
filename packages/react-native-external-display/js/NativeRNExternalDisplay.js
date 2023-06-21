@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // @flow strict-local
 import type { ViewProps } from 'react-native/Libraries/Components/View/ViewPropTypes'
 import type { HostComponent } from 'react-native'
