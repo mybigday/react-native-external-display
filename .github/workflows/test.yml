@@ -98,7 +98,7 @@ jobs:
           pod repo update
           pod install
           cd ..
-          xcodebuild -workspace ios/RNExternalDisplayExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
+          xcodebuild -workspace ios/RNExternalDisplayFabricExample.xcworkspace -scheme RNExternalDisplayFabricExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
 
   test-android-oldarch:
     runs-on: ubuntu-latest
