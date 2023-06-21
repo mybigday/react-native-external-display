@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { View, Button } from 'react-native'
 
-import Video from './Video'
 import SimpleTextInterval from './SimpleTextInterval'
 import Modal from './Modal'
 import ScreenSize from './ScreenSize'
 import ScrollView from './ScrollView'
 
 const exampleMap = {
-  Video,
   SimpleTextInterval,
   Modal,
   ScreenSize,

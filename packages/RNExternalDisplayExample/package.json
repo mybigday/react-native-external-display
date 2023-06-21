@@ -15,7 +15,6 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "@fugood/react-native-video": "^5.1.3",
     "react": "18.2.0",
     "react-native": "0.71.11",
     "react-native-external-display": "^0.5.18"
