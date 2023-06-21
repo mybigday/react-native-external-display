@@ -28,15 +28,9 @@ function App() {
     <View
       style={{ flex: 1, backgroundColor: 'black', justifyContent: 'center' }}
     >
-      <Button
-        title="SimpleTextInterval"
-        onPress={() => setPage('SimpleTextInterval')}
-      />
-      <Button title="Video" onPress={() => setPage('Video')} />
-      <Button title="Modal" onPress={() => setPage('Modal')} />
-      <Button title="ScreenSize" onPress={() => setPage('ScreenSize')} />
-      <Button title="ScrollView" onPress={() => setPage('ScrollView')} />
-      <Button title="WebView" onPress={() => setPage('WebView')} />
+      {Object.keys(exampleMap).map((key) => (
+        <Button key={key} title={key} onPress={() => setPage(key)} />
+      ))}
     </View>
   )
 }
