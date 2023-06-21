@@ -15,13 +15,15 @@ prepare_react_native_project!
 # ```
 flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled
 
+ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'RNExternalDisplayExample' do
+target 'RNExternalDisplayFabricExample' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -43,7 +45,7 @@ target 'RNExternalDisplayExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'RNExternalDisplayExampleTests' do
+  target 'RNExternalDisplayFabricExampleTests' do
     inherit! :complete
     # Pods for testing
   end
