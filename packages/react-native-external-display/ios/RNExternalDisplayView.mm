@@ -46,6 +46,9 @@
 
 - (void)invalidateWindow {
   if (_window) {
+    for (UIView *subview in _subviews) {
+      [subview removeFromSuperview];
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
       [UIApplication.sharedApplication.delegate.window makeKeyAndVisible];
     });
@@ -156,10 +159,9 @@ using namespace facebook::react;
 - (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
   if (_window) {
-    for (UIView *subview in _subviews) {
-      [subview removeFromSuperview];
-    }
-    [_subviews removeAllObjects];
+    UIView *subview = [_subviews objectAtIndex:index];
+    [subview removeFromSuperview];
+    [_subviews removeObjectAtIndex:index];
   } else {
     [super unmountChildComponentView:childComponentView index:index];
   }
