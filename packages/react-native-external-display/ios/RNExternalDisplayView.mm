@@ -104,6 +104,7 @@
 #ifdef RCT_NEW_ARCH_ENABLED
     int i = 0;
     for (UIView *subview in _subviews) {
+      [subview removeFromSuperview];
       [super mountChildComponentView:subview index:i];
       i++;
     }
@@ -164,6 +165,7 @@ using namespace facebook::react;
     [_subviews removeObjectAtIndex:index];
   } else {
     [super unmountChildComponentView:childComponentView index:index];
+    [_subviews removeObjectAtIndex:index];
   }
 }
 
