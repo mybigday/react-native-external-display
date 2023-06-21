@@ -93,6 +93,10 @@
     _window.rootViewController = rootViewController;
     [_window setScreen:screen];
     [_window makeKeyAndVisible];
+  } else if (_fallbackInMainScreen) {
+#ifdef RCT_NEW_ARCH_ENABLED
+    [super mountChildComponentView:_subview index:0];
+#endif
   }
 }
 
@@ -143,14 +147,17 @@ using namespace facebook::react;
     return;
   }
   _subview = childComponentView;
-  [super mountChildComponentView:childComponentView index:index];
-  [super insertReactSubview:_subview atIndex:index];
   [self updateScreen];
 }
 
 - (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
-  [super unmountChildComponentView:childComponentView index:index];
+  if (_window) {
+    [_subview removeFromSuperview];
+    _subview = nil;
+  } else {
+    [super unmountChildComponentView:childComponentView index:index];
+  }
 }
 
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
