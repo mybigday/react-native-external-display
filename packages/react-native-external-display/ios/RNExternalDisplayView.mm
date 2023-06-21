@@ -10,19 +10,18 @@
 
 @implementation RNExternalDisplayView {
   UIWindow *_window;
-  UIView *_subview;
+  NSMutableArray<UIView *> *_subviews;
   NSString *_screen;
   BOOL _fallbackInMainScreen;
 }
 
 - (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex
 {
-  if (atIndex > 0) {
-    RCTLogError(@"RNExternalDisplayView only allowed one child view.");
-    return;
+  if (!_subviews) {
+    _subviews = [NSMutableArray new];
   }
-  _subview = subview;
-  [super insertReactSubview:_subview atIndex:atIndex];
+  [_subviews insertObject:subview atIndex:atIndex];
+  [super insertReactSubview:subview atIndex:atIndex];
   [self updateScreen];
 }
 
@@ -64,7 +63,7 @@
 #endif
 
 - (void)updateScreen {
-  if (!_subview) {
+  if ([_subviews count] == 0) {
     return;
   }
   NSArray *screens = [UIScreen screens];
@@ -89,13 +88,21 @@
     _window = [[UIWindow alloc] initWithFrame:screen.bounds];
     UIViewController *rootViewController = [UIViewController new];
     rootViewController.view = [RCTView new];
-    [rootViewController.view insertSubview:_subview atIndex:0];
+    int i = 0;
+    for (UIView *subview in _subviews) {
+      [rootViewController.view insertSubview:subview atIndex:i];
+      i++;
+    }
     _window.rootViewController = rootViewController;
     [_window setScreen:screen];
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
 #ifdef RCT_NEW_ARCH_ENABLED
-    [super mountChildComponentView:_subview index:0];
+    int i = 0;
+    for (UIView *subview in _subviews) {
+      [super mountChildComponentView:subview index:i];
+      i++;
+    }
 #endif
   }
 }
@@ -131,30 +138,27 @@ using namespace facebook::react;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
+  _subviews = [NSMutableArray new];
   if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const RNExternalDisplayProps>();
     _props = defaultProps;
   }
-
   return self;
 }
 
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
-  if (index > 0) {
-    // TODO: _subviews
-    RCTLogError(@"RNExternalDisplayView only allowed one child view.");
-    return;
-  }
-  _subview = childComponentView;
+  [_subviews insertObject:childComponentView atIndex:index];
   [self updateScreen];
 }
 
 - (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
   if (_window) {
-    [_subview removeFromSuperview];
-    _subview = nil;
+    for (UIView *subview in _subviews) {
+      [subview removeFromSuperview];
+    }
+    [_subviews removeAllObjects];
   } else {
     [super unmountChildComponentView:childComponentView index:index];
   }
