@@ -61,7 +61,7 @@ jobs:
           cd packages/RNExternalDisplayExample/ios
           pod repo update
           pod install
-          cd ../..
+          cd ..
           xcodebuild -workspace ios/RNExternalDisplayExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
 
   test-ios-newarch:
@@ -97,7 +97,7 @@ jobs:
           cd packages/RNExternalDisplayFabricExample/ios
           pod repo update
           pod install
-          cd ../..
+          cd ..
           xcodebuild -workspace ios/RNExternalDisplayExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
 
   test-android-oldarch:
