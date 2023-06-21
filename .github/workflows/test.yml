@@ -29,8 +29,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pods-
       - name: Run test
-        env:
-          RCT_NEW_ARCH_ENABLED: 1
         run: |
           yarn
           yarn lint
