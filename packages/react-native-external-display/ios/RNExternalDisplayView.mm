@@ -85,7 +85,8 @@
     screen.overscanCompensation = UIScreenOverscanCompensationScale;
 #endif
 
-    _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+    if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+
     UIViewController *rootViewController = [UIViewController new];
     rootViewController.view = [RCTView new];
     int i = 0;
