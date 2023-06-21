@@ -2,7 +2,29 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  test-ios:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16.x
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Run test
+        run: |
+          yarn
+          yarn lint
+
+  test-ios-oldarch:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,22 +47,65 @@ jobs:
           path: |
             packages/RNExternalDisplayExample/ios/Pods
             packages/RNExternalDisplayExample/ios/build
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          key: ${{ runner.os }}-pods-oldarch-${{ hashFiles('**/RNExternalDisplayExample/ios/Podfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pods-
-      - name: Run test
+            ${{ runner.os }}-pods-oldarch-
+      - name: Install deps
+        run: yarn
+      - name: Build RNExternalDisplayExample
         run: |
-          yarn
-          yarn lint
-          cd packages/RNExternalDisplayExample
-
-          cd ios
+          cd packages/RNExternalDisplayExample/ios
           pod repo update
           pod install
-          cd -
+          cd ../..
           xcodebuild -workspace ios/RNExternalDisplayExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
-  test-android:
+
+      - name: Build RNExternalDisplayFabricExample
+        run: |
+          cd packages/RNExternalDisplayFabricExample/ios
+          pod repo update
+          pod install
+          cd ../..
+          xcodebuild -workspace ios/RNExternalDisplayFabricExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
+
+  test-ios-newarch:
     runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16.x
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Cache pods
+        uses: actions/cache@v3
+        with:
+          path: |
+            packages/RNExternalDisplayFabricExample/ios/Pods
+            packages/RNExternalDisplayFabricExample/ios/build
+          key: ${{ runner.os }}-pods-newarch-${{ hashFiles('**/packages/RNExternalDisplayFabricExample/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-newarch-
+      - name: Install deps
+        run: yarn
+      - name: Build RNExternalDisplayFabricExample
+        run: |
+          cd packages/RNExternalDisplayFabricExample/ios
+          pod repo update
+          pod install
+          cd ../..
+          xcodebuild -workspace ios/RNExternalDisplayFabricExample.xcworkspace -scheme RNExternalDisplayExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
+
+  test-android-oldarch:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.6.0
@@ -67,8 +132,44 @@ jobs:
       #     $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-28;google_apis;x86"
       #     echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n Test -k "system-images;android-28;google_apis;x86"
       #     $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window &
+      - name: Install deps
+        run: yarn
       - name: Build RNExternalDisplayExample
         run: |
-          yarn
           cd packages/RNExternalDisplayExample/android
+          ./gradlew assemblerelease
+  
+  test-android-newarch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16.x
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 17
+      # - name: Setup Android Emulator
+      #   run: |
+      #     $ANDROID_HOME/tools/bin/sdkmanager --install emulator
+      #     $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-28;google_apis;x86"
+      #     echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n Test -k "system-images;android-28;google_apis;x86"
+      #     $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window &
+      - name: Install deps
+        run: yarn
+      - name: Build RNExternalDisplayFabricExample
+        run: |
+          cd packages/RNExternalDisplayFabricExample/android
           ./gradlew assemblerelease
