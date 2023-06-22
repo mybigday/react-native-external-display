@@ -1,6 +1,13 @@
 module.exports = {
   root: true,
-  extends: '@fugood/eslint-config-react',
+  extends: [
+    '@fugood/eslint-config-react',
+    // 'plugin:ft-flow/recommended',
+  ],
+  parser: 'hermes-eslint',
+  plugins: [
+    'ft-flow'
+  ],
   env: {
     node: true,
     browser: true,

@@ -1,3 +1,5 @@
+// @flow
+
 import React, { useState } from 'react'
 import { SafeAreaView, View, Button } from 'react-native'
 import WebView from 'react-native-webview'
