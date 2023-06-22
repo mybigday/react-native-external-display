@@ -73,6 +73,12 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
   [self sendEventWithName:@"@RNExternalDisplay_screenDidDisconnect" body:screenInfo];
 }
 
+- (void) invalidate {
+  NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+  [center removeObserver:self name:UIScreenDidConnectNotification object:nil];
+  [center removeObserver:self name:UIScreenDidDisconnectNotification object:nil];
+}
+
 #ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
