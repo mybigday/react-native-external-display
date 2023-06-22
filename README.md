@@ -3,7 +3,9 @@
 > React Native view renderer in External Display.
 
 - [Package (react-native-external-display)](packages/react-native-external-display)
-- [Example](packages/RNExternalDisplayExample)
+- [Example project](packages/RNExternalDisplayExample)
+- [Example project (Fabric)](packages/RNExternalDisplayFabricExample)
+- [Examples used by Example project](packages/rnexternal-display-examples)
 
 ## Introdution
 

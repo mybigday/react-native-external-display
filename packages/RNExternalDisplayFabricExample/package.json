@@ -1,0 +1,33 @@
+{
+  "name": "rnexternaldisplayfabricexample",
+  "version": "0.5.18",
+  "private": true,
+  "workspaces": {
+    "nohoist": [
+      "react-native",
+      "react-native/**",
+      "react-native-external-display",
+      "react-native-webview"
+    ]
+  },
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.71.11",
+    "react-native-external-display": "^0.5.18",
+    "react-native-webview": "^13.2.2",
+    "rn-external-display-examples": "0.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "metro-react-native-babel-preset": "0.73.10"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

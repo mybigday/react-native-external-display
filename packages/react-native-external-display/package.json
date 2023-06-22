@@ -6,6 +6,9 @@
   "author": "Jhen-Jie Hong <developer@jhen.me>",
   "homepage": "https://github.com/mybigday/react-native-external-display",
   "repository": "https://github.com/mybigday/react-native-external-display",
+  "peerDependencies": {
+    "react-native": "*"
+  },
   "keywords": [
     "react-native",
     "external-display",
@@ -14,5 +17,10 @@
     "ios",
     "android"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "codegenConfig": {
+    "name": "RNExternalDisplaySpec",
+    "type": "all",
+    "jsSrcsDir": "./js/"
+  }
 }

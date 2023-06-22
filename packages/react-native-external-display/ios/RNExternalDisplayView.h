@@ -2,9 +2,19 @@
 #import <React/RCTView.h>
 #import <React/RCTInvalidating.h>
 
+#ifdef RCT_NEW_ARCH_ENABLED
+#import <React/RCTViewComponentView.h>
+#endif
+
 @protocol RNExternalDisplayViewInteractor;
 
-@interface RNExternalDisplayView : RCTView <RCTInvalidating>
+@interface RNExternalDisplayView :
+#ifdef RCT_NEW_ARCH_ENABLED
+  RCTViewComponentView
+#else
+  RCTView
+#endif
+<RCTInvalidating>
 
 @property(nonatomic, weak) id<RNExternalDisplayViewInteractor> delegate;
 
