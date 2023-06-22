@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-rc.0](https://github.com/mybigday/react-native-external-display/compare/v0.5.18...v0.6.0-rc.0) (2023-06-22)
+
+
+### Bug Fixes
+
+* **example:** android build error ([386b520](https://github.com/mybigday/react-native-external-display/commit/386b520aea873d1ffac9f62e79b9c3f683ed99a2))
+
+
+### Features
+
+* **example:** bump react-native to v0.71 ([#686](https://github.com/mybigday/react-native-external-display/issues/686)) ([2a5acc2](https://github.com/mybigday/react-native-external-display/commit/2a5acc28b14333650ea5e31291f6c12b66d0abcb))
+* support new architecture ([#687](https://github.com/mybigday/react-native-external-display/issues/687)) ([bcb001f](https://github.com/mybigday/react-native-external-display/commit/bcb001f5862d6ed4184698baf6d6ea49c32fc7cf))
+
+
+
+
+
 ## [0.5.18](https://github.com/mybigday/react-native-external-display/compare/v0.5.17...v0.5.18) (2022-10-22)
 
 
