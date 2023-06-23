@@ -20,7 +20,10 @@ RCT_EXPORT_MODULE()
 - (NSDictionary *)constantsToExport
 {
   NSDictionary* screenInfo = [self getScreenInfo];
-  return @{ @"SCREEN_INFO": screenInfo };
+  return @{
+    @"SCREEN_INFO": screenInfo,
+    @"SUPPORT_MULTIPLE_SCENES": [UIApplication sharedApplication].supportsMultipleScenes ? @YES : @NO,
+  };
 }
 
 RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
