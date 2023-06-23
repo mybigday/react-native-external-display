@@ -19,7 +19,6 @@
   self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
   self.window.frame = windowScene.coordinateSpace.bounds;
   self.window.rootViewController = appDelegate.window.rootViewController;
-  appDelegate.window.rootViewController = nil;
   [self.window makeKeyAndVisible];
 
   // TEST: connect TestScene 
