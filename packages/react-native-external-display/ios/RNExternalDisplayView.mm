@@ -69,11 +69,12 @@
   if ([_subviews count] == 0) {
     return;
   }
-  NSArray *screens = [UIScreen screens];
-  int index = [_screen intValue];
-  if (index > 0 && index < [screens count]) {
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+
+  UIWindowScene* scene = [[scenes filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"session.persistentIdentifier == %@", _screen]] anyObject];
+  if (scene != nil) {
     // NSLog(@"[RNExternalDisplay] Selected External Display");
-    UIScreen* screen = [screens objectAtIndex:index];
+    UIScreen *screen = scene.screen;
 
 #if !defined(MA_APPLE_TV)
     __block UIScreenMode *highestWidthMode = NULL;
@@ -98,7 +99,7 @@
       i++;
     }
     _window.rootViewController = rootViewController;
-    [_window setScreen:screen];
+    [_window setWindowScene:scene];
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
 #ifdef RCT_NEW_ARCH_ENABLED

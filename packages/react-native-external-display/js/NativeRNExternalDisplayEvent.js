@@ -5,5 +5,6 @@ import { TurboModuleRegistry } from 'react-native'
 export interface Spec extends TurboModule {
   getInitialScreens: () => {||},
   init: () => void,
+  createSence: () => {||},
 }
 export default (TurboModuleRegistry.get<Spec>('RNExternalDisplayEvent'): ?Spec)

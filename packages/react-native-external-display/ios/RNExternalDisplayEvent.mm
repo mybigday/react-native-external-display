@@ -14,7 +14,7 @@ RCT_EXPORT_MODULE()
 
 + (BOOL)requiresMainQueueSetup
 {
-  return NO;
+  return YES;
 }
 
 - (NSDictionary *)constantsToExport
@@ -25,9 +25,16 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-  [center addObserver:self selector:@selector(handleScreenDidConnectNotification:) name:UIScreenDidConnectNotification object:nil];
-  [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:) name:UIScreenDidDisconnectNotification object:nil];
+  [center addObserver:self selector:@selector(handleScreenDidConnectNotification:) name:UISceneWillConnectNotification object:nil];
+  [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:) name:UISceneDidDisconnectNotification object:nil];
   resolve(@{});
+}
+
+RCT_EXPORT_METHOD(createSence:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+// TODO
+//  resolve(@{
+//    @"id": scene.session.persistentIdentifier,
+//  });
 }
 
 -(NSArray *)supportedEvents {
@@ -39,44 +46,54 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
 }
 
 -(NSDictionary *)getScreenInfo {
-  NSArray *screens = [UIScreen screens];
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
   NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
-  NSUInteger index = 0;
-  for (UIScreen* screen in screens) {
-    if (screen != UIScreen.mainScreen) {
+  for (UIWindowScene* scene in scenes) {
+    NSLog(@"scene: %@", scene.session);
+    NSString* type = nil;
+    if ([scene.session.userInfo isKindOfClass:[NSDictionary class]]) {
+      type = scene.session.userInfo[@"type"];
+    }
+    if (
+      ![scene.session.role isEqual:UIWindowSceneSessionRoleApplication] ||
+      (type != nil && [type isEqual:@"@RNExternalDisplay_create"])
+    ) {
       [screenInfo
         setValue:@{
-          @"id": @(index),
-          @"width": @(screen.bounds.size.width),
-          @"height": @(screen.bounds.size.height),
-          @"mirrored": @(screen.mirroredScreen == UIScreen.mainScreen),
+          @"id": scene.session.persistentIdentifier,
+          @"width": @(scene.screen.bounds.size.width),
+          @"height": @(scene.screen.bounds.size.height),
+          @"mirrored": @(scene.screen.mirroredScreen == UIScreen.mainScreen),
 #if !TARGET_OS_TV
-          @"wantsSoftwareDimming": @(screen.wantsSoftwareDimming),
+          @"wantsSoftwareDimming": @(scene.screen.wantsSoftwareDimming),
 #endif
           // @"maximumFramesPerSecond": @(screen.maximumFramesPerSecond),
         }
-        forKey:[NSString stringWithFormat: @"%ld", index]
+        forKey:scene.session.persistentIdentifier
       ];
     }
-    index++;
   }
   return screenInfo;
 }
 
 - (void) handleScreenDidConnectNotification: (NSNotification *)notification{
-  NSDictionary* screenInfo = [self getScreenInfo];
-  [self sendEventWithName:@"@RNExternalDisplay_screenDidConnect" body:screenInfo];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSDictionary* screenInfo = [self getScreenInfo];
+    [self sendEventWithName:@"@RNExternalDisplay_screenDidConnect" body:screenInfo];
+  });
 }
 
 - (void) handleScreenDidDisconnectNotification: (NSNotification *)notification{
-  NSDictionary* screenInfo = [self getScreenInfo];
-  [self sendEventWithName:@"@RNExternalDisplay_screenDidDisconnect" body:screenInfo];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSDictionary* screenInfo = [self getScreenInfo];
+    [self sendEventWithName:@"@RNExternalDisplay_screenDidDisconnect" body:screenInfo];
+  });
 }
 
 - (void) invalidate {
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-  [center removeObserver:self name:UIScreenDidConnectNotification object:nil];
-  [center removeObserver:self name:UIScreenDidDisconnectNotification object:nil];
+  [center removeObserver:self name:UISceneWillConnectNotification object:nil];
+  [center removeObserver:self name:UISceneDidDisconnectNotification object:nil];
 }
 
 #ifdef RCT_NEW_ARCH_ENABLED
