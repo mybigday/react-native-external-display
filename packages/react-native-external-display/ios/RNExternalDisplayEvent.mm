@@ -54,6 +54,26 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
   });
 }
 
+RCT_EXPORT_METHOD(closeScene:(NSString *)sceneId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+    for (UIWindowScene* scene in scenes) {
+      if ([scene.session.persistentIdentifier isEqual:sceneId]) {
+        [UIApplication.sharedApplication
+          requestSceneSessionDestruction:scene.session
+          options:nil
+          errorHandler:^(NSError * _Nonnull error) {
+            reject(@"error", @"error", error);
+          }
+        ];
+        resolve(@YES);
+        return;
+      }
+    }
+    reject(@"error", @"error", nil);
+  });
+}
+
 -(NSArray *)supportedEvents {
   return@[
     @"@RNExternalDisplay_screenDidConnect",
@@ -95,7 +115,6 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
 
 - (void) handleScreenDidConnectNotification: (NSNotification *)notification{
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"handleScreenDidConnectNotification");
     NSDictionary* screenInfo = [self getScreenInfo];
     [self sendEventWithName:@"@RNExternalDisplay_screenDidConnect" body:screenInfo];
   });
@@ -110,7 +129,6 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
 
 - (void) handleScreenDidDisconnectNotification: (NSNotification *)notification{
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"handleScreenDidDisconnectNotification");
     NSDictionary* screenInfo = [self getScreenInfo];
     [self sendEventWithName:@"@RNExternalDisplay_screenDidDisconnect" body:screenInfo];
   });

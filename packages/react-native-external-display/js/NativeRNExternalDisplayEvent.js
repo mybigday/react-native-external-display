@@ -6,6 +6,7 @@ export interface Spec extends TurboModule {
   getInitialScreens: () => {||},
   init: () => void,
   requestScene: () => {||},
+  closeScene: (sceneId: string) => boolean,
 }
 
 export default (TurboModuleRegistry.get<Spec>('RNExternalDisplayEvent'): ?Spec)
