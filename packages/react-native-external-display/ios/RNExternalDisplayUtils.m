@@ -67,13 +67,16 @@
 + (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
   NSString* activityType = options.userActivities.anyObject.activityType;
 
-  if ([activityType isEqualToString:@"create"]) {
+  if (
+    [activityType isEqualToString:@"create"] ||
+    connectingSceneSession.role == UIWindowSceneSessionRoleExternalDisplay
+  ) {
     UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
     configuration.delegateClass = RNExternalSceneDelegate.class;
     return configuration;
   }
 
-  UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
+  UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"Main" sessionRole:UIWindowSceneSessionRoleApplication];
   configuration.delegateClass = RNExternalSceneMainDelegate.class;
   return configuration;
 }
