@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <React/RCTView.h>
 #import "RNExternalDisplayWindowViewController.h"
 
 @implementation RNExternalDisplayWindowViewController {
@@ -8,6 +9,7 @@
 + (instancetype)initWithCompletionHandler:(void (^)(void))completionHandler {
   RNExternalDisplayWindowViewController *viewController = [[RNExternalDisplayWindowViewController alloc] init];
   viewController->_completionHandler = completionHandler;
+  viewController.view = [RCTView new];
   return viewController;
 }
 

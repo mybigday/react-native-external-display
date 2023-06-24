@@ -3,6 +3,8 @@
 #import <React/RCTAppSetupUtils.h>
 #import <React/RCTBundleURLProvider.h>
 
+#import "RNExternalDisplayWindowViewController.h"
+
 @interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
 @end
 
@@ -39,8 +41,9 @@
 
   self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
   self.window.frame = windowScene.coordinateSpace.bounds;
-  self.window.rootViewController = [[UIViewController alloc] init];
-  [self.window makeKeyAndVisible];
+  self.window.rootViewController = [RNExternalDisplayWindowViewController initWithCompletionHandler: ^void (void) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNExternalDisplaySceneChange" object:nil];
+  }];
 }
 
 @end

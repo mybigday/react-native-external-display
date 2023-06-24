@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7F01969824049F9D0073CC3A /* RNExternalDisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F01969724049F9D0073CC3A /* RNExternalDisplayView.mm */; };
 		7F01969E2404C6DC0073CC3A /* RNExternalDisplayEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F01969D2404C6DC0073CC3A /* RNExternalDisplayEvent.mm */; };
-		7FA659372A468591008559AB /* RNExternalDisplayWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA659362A468591008559AB /* RNExternalDisplayWindowViewController.m */; };
+		7FA659372A468591008559AB /* RNExternalDisplayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FA659362A468591008559AB /* RNExternalDisplayUtils.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNExternalDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNExternalDisplay.mm */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +31,8 @@
 		7F01969724049F9D0073CC3A /* RNExternalDisplayView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objcpp; path = RNExternalDisplayView.mm; sourceTree = "<group>"; };
 		7F01969C2404C6C90073CC3A /* RNExternalDisplayEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplayEvent.h; sourceTree = "<group>"; };
 		7F01969D2404C6DC0073CC3A /* RNExternalDisplayEvent.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objcpp; path = RNExternalDisplayEvent.mm; sourceTree = "<group>"; };
-		7FA659352A468586008559AB /* RNExternalDisplayWindowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplayWindowViewController.h; sourceTree = "<group>"; };
-		7FA659362A468591008559AB /* RNExternalDisplayWindowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNExternalDisplayWindowViewController.m; sourceTree = "<group>"; };
+		7FA659352A468586008559AB /* RNExternalDisplayUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplayUtils.h; sourceTree = "<group>"; };
+		7FA659362A468591008559AB /* RNExternalDisplayUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNExternalDisplayUtils.m; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNExternalDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNExternalDisplay.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNExternalDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objcpp; path = RNExternalDisplay.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,8 +59,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				7FA659362A468591008559AB /* RNExternalDisplayWindowViewController.m */,
-				7FA659352A468586008559AB /* RNExternalDisplayWindowViewController.h */,
+				7FA659362A468591008559AB /* RNExternalDisplayUtils.m */,
+				7FA659352A468586008559AB /* RNExternalDisplayUtils.h */,
 				7F01969D2404C6DC0073CC3A /* RNExternalDisplayEvent.mm */,
 				7F01969C2404C6C90073CC3A /* RNExternalDisplayEvent.h */,
 				7F01969624049F900073CC3A /* RNExternalDisplayView.h */,
@@ -130,7 +130,7 @@
 			files = (
 				7F01969E2404C6DC0073CC3A /* RNExternalDisplayEvent.mm in Sources */,
 				7F01969824049F9D0073CC3A /* RNExternalDisplayView.mm in Sources */,
-				7FA659372A468591008559AB /* RNExternalDisplayWindowViewController.m in Sources */,
+				7FA659372A468591008559AB /* RNExternalDisplayUtils.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNExternalDisplay.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
