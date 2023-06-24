@@ -32,8 +32,8 @@ function App() {
       {Object.keys(exampleMap).map((key) => (
         <Button key={key} title={key} onPress={() => setPage(key)} />
       ))}
-      <Button title="Create Sence" onPress={() => {
-        ExternalDisplayEvent.createSence().then(console.log)
+      <Button title="Request new Scene" onPress={() => {
+        ExternalDisplayEvent.requestScene().then(console.log)
       }} />
     </View>
   )

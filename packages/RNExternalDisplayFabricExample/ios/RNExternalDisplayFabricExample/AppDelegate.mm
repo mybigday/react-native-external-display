@@ -20,13 +20,6 @@
   self.window.frame = windowScene.coordinateSpace.bounds;
   self.window.rootViewController = appDelegate.window.rootViewController;
   [self.window makeKeyAndVisible];
-
-  // TEST: connect TestScene 
-  NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:@"create"];
-  [UIApplication.sharedApplication requestSceneSessionActivation:nil
-                                                   userActivity:userActivity
-                                                     options:nil
-                                               errorHandler:nil];
 }
 
 @end
