@@ -14,13 +14,13 @@
 					<key>UISceneConfigurationName</key>
 					<string>Default Configuration</string>
 					<key>UISceneDelegateClassName</key>
-					<string>SceneDelegate</string>
+					<string>RNExternalSceneMainDelegate</string>
 				</dict>
 				<dict>
 					<key>UISceneConfigurationName</key>
 					<string>Create Configuration</string>
 					<key>UISceneDelegateClassName</key>
-					<string>TestSceneDelegate</string>
+					<string>RNExternalSceneDelegate</string>
 				</dict>
 			</array>
 		</dict>

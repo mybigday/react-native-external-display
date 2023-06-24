@@ -3,55 +3,14 @@
 #import <React/RCTAppSetupUtils.h>
 #import <React/RCTBundleURLProvider.h>
 
-#import "RNExternalDisplayWindowViewController.h"
-
-@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
-@end
-
-@implementation SceneDelegate
-
-@synthesize window = _window;
-
-- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-
-  UIWindowScene *windowScene = (UIWindowScene *)scene;
-
-  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-  
-  self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
-  self.window.frame = windowScene.coordinateSpace.bounds;
-  self.window.rootViewController = appDelegate.window.rootViewController;
-  [self.window makeKeyAndVisible];
-}
-
-@end
-
-
-@interface TestSceneDelegate : UIResponder <UIWindowSceneDelegate>
-@end
-
-@implementation TestSceneDelegate
-
-@synthesize window = _window;
-
-- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-  scene.session.userInfo = @{@"type": @"@RNExternalDisplay_create"};
-
-  UIWindowScene *windowScene = (UIWindowScene *)scene;
-
-  self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
-  self.window.frame = windowScene.coordinateSpace.bounds;
-  self.window.rootViewController = [RNExternalDisplayWindowViewController initWithCompletionHandler: ^void (void) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNExternalDisplaySceneChange" object:nil];
-  }];
-}
-
-@end
+#import "RNExternalDisplayUtils.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  // You can add your custom initial props in the dictionary below.
+  // They will be passed down to the ViewController used by React Native.
   self.moduleName = @"RNExternalDisplayFabricExample";
   self.initialProps = @{};
 
@@ -63,12 +22,12 @@
 
   if ([activityType isEqualToString:@"create"]) {
     UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
-    configuration.delegateClass = TestSceneDelegate.class;
+    configuration.delegateClass = RNExternalSceneDelegate.class;
     return configuration;
   }
 
   UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
-  configuration.delegateClass = SceneDelegate.class;
+  configuration.delegateClass = RNExternalSceneMainDelegate.class;
   return configuration;
 }
 
