@@ -92,7 +92,12 @@
     if (!_window) _window = scene.windows.firstObject;
     int i = 0;
     for (UIView *subview in _subviews) {
+#ifdef RCT_NEW_ARCH_ENABLED
+      [subview removeFromSuperview];
+      [_window.rootViewController.view mountChildComponentView:subview index:i];
+#else
       [_window.rootViewController.view insertSubview:subview atIndex:i];
+#endif
       i++;
     }
     [_window setWindowScene:scene];

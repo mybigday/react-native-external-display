@@ -1,9 +1,10 @@
 #import <React/UIView+React.h>
-#import <React/RCTView.h>
 #import <React/RCTInvalidating.h>
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/RCTViewComponentView.h>
+#else
+#import <React/RCTView.h>
 #endif
 
 @protocol RNExternalDisplayViewInteractor;

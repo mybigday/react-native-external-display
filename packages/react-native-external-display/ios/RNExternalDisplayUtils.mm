@@ -1,6 +1,12 @@
 #import <Foundation/Foundation.h>
-#import <React/RCTView.h>
 #import "RNExternalDisplayUtils.h"
+
+#ifdef RCT_NEW_ARCH_ENABLED
+#import <React/RCTViewComponentView.h>
+#define RCTView RCTViewComponentView
+#else
+#import <React/RCTView.h>
+#endif
 
 @implementation RNExternalDisplayWindowViewController {
   void (^_completionHandler)(void);
@@ -74,6 +80,13 @@
     UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
     configuration.delegateClass = RNExternalSceneDelegate.class;
     return configuration;
+  }
+
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+  for (UIScene *scene in scenes) {
+    if (scene.session.role == UIWindowSceneSessionRoleApplication) {
+      return nil;
+    }
   }
 
   UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"Main" sessionRole:UIWindowSceneSessionRoleApplication];
