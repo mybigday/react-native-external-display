@@ -61,7 +61,7 @@
   self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
   self.window.frame = windowScene.coordinateSpace.bounds;
   self.window.rootViewController = [RNExternalDisplayWindowViewController initWithCompletionHandler: ^void (void) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNExternalDisplaySceneChange" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RN_EXTERNAL_SCENE_EVENT_TYPE_CHANGE object:nil];
   }];
 }
 
@@ -73,25 +73,40 @@
 + (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
   NSString* activityType = options.userActivities.anyObject.activityType;
 
+  // Check duplicate on new window, If main scene is already connected, use `create` instead
+  bool isMainDuplicated = false;
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+  for (UIScene *scene in scenes) {
+    if (
+      [self isSceneTypeCreate:scene] &&
+      (scene.activationState == UISceneActivationStateForegroundActive ||
+      scene.activationState == UISceneActivationStateBackground)
+    ) {
+      isMainDuplicated = true;
+    }
+  }
+
   if (
+    isMainDuplicated ||
     [activityType isEqualToString:@"create"] ||
     connectingSceneSession.role == UIWindowSceneSessionRoleExternalDisplay
   ) {
-    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
+    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneCreate" sessionRole:@"Create"];
     configuration.delegateClass = RNExternalSceneDelegate.class;
     return configuration;
   }
 
-  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
-  for (UIScene *scene in scenes) {
-    if (scene.session.role == UIWindowSceneSessionRoleApplication) {
-      return nil;
-    }
-  }
-
-  UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"Main" sessionRole:UIWindowSceneSessionRoleApplication];
+  UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneMain" sessionRole:UIWindowSceneSessionRoleApplication];
   configuration.delegateClass = RNExternalSceneMainDelegate.class;
   return configuration;
+}
+
++ (bool)isSceneTypeCreate:(UIScene *)scene {
+  NSString* type = nil;
+  if ([scene.session.userInfo isKindOfClass:[NSDictionary class]]) {
+    type = scene.session.userInfo[@"type"];
+  }
+  return [type isEqual:RN_EXTERNAL_SCENE_TYPE_CREATE];
 }
 
 @end

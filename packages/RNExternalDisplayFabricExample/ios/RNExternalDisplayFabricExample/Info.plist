@@ -12,13 +12,13 @@
 			<array>
 				<dict>
 					<key>UISceneConfigurationName</key>
-					<string>Default Configuration</string>
+					<string>RNExternalSceneMain</string>
 					<key>UISceneDelegateClassName</key>
 					<string>RNExternalSceneMainDelegate</string>
 				</dict>
 				<dict>
 					<key>UISceneConfigurationName</key>
-					<string>Create Configuration</string>
+					<string>RNExternalSceneCreate</string>
 					<key>UISceneDelegateClassName</key>
 					<string>RNExternalSceneDelegate</string>
 				</dict>

@@ -33,7 +33,7 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
   [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:) name:UISceneDidDisconnectNotification object:nil];
 
   // Listen resize event
-  [center addObserver:self selector:@selector(handleScreenDidChangeNotification:) name:@"RNExternalDisplaySceneChange" object:nil];
+  [center addObserver:self selector:@selector(handleScreenDidChangeNotification:) name:RN_EXTERNAL_SCENE_EVENT_TYPE_CHANGE object:nil];
   resolve(@{});
 }
 
@@ -72,6 +72,9 @@ RCT_EXPORT_METHOD(closeScene:(NSString *)sceneId resolve:(RCTPromiseResolveBlock
   });
 }
 
+// isMainSceneClosed
+// resumeMainScene
+
 -(NSArray *)supportedEvents {
   return@[
     @"@RNExternalDisplay_screenDidConnect",
@@ -84,13 +87,9 @@ RCT_EXPORT_METHOD(closeScene:(NSString *)sceneId resolve:(RCTPromiseResolveBlock
   NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
   NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
   for (UIWindowScene* scene in scenes) {
-    NSString* type = nil;
-    if ([scene.session.userInfo isKindOfClass:[NSDictionary class]]) {
-      type = scene.session.userInfo[@"type"];
-    }
     if (
       ![scene.session.role isEqual:UIWindowSceneSessionRoleApplication] ||
-      (type != nil && [type isEqual:@"@RNExternalDisplay_create"])
+      [RNEXternalAppDelegateUtil isSceneTypeCreate:scene]
     ) {
       UIWindow *window = scene.windows.firstObject;
       [screenInfo
