@@ -60,3 +60,22 @@
 }
 
 @end
+
+
+@implementation RNEXternalAppDelegateUtil
+
++ (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
+  NSString* activityType = options.userActivities.anyObject.activityType;
+
+  if ([activityType isEqualToString:@"create"]) {
+    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
+    configuration.delegateClass = RNExternalSceneDelegate.class;
+    return configuration;
+  }
+
+  UISceneConfiguration *configuration = [[UISceneConfiguration alloc] init];
+  configuration.delegateClass = RNExternalSceneMainDelegate.class;
+  return configuration;
+}
+
+@end

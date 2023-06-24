@@ -13,3 +13,9 @@
 
 @interface RNExternalSceneDelegate : UIResponder <UIWindowSceneDelegate>
 @end
+
+@interface RNEXternalAppDelegateUtil : NSObject
+
++ (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options;
+
+@end
