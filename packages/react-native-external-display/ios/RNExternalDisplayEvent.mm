@@ -28,15 +28,13 @@ RCT_EXPORT_MODULE()
 }
 
 RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(handleScreenDidConnectNotification:) name:UISceneWillConnectNotification object:nil];
-    [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:) name:UISceneDidDisconnectNotification object:nil];
+  NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+  [center addObserver:self selector:@selector(handleScreenDidConnectNotification:) name:UISceneWillConnectNotification object:nil];
+  [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:) name:UISceneDidDisconnectNotification object:nil];
 
-    // Listen resize event
-    [center addObserver:self selector:@selector(handleScreenDidChangeNotification:) name:@"RNExternalDisplaySceneChange" object:nil];
-    resolve(@{});
-  });
+  // Listen resize event
+  [center addObserver:self selector:@selector(handleScreenDidChangeNotification:) name:@"RNExternalDisplaySceneChange" object:nil];
+  resolve(@{});
 }
 
 RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
