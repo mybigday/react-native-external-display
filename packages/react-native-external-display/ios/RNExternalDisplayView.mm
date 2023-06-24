@@ -2,6 +2,7 @@
 #import "UIView+React.h"
 #import "RCTShadowView.h"
 #import <React/RCTLog.h>
+#import "RNExternalDisplayWindowViewController.h"
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/RCTFabricComponentsPlugins.h>
 #import <react/renderer/components/RNExternalDisplaySpec/ComponentDescriptors.h>
@@ -89,9 +90,10 @@
     screen.overscanCompensation = UIScreenOverscanCompensationScale;
 #endif
 
-    if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
-
-    UIViewController *rootViewController = [UIViewController new];
+    if (!_window) _window = [[UIWindow alloc] initWithWindowScene:scene];
+    UIViewController *rootViewController = [RNExternalDisplayWindowViewController initWithCompletionHandler: ^void (void) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"RNExternalDisplaySceneChange" object:nil];
+    }];
     rootViewController.view = [RCTView new];
     int i = 0;
     for (UIView *subview in _subviews) {

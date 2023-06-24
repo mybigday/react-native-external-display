@@ -39,9 +39,11 @@ export default function Example(props: Props) {
           >
             <View
               style={{
+                flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: '#333',
+                height: 100,
               }}
             >
               <Text style={{ color: 'red', fontSize: 40 }}>{t}</Text>

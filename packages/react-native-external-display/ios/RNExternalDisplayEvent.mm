@@ -1,5 +1,6 @@
 #import <React/RCTBridgeModule.h>
 #import "RNExternalDisplayEvent.h"
+#import "RNExternalDisplayWindowViewController.h"
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <RNExternalDisplaySpec/RNExternalDisplaySpec.h>
 #endif
@@ -31,6 +32,9 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(handleScreenDidConnectNotification:) name:UISceneWillConnectNotification object:nil];
     [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:) name:UISceneDidDisconnectNotification object:nil];
+
+    // Listen resize event
+    [center addObserver:self selector:@selector(handleScreenDidChangeNotification:) name:@"RNExternalDisplaySceneChange" object:nil];
     resolve(@{});
   });
 }
@@ -62,7 +66,6 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
   NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
   NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
   for (UIWindowScene* scene in scenes) {
-    NSLog(@"scene: %@", scene.session);
     NSString* type = nil;
     if ([scene.session.userInfo isKindOfClass:[NSDictionary class]]) {
       type = scene.session.userInfo[@"type"];
@@ -71,11 +74,12 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
       ![scene.session.role isEqual:UIWindowSceneSessionRoleApplication] ||
       (type != nil && [type isEqual:@"@RNExternalDisplay_create"])
     ) {
+      UIWindow *window = scene.windows.firstObject;
       [screenInfo
         setValue:@{
           @"id": scene.session.persistentIdentifier,
-          @"width": @(scene.screen.bounds.size.width),
-          @"height": @(scene.screen.bounds.size.height),
+          @"width": @(window.bounds.size.width),
+          @"height": @(window.bounds.size.height),
           @"mirrored": @(scene.screen.mirroredScreen == UIScreen.mainScreen),
 #if !TARGET_OS_TV
           @"wantsSoftwareDimming": @(scene.screen.wantsSoftwareDimming),
@@ -97,6 +101,13 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
   });
 }
 
+- (void) handleScreenDidChangeNotification: (NSNotification *)notification{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSDictionary* screenInfo = [self getScreenInfo];
+    [self sendEventWithName:@"@RNExternalDisplay_screenDidChange" body:screenInfo];
+  });
+}
+
 - (void) handleScreenDidDisconnectNotification: (NSNotification *)notification{
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"handleScreenDidDisconnectNotification");
@@ -109,6 +120,7 @@ RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromis
   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
   [center removeObserver:self name:UISceneWillConnectNotification object:nil];
   [center removeObserver:self name:UISceneDidDisconnectNotification object:nil];
+  [center removeObserver:self name:@"RNExternalDisplaySceneChange" object:nil];
 }
 
 #ifdef RCT_NEW_ARCH_ENABLED

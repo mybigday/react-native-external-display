@@ -35,11 +35,8 @@
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
   scene.session.userInfo = @{@"type": @"@RNExternalDisplay_create"};
 
-  NSLog(@"TestSceneDelegate: scene:willConnectToSession:options:");
-
   UIWindowScene *windowScene = (UIWindowScene *)scene;
 
-  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
   self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
   self.window.frame = windowScene.coordinateSpace.bounds;
   self.window.rootViewController = [[UIViewController alloc] init];
