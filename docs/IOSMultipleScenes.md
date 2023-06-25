@@ -6,11 +6,11 @@ It is able to use multiple windows on iPad ([More details](https://developer.app
 
 [TODO Screenshot iPadOS]
 
-> iOS Simulator (iPad Pro 11-inch)
+> iOS Simulator (`iPad Pro (11-inch)`)
 
 [TODO Screenshot visionOS]
 
-> visionOS Simulator (Apple TV)
+> visionOS Simulator (`Apple Vision Pro (Designed for iPad)`)
 
 It requires some setup of the app project.
 
@@ -102,6 +102,20 @@ The behavior of `Create Window` in the scene delegates setup:
 
 You can customize the scene configuration in `application:configurationForConnectingSceneSession:options:` method. Please make sure there is only one main scene can be active at the same time.
 
+## Resizable scene
+
+The scene resizable is depends on the orientation setting of the app. You can change the orientation setting in `Info.plist`:
+
+```xml
+<key>UISupportedInterfaceOrientations~ipad</key>
+<array>
+  <string>UIInterfaceOrientationLandscapeLeft</string>
+  <string>UIInterfaceOrientationLandscapeRight</string>
+  <string>UIInterfaceOrientationPortrait</string>
+  <string>UIInterfaceOrientationPortraitUpsideDown</string>
+</array>
+```
+
 ## When the main scene is closed
 
 The main scene can be closed and the app will be still running if another scenes is active.
@@ -120,4 +134,8 @@ To enable Stage Manager on iPad simulator:
 
 ## Notices
 
+These are some issues may support/fix in the future or not:
+
 - Currently it not supported drag-and-drop to create new scene
+- Currently the multiple scenes not working on macOS (Tested on 13.4), `requestSceneSessionActivation` always failed even `UIApplicationSupportsMultipleScenes` is enabled
+- SafeAreaView has no effect on new scenes
