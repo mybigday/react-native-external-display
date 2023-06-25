@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, Button } from 'react-native'
-import ExternalDisplayEvent from 'react-native-external-display/js/NativeRNExternalDisplayEvent'
 
 import SimpleTextInterval from './SimpleTextInterval'
 import Modal from './Modal'
@@ -32,9 +31,6 @@ function App() {
       {Object.keys(exampleMap).map((key) => (
         <Button key={key} title={key} onPress={() => setPage(key)} />
       ))}
-      <Button title="Request new Scene" onPress={() => {
-        ExternalDisplayEvent.requestScene().then(console.log)
-      }} />
     </View>
   )
 }

@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react'
 import { SafeAreaView, View, Text, Button, ScrollView } from 'react-native'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
+import SceneManager from './SceneManager'
 
 type Props = {
   onBack: () => void,
@@ -72,6 +73,7 @@ export default function Example(props: Props) {
         onPress={() => setMount(d => !d)}
         title={mount ? 'UNMOUNT' : 'MOUNT'}
       />
+      <SceneManager />
       <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
