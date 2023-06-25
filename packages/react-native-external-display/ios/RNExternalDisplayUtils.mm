@@ -68,28 +68,18 @@
 @end
 
 
-@implementation RNEXternalAppDelegateUtil
+@implementation RNExternalAppDelegateUtil
 
 + (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
   NSString* activityType = options.userActivities.anyObject.activityType;
 
-  // Check duplicate on new window, If main scene is already connected, use `create` instead
-  bool isMainDuplicated = false;
-  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
-  for (UIScene *scene in scenes) {
-    if (
-      [self isSceneTypeCreate:scene] &&
-      (scene.activationState == UISceneActivationStateForegroundActive ||
-      scene.activationState == UISceneActivationStateBackground)
-    ) {
-      isMainDuplicated = true;
-    }
-  }
-
   if (
-    isMainDuplicated ||
-    [activityType isEqualToString:RN_EXTERNAL_SCENE_TYPE_CREATE] ||
-    connectingSceneSession.role == UIWindowSceneSessionRoleExternalDisplay
+    // Check duplicate on new window, If main scene is already connected, use `create` instead
+    [self isMainSceneActive] ||
+    // Check is external screen
+    connectingSceneSession.role == UIWindowSceneSessionRoleExternalDisplay ||
+    // Check is create from method
+    [activityType isEqualToString:RN_EXTERNAL_SCENE_TYPE_CREATE]
   ) {
     UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneCreate" sessionRole:@"Create"];
     configuration.delegateClass = RNExternalSceneDelegate.class;
@@ -99,6 +89,21 @@
   UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneMain" sessionRole:UIWindowSceneSessionRoleApplication];
   configuration.delegateClass = RNExternalSceneMainDelegate.class;
   return configuration;
+}
+
++ (bool)isMainSceneActive {
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+  bool isMainActive = false;
+  for (UIScene *scene in scenes) {
+    if (
+      [self isSceneTypeCreate:scene] &&
+      (scene.activationState == UISceneActivationStateForegroundActive ||
+      scene.activationState == UISceneActivationStateBackground)
+    ) {
+      isMainActive = true;
+    }
+  }
+  return isMainActive;
 }
 
 + (bool)isSceneTypeCreate:(UIScene *)scene {
