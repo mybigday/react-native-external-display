@@ -40,6 +40,7 @@ const ExternalDisplayView = (props: Props) => {
     ...nativeProps
   } = props
   const screens = useExternalDisplay(props)
+  console.log(screens)
   const scr = screens[screen]
   if (!scr && !fallbackInMainScreen) {
     return null

@@ -5,7 +5,7 @@ import { TurboModuleRegistry } from 'react-native'
 export interface Spec extends TurboModule {
   getInitialScreens: () => {||},
   init: () => void,
-  requestScene: () => boolean,
+  requestScene: (options: {}) => boolean,
   closeScene: (sceneId: string) => boolean,
   isMainSceneActive: () => boolean,
   resumeMainScene: () => boolean,

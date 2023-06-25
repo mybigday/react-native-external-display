@@ -8,7 +8,9 @@ export default function SceneManager(props) {
       <Button
         title="REQUEST NEW SCENE"
         onPress={() => {
-          ExternalDisplayEvent.requestScene().then(console.log)
+          ExternalDisplayEvent.requestScene({
+            testField: '1',
+          }).then(console.log)
         }}
       />
     </>

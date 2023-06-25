@@ -49,13 +49,14 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
   resolve(@{});
 }
 
-RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(requestScene:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
   if (![self supportMultipleScenes]) {
     reject(@"error", @"Not supported multiple scenes", nil);
     return;
   }
   dispatch_async(dispatch_get_main_queue(), ^{
     NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:RN_EXTERNAL_SCENE_TYPE_CREATE];
+    userActivity.userInfo = options;
     [UIApplication.sharedApplication
       requestSceneSessionActivation:nil
       userActivity:userActivity
@@ -141,6 +142,7 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
           @"wantsSoftwareDimming": @(scene.screen.wantsSoftwareDimming),
 #endif
           // @"maximumFramesPerSecond": @(screen.maximumFramesPerSecond),
+          @"userInfo": scene.session.userInfo,
         }
         forKey:scene.session.persistentIdentifier
       ];
