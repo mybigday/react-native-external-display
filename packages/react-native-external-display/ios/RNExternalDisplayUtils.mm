@@ -54,7 +54,7 @@
 @synthesize window = _window;
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-  scene.session.userInfo = @{@"type": @"@RNExternalDisplay_create"};
+  scene.session.userInfo = @{@"type": RN_EXTERNAL_SCENE_TYPE_CREATE};
 
   UIWindowScene *windowScene = (UIWindowScene *)scene;
 
@@ -88,7 +88,7 @@
 
   if (
     isMainDuplicated ||
-    [activityType isEqualToString:@"create"] ||
+    [activityType isEqualToString:RN_EXTERNAL_SCENE_TYPE_CREATE] ||
     connectingSceneSession.role == UIWindowSceneSessionRoleExternalDisplay
   ) {
     UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneCreate" sessionRole:@"Create"];

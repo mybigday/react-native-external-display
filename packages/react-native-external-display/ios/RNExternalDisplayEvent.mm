@@ -39,7 +39,7 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
 
 RCT_EXPORT_METHOD(requestScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:@"create"];
+    NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:RN_EXTERNAL_SCENE_TYPE_CREATE];
     [UIApplication.sharedApplication
       requestSceneSessionActivation:nil
       userActivity:userActivity
