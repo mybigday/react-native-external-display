@@ -18,7 +18,9 @@
 }
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-  return [RNEXternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options];
+  UISceneConfiguration * configuration = [RNEXternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options];
+  // You can put custom configuration here
+  return configuration;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
