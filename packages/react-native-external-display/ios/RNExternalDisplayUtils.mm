@@ -54,7 +54,10 @@
 @synthesize window = _window;
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-  scene.session.userInfo = @{@"type": RN_EXTERNAL_SCENE_TYPE_CREATE};
+  NSDictionary *userInfo = [connectionOptions.userActivities.anyObject.userInfo mutableCopy];
+  [userInfo setValue:RN_EXTERNAL_SCENE_TYPE_CREATE forKey:@"type"];
+
+  scene.session.userInfo = userInfo;
 
   UIWindowScene *windowScene = (UIWindowScene *)scene;
 
