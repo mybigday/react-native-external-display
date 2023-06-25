@@ -94,7 +94,12 @@
     rootViewController.view = [RCTView new];
     int i = 0;
     for (UIView *subview in _subviews) {
+#ifdef RCT_NEW_ARCH_ENABLED
+      [subview removeFromSuperview];
+      [rootViewController.view mountChildComponentView:subview index:i];
+#else
       [rootViewController.view insertSubview:subview atIndex:i];
+#endif
       i++;
     }
     _window.rootViewController = rootViewController;
