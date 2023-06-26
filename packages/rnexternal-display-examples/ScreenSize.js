@@ -6,7 +6,7 @@ import ExternalDisplay, {
   useExternalDisplay,
   useScreenSize,
 } from 'react-native-external-display'
-import SceneManager from './SceneManager'
+import SceneManager from './utils/SceneManager'
 
 const InScreen = () => {
   const { id, width, height } = useScreenSize() || {}
@@ -46,6 +46,7 @@ export default function Example(props: Props) {
   const info = useExternalDisplay()
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
+  const [screen, setScreen] = useState(null)
   return (
     <SafeAreaView
       style={{
@@ -56,11 +57,9 @@ export default function Example(props: Props) {
       <View style={{ flex: 1 }}>
         {mount && (
           <ExternalDisplay
-            mainScreenStyle={{
-              flex: 1,
-            }}
+            mainScreenStyle={{ flex: 1 }}
             fallbackInMainScreen
-            screen={on && Object.keys(info)[0]}
+            screen={on && (screen || Object.keys(info)[0])}
           >
             <InScreen />
           </ExternalDisplay>
@@ -71,7 +70,7 @@ export default function Example(props: Props) {
         onPress={() => setMount(d => !d)}
         title={mount ? 'UNMOUNT' : 'MOUNT'}
       />
-      <SceneManager />
+      <SceneManager onSelectScreen={setScreen} />
       <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )

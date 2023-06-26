@@ -10,6 +10,7 @@ import RNExternalDisplay from './js/NativeRNExternalDisplay'
 import { getScreens } from './js/screens'
 import type { Screen } from './js/screens'
 import { useExternalDisplay } from './js/useExternalDisplay'
+import SceneManager from './js/SceneManager'
 
 const styles = {
   screen: StyleSheet.absoluteFill,
@@ -40,7 +41,6 @@ const ExternalDisplayView = (props: Props) => {
     ...nativeProps
   } = props
   const screens = useExternalDisplay(props)
-  console.log(screens)
   const scr = screens[screen]
   if (!scr && !fallbackInMainScreen) {
     return null
@@ -74,6 +74,6 @@ ExternalDisplayView.defaultProps = {
   onScreenDisconnect: () => {},
 }
 
-export { getScreens, useExternalDisplay }
+export { getScreens, useExternalDisplay, SceneManager }
 
 export default ExternalDisplayView

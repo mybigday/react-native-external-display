@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react'
 import { SafeAreaView, View, Text, Button, ScrollView } from 'react-native'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
-import SceneManager from './SceneManager'
+import SceneManager from './utils/SceneManager'
 
 type Props = {
   onBack: () => void,
@@ -15,6 +15,7 @@ export default function Example(props: Props) {
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
   const scrollViewRef = useRef()
+  const [screen, setScreen] = useState(null)
   return (
     <SafeAreaView
       style={{
@@ -29,7 +30,7 @@ export default function Example(props: Props) {
               flex: 1,
             }}
             fallbackInMainScreen
-            screen={on && Object.keys(info)[0]}
+            screen={on && (screen || Object.keys(info)[0])}
             onScreenConnect={setInfo}
             onScreenDisconnect={setInfo}
           >
@@ -73,7 +74,7 @@ export default function Example(props: Props) {
         onPress={() => setMount(d => !d)}
         title={mount ? 'UNMOUNT' : 'MOUNT'}
       />
-      <SceneManager />
+      <SceneManager onSelectScreen={setScreen} />
       <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
