@@ -20,7 +20,10 @@
 
 @interface RNExternalAppDelegateUtil : NSObject
 
-+ (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options;
++ (UISceneConfiguration *)application:(UIApplication *)application
+  configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession
+  options:(UISceneConnectionOptions *)connectionOptions
+  noMainScene:(BOOL)alwaysTypeCreate;
 + (bool)isMainSceneActive;
 + (bool)isSceneTypeCreate:(UIScene *)scene;
 

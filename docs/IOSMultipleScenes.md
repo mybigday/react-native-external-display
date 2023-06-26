@@ -59,7 +59,7 @@ To support multiple scenes, these are two steps need to setup in your Xcode proj
  }
  
 +- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-+  UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options];
++  UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options noMainScene:NO];
 +  // You can put custom configuration here
 +  return configuration;
 +}
@@ -105,7 +105,14 @@ You will need to resume the main scene if you want to use it again:
 - Create Window by click app icon on dock, then click the top-left `+` button
 - Call the `resumeMainScene(options)` method, you can also check the status by `isMainSceneActive()` method
 
-For a multi-window app with exactly the same layout, maybe you can close the main scene forever (Use `closeScene` method or custom configuration), and make the root of the main app is composed of multiple `<ExternalDisplay>`.
+## Case: No main scene (Multi-window app)
+
+For a multi-window app with exactly the same layout, maybe you can close the main scene forever (Use `closeScene` method or custom configuration), and make the root of the main app is composed of multiple `<ExternalDisplay>`:
+
+- Edit `AppDelegate.mm`: Use `noMainScene:NO` (`UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options noMainScene:YES];`) so it will not create the main scene to show the root view.
+- Make sure your app can automatically create new scene & render views by `<ExternalDisplay>`.
+
+Example is WIP.
 
 ## Test multiple scenes on iPad simulator
 
