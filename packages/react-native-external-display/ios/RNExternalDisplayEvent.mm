@@ -18,7 +18,7 @@ RCT_EXPORT_MODULE()
   return YES;
 }
 
-- (bool) supportMultipleScenes {
+- (bool)supportMultipleScenes {
   bool supportMultipleScenes = false;
   if (@available(iOS 13.0, tvOS 13.0, *)) {
     supportMultipleScenes = [UIApplication sharedApplication].supportsMultipleScenes;
@@ -54,9 +54,18 @@ RCT_EXPORT_METHOD(requestScene:(NSDictionary *)options resolve:(RCTPromiseResolv
     reject(@"error", @"Not supported multiple scenes", nil);
     return;
   }
+  if (options[@"userInfo"] && ![options[@"userInfo"] isKindOfClass:[NSDictionary class]]) {
+    reject(@"error", @"options.userInfo must be object", nil);
+    return;
+  }
+  NSMutableDictionary *userInfo = [options[@"userInfo"] mutableCopy];
+  if (!userInfo) userInfo = [NSMutableDictionary new];
+  if (options[@"windowBackgroundColor"]) {
+    userInfo[@"windowBackgroundColor"] = options[@"windowBackgroundColor"];
+  }
   dispatch_async(dispatch_get_main_queue(), ^{
     NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:RN_EXTERNAL_SCENE_TYPE_CREATE];
-    userActivity.userInfo = options;
+    userActivity.userInfo = userInfo;
     [UIApplication.sharedApplication
       requestSceneSessionActivation:nil
       userActivity:userActivity

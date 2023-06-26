@@ -38,7 +38,7 @@ export default function SceneManagerComponent(props: Props) {
         title="REQUEST NEW SCENE"
         onPress={() => {
           SceneManager.requestScene({
-            testField: '1',
+            userInfo: { testField: '1' },
           })
         }}
       />

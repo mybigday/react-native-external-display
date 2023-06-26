@@ -67,12 +67,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:RN_EXTERNAL_SCENE_EVENT_TYPE_CHANGE object:nil];
   }];
 
-  NSString *backgroundColor = userInfo[@"backgroundColor"];
+  NSString *backgroundColor = userInfo[@"windowBackgroundColor"];
   UIColor *color = nil;
   if (backgroundColor) {
     color = [self colorFromHexString:backgroundColor];
   } else {
-    color = [self colorFromHexString:@"#222222"];
+    color = [UIColor blackColor];
   }
   self.window.backgroundColor = color;
   [self.window makeKeyAndVisible];
