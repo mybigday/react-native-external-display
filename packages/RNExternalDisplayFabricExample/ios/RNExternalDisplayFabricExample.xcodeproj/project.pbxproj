@@ -489,6 +489,7 @@
 				DEVELOPMENT_TEAM = 5427S6C58K;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RNExternalDisplayFabricExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,6 +522,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5427S6C58K;
 				INFOPLIST_FILE = RNExternalDisplayFabricExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -123,7 +123,8 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
   ];
 }
 
--(NSDictionary *)getScreenInfo {
+// iOS 13+ only
+-(NSDictionary *)getUISceneInfo {
   NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
   NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
   for (UIWindowScene* scene in scenes) {
@@ -152,6 +153,39 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
     }
   }
   return screenInfo;
+}
+
+-(NSDictionary *)getUIScreenInfo {
+  NSArray *screens = [UIScreen screens];
+  NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
+  NSUInteger index = 0;
+  for (UIScreen* screen in screens) {
+    if (screen != UIScreen.mainScreen) {
+      [screenInfo
+        setValue:@{
+          @"id": @(index),
+          @"width": @(screen.bounds.size.width),
+          @"height": @(screen.bounds.size.height),
+          @"mirrored": @(screen.mirroredScreen == UIScreen.mainScreen),
+#if !TARGET_OS_TV
+          @"wantsSoftwareDimming": @(screen.wantsSoftwareDimming),
+#endif
+          // @"maximumFramesPerSecond": @(screen.maximumFramesPerSecond),
+        }
+        forKey:[NSString stringWithFormat: @"%ld", index]
+      ];
+    }
+    index++;
+  }
+  return screenInfo;
+}
+
+-(NSDictionary *)getScreenInfo {
+  if (@available(iOS 13.0, tvOS 13.0, *)) {
+    return [self getUISceneInfo];
+  } else {
+    return [self getUIScreenInfo];
+  }
 }
 
 - (void) handleScreenDidConnectNotification: (NSNotification *)notification{

@@ -65,31 +65,64 @@
   #define MA_APPLE_TV
 #endif
 
+- (void)setHighestWidthMode:(UIScreen *)screen {
+#if !defined(MA_APPLE_TV)
+  __block UIScreenMode *highestWidthMode = NULL;
+
+  [screen.availableModes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    UIScreenMode *currentModeInLoop = obj;
+    if (!highestWidthMode || currentModeInLoop.size.width > highestWidthMode.size.width)
+      highestWidthMode = currentModeInLoop;
+  }];
+
+  screen.currentMode = highestWidthMode;
+  screen.overscanCompensation = UIScreenOverscanCompensationScale;
+#endif
+}
+
+- (UIWindow *)getScreenWindow {
+  NSArray *screens = [UIScreen screens];
+  int index = [_screen intValue];
+  if (index > 0 && index < [screens count]) {
+    UIScreen* screen = [screens objectAtIndex:index];
+
+    [self setHighestWidthMode:screen];
+
+    if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+    UIViewController *rootViewController = [UIViewController new];
+    rootViewController.view = [RCTView new];
+  }
+
+  return _window;
+}
+
+// iOS 13+ only
+- (UIWindow *)getSceneWindow {
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+
+  UIWindowScene* scene = [[scenes filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"session.persistentIdentifier == %@", _screen]] anyObject];
+  if (scene == nil) return _window;
+
+  UIScreen *screen = scene.screen;
+  [self setHighestWidthMode:screen];
+
+  if (!_window) _window = scene.windows.firstObject;
+  [_window setWindowScene:scene];
+  return _window;
+}
+
 - (void)updateScreen {
   if ([_subviews count] == 0) {
     return;
   }
-  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
 
-  UIWindowScene* scene = [[scenes filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"session.persistentIdentifier == %@", _screen]] anyObject];
-  if (scene != nil) {
-    // NSLog(@"[RNExternalDisplay] Selected External Display");
-    UIScreen *screen = scene.screen;
-
-#if !defined(MA_APPLE_TV)
-    __block UIScreenMode *highestWidthMode = NULL;
-
-    [screen.availableModes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-      UIScreenMode *currentModeInLoop = obj;
-      if (!highestWidthMode || currentModeInLoop.size.width > highestWidthMode.size.width)
-        highestWidthMode = currentModeInLoop;
-    }];
-
-    screen.currentMode = highestWidthMode;
-    screen.overscanCompensation = UIScreenOverscanCompensationScale;
-#endif
-
-    if (!_window) _window = scene.windows.firstObject;
+  UIWindow *window = nil;
+  if (@available(iOS 13.0, tvOS 13.0, *)) {
+    window = [self getSceneWindow];
+  } else {
+    window = [self getScreenWindow];
+  }
+  if (window) {
     int i = 0;
     for (UIView *subview in _subviews) {
 #ifdef RCT_NEW_ARCH_ENABLED
@@ -100,7 +133,6 @@
 #endif
       i++;
     }
-    [_window setWindowScene:scene];
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
 #ifdef RCT_NEW_ARCH_ENABLED

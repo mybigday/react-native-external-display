@@ -24,7 +24,7 @@ export default function SceneManagerComponent(props: Props) {
   return (
     <>
       {Object.keys(screens).map((id) => (
-        <View style={styles.screen}>
+        <View key={id} style={styles.screen}>
           <Text style={styles.text}>{`Screen: ${id}`}</Text>
           <Button title="SELECT" onPress={() => props.onSelectScreen(id)} />
           <Button
