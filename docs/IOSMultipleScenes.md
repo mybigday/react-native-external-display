@@ -18,49 +18,26 @@ It requires some setup of the app project.
 
 To support multiple scenes, these are two steps need to setup in your Xcode project:
 
-1. Edit `Info.plist` for enable multiple scenes:
+1. Edit `Info.plist` for enable multiple scenes & disable full screen:
 
 ```patch
---- Info-prev.plist	2023-06-25 13:53:46
-+++ Info.plist	2023-06-25 13:54:04
-@@ -51,5 +51,30 @@
- 	</array>
- 	<key>UIViewControllerBasedStatusBarAppearance</key>
- 	<false/>
+--- Info.prev.plist	2023-06-26 13:53:27
++++ Info.plist	2023-06-26 13:52:22
+@@ -37,6 +37,13 @@
+ 	</dict>
+ 	<key>NSLocationWhenInUseUsageDescription</key>
+ 	<string></string>
 +	<key>UIApplicationSceneManifest</key>
 +	<dict>
-+	  <key>UIApplicationSupportsMultipleScenes</key>
-+   <true/>
-+   <key>UISceneConfigurations</key>
-+   <dict>
-+     <key>UIWindowSceneSessionRoleApplication</key>
-+     <array>
-+       <dict>
-+         <key>UISceneConfigurationName</key>
-+         <string>RNExternalScene</string>
-+         <key>UISceneDelegateClassName</key>
-+         <string>RNExternalSceneMainDelegate</string>
-+       </dict>
-+       <dict>
-+         <key>UISceneConfigurationName</key>
-+         <string>RNExternalSceneCreate</string>
-+         <key>UISceneDelegateClassName</key>
-+         <string>RNExternalSceneDelegate</string>
-+       </dict>
-+     </array>
-+   </dict>
++		<key>UIApplicationSupportsMultipleScenes</key>
++		<true/>
 +	</dict>
 +	<key>UIRequiresFullScreen</key>
 +	<false/>
- </dict>
- </plist>
+ 	<key>UILaunchStoryboardName</key>
+ 	<string>LaunchScreen</string>
+ 	<key>UIRequiredDeviceCapabilities</key>
 ```
-
-These are two scenes:
-- `RNExternalSceneMainDelegate`: The main scene of the app. Please make sure it only creates one unless you're project able to building multiple react-native bridge hosts
-- `RNExternalSceneDelegate`: The scene for external screen, it can be multiple.
-
-Please also make sure the `UIRequiresFullScreen` is `false`.
 
 2. Edit `AppDelegate.mm` to use UIScene:
 
@@ -91,6 +68,10 @@ Please also make sure the `UIRequiresFullScreen` is `false`.
  {
  #if DEBUG
 ```
+
+This setup the two scenes:
+- `RNExternalSceneMainDelegate`: The main scene of the app. Please make sure it only creates one unless you're project able to building multiple react-native bridge hosts
+- `RNExternalSceneDelegate`: The scene for external screen, it can be multiple.
 
 The behavior of `Create Window` in the scene delegates setup:
 
