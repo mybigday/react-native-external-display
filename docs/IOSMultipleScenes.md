@@ -83,6 +83,28 @@ The behavior of `Create Window` in the scene delegates setup:
 
 You can customize the scene configuration in `application:configurationForConnectingSceneSession:options:` method. Please make sure there is only one main scene can be active at the same time.
 
+## `SceneManager` usage
+
+```js
+import { SceneManager } from 'react-native-external-display';
+
+const isMultipleScenesAvailable = SceneManager.isAvailable();
+
+// Request new scene
+SceneManager.requestScene({
+  windowBackgroundColor: '#ccc', // Default to black
+  userInfo: {
+    // Custom data, that can be accessed in `screen.userInfo` from getScreens()
+  },
+})
+
+// Close scene (sceneId can be get from getScreens())
+SceneManager.closeScene(sceneId);
+
+SceneManager.isMainSceneActive(); // Check if the main scene not closed
+SceneManager.resumeMainScene(); // Resume the main scene if it is closed
+```
+
 ## Resizable scene
 
 The scene resizable is depends on the orientation setting of the app. You can change the orientation setting in `Info.plist`:
