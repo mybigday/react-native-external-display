@@ -129,7 +129,10 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
   for (UIWindowScene* scene in scenes) {
     if (
       ![scene.session.role isEqual:UIWindowSceneSessionRoleApplication] ||
-      [RNExternalAppDelegateUtil isSceneTypeCreate:scene]
+      (
+        [RNExternalAppDelegateUtil isSceneTypeCreate:scene] &&
+        scene.activationState != UISceneActivationStateUnattached
+      )
     ) {
       UIWindow *window = scene.windows.firstObject;
       [screenInfo
