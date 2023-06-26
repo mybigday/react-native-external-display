@@ -54,12 +54,12 @@
 @synthesize window = _window;
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-  NSDictionary *userInfo = [connectionOptions.userActivities.anyObject.userInfo mutableCopy];
+  NSMutableDictionary *userInfo = [connectionOptions.userActivities.anyObject.userInfo mutableCopy];
+  if (!userInfo) userInfo = [NSMutableDictionary new];
   [userInfo setValue:RN_EXTERNAL_SCENE_TYPE_CREATE forKey:@"type"];
 
-  scene.session.userInfo = userInfo;
-
   UIWindowScene *windowScene = (UIWindowScene *)scene;
+  windowScene.session.userInfo = userInfo;
 
   self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
   self.window.frame = windowScene.coordinateSpace.bounds;
@@ -99,9 +99,8 @@
   bool isMainActive = false;
   for (UIScene *scene in scenes) {
     if (
-      [self isSceneTypeCreate:scene] &&
-      (scene.activationState == UISceneActivationStateForegroundActive ||
-      scene.activationState == UISceneActivationStateBackground)
+      ![self isSceneTypeCreate:scene] &&
+      scene.activationState != UISceneActivationStateUnattached
     ) {
       isMainActive = true;
     }
