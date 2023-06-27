@@ -91,6 +91,8 @@
     if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
     UIViewController *rootViewController = [UIViewController new];
     rootViewController.view = [RCTView new];
+    _window.rootViewController = rootViewController;
+    [_window setScreen:screen];
   }
 
   return _window;
