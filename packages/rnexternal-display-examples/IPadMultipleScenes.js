@@ -47,7 +47,7 @@ export default function Example(props: Props) {
   const info = useExternalDisplay()
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
-  const [screen, setScreen] = useState(null)
+
   return (
     <SafeAreaView
       style={{
@@ -57,19 +57,20 @@ export default function Example(props: Props) {
     >
       <View style={{ flex: 1 }}>
         {mount && (
-          <ExternalDisplay
-            mainScreenStyle={{ flex: 1 }}
-            fallbackInMainScreen
-            screen={on && (screen || Object.keys(info)[0])}
-          >
-            <InScreen />
-          </ExternalDisplay>
+          Object.keys(info).map((id) => (
+            <ExternalDisplay
+              fallbackInMainScreen={false}
+              screen={on && id}
+            >
+              <InScreen />
+            </ExternalDisplay>
+          ))
         )}
       </View>
       <ScreenControl 
         on={on}
         mount={mount}
-        onSelectScreen={setScreen}
+        onSelectScreen={() => {}}
         onChangeMount={setMount}
         onToggle={setOn}
         onBack={onBack}
