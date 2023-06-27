@@ -38,6 +38,7 @@ export default function SceneManagerComponent(props: Props) {
         title="REQUEST NEW SCENE"
         onPress={() => {
           SceneManager.requestScene({
+            windowBackgroundColor: '#222222',
             userInfo: { testField: '1' },
           })
         }}

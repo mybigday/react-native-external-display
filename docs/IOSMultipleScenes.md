@@ -42,8 +42,8 @@ To support multiple scenes, these are two steps need to setup in your Xcode proj
 2. Edit `AppDelegate.mm` to use UIScene:
 
 ```patch
---- AppDelegate-prev.mm	2023-06-25 13:48:55
-+++ AppDelegate.mm	2023-06-25 13:49:58
+--- AppDelegate.prev.mm	2023-06-27 09:14:18
++++ AppDelegate.mm	2023-06-27 09:14:39
 @@ -2,6 +2,9 @@
  
  #import <React/RCTBundleURLProvider.h>
@@ -54,12 +54,19 @@ To support multiple scenes, these are two steps need to setup in your Xcode proj
  @implementation AppDelegate
  
  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-@@ -14,6 +17,12 @@
+@@ -14,6 +17,19 @@
    return [super application:application didFinishLaunchingWithOptions:launchOptions];
  }
  
 +- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-+  UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options noMainScene:NO];
++  UISceneConfiguration * configuration =
++    [RNExternalAppDelegateUtil application:application
++      configurationForConnectingSceneSession:connectingSceneSession
++      options:options
++      sceneOptions:@{
++        @"noMainScene": @NO
++      }
++    ];
 +  // You can put custom configuration here
 +  return configuration;
 +}
@@ -131,7 +138,7 @@ You will need to resume the main scene if you want to use it again:
 
 For a multi-window app with exactly the same layout, maybe you can close the main scene forever (Use `closeScene` method or custom configuration), and make the root of the main app is composed of multiple `<ExternalDisplay>`:
 
-- Edit `AppDelegate.mm`: Use `noMainScene:NO` (`UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options noMainScene:YES];`) so it will not create the main scene to show the root view.
+- Edit `AppDelegate.mm`: Use `noMainScene: @YES` scene option (`UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options sceneOptions:@{ @"noMainScene": @YES }];`) so it will not create the main scene to show the root view.
 - Make sure your app can automatically create new scene & render views by `<ExternalDisplay>`.
 
 Example is WIP.

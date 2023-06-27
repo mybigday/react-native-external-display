@@ -23,7 +23,7 @@
 + (UISceneConfiguration *)application:(UIApplication *)application
   configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession
   options:(UISceneConnectionOptions *)connectionOptions
-  noMainScene:(BOOL)alwaysTypeCreate;
+  sceneOptions:(NSDictionary *)sceneOptions;
 + (bool)isMainSceneActive;
 + (bool)isSceneTypeCreate:(UIScene *)scene;
 

@@ -94,12 +94,12 @@
 + (UISceneConfiguration *)application:(UIApplication *)application
   configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession
   options:(UISceneConnectionOptions *)connectionOptions
-  noMainScene:(BOOL)alwaysTypeCreate
+  sceneOptions:(NSDictionary *)sceneOptions
 {
-  NSString* activityType = connectionOptions.userActivities.anyObject.activityType;
-
+  NSUserActivity *userActivity = connectionOptions.userActivities.anyObject;
+  NSString* activityType = userActivity.activityType;
   if (
-    alwaysTypeCreate ||
+    [sceneOptions[@"noMainScene"] isEqual:@YES] ||
     // Check duplicate on new window, If main scene is already connected, use `create` instead
     [self isMainSceneActive] ||
     // Check is external screen
