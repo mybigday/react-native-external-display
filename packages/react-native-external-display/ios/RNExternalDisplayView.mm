@@ -30,13 +30,13 @@
   [super removeReactSubview:subview];
 }
 
-- (void)didMoveToSuperview
-{
-  [super didMoveToSuperview];
-  if (!self.superview) {
-    // [self invalidate];
-  }
-}
+// - (void)didMoveToSuperview
+// {
+//   [super didMoveToSuperview];
+//   if (!self.superview) {
+//     [self invalidate];
+//   }
+// }
 
 - (void)didUpdateReactSubviews {
   if (_fallbackInMainScreen && !_window) {

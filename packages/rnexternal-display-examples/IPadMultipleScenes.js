@@ -59,6 +59,7 @@ export default function Example(props: Props) {
         {mount && (
           Object.keys(info).map((id) => (
             <ExternalDisplay
+              key={id}
               fallbackInMainScreen={false}
               screen={on && id}
             >
