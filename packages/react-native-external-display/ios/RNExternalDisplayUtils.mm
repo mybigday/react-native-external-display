@@ -107,7 +107,7 @@
     // Check is create from method
     [activityType isEqualToString:RN_EXTERNAL_SCENE_TYPE_CREATE]
   ) {
-    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneCreate" sessionRole:@"Create"];
+    UISceneConfiguration *configuration = [[UISceneConfiguration alloc] initWithName:@"RNExternalSceneCreate" sessionRole:UIWindowSceneSessionRoleApplication];
     configuration.delegateClass = RNExternalSceneDelegate.class;
     return configuration;
   }

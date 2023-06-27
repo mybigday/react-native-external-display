@@ -97,6 +97,10 @@ The behavior of `Create Window` in the scene delegates setup:
 
 You can customize the scene configuration in `application:configurationForConnectingSceneSession:options:` method. Please make sure there is only one main scene can be active at the same time.
 
+Example:
+- [RNExternalDisplayExample](../packages/RNExternalDisplayExample)
+- [RNExternalDisplayFabricExample](../packages/RNExternalDisplayFabricExample)
+
 ## `SceneManager` usage
 
 ```js
@@ -148,7 +152,7 @@ For a multi-window app with exactly the same layout, maybe you can close the mai
 - Edit `AppDelegate.mm`: Use `noMainScene: @YES` scene option (`UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options sceneOptions:@{ @"noMainScene": @YES }];`) so it will not create the main scene to show the root view.
 - Make sure your app can automatically create new scene & render views by `<ExternalDisplay>`.
 
-Example is WIP.
+Example: [IPadNoMainSceneExample](../packages/IPadNoMainSceneExample)
 
 ## Test multiple scenes on iPad simulator
 
