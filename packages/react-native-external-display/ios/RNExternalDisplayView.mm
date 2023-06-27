@@ -34,7 +34,7 @@
 {
   [super didMoveToSuperview];
   if (!self.superview) {
-    [self invalidate];
+    // [self invalidate];
   }
 }
 

@@ -32,7 +32,7 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
   _views = nil;
 }
 
-- (void) checkScreen
+- (void)checkScreen
 {
   NSString *screenId = @"";
   for (RNExternalDisplayView *view in _views) {

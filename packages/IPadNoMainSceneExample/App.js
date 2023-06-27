@@ -10,15 +10,18 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      {Object.entries(info).map(([id, screen], index) => (
-        // TODO: This handle to avoid `Detected two or more RNExternalDisplayView` error
-        // It need to fix because it not a good solution
-        <React.Fragment key={id}>
-          <ExternalDisplay fallbackInMainScreen={false} screen={id}>
-            <SimpleBrowser screenId={id} screenIndex={index} screen={screen} />
-          </ExternalDisplay>
-        </React.Fragment>
-      ))}
+      {
+        // TODO: Fix race condition of RNExternalDisplayView
+        // Currently sort the screens by ID to avoid the issue
+        Object.keys(info).map((id, index) => {
+          const screen = info[id]
+          return (
+            <ExternalDisplay key={id} fallbackInMainScreen={false} screen={id}>
+              <SimpleBrowser screenId={id} screenIndex={index} screen={screen} />
+            </ExternalDisplay>
+          )
+        })
+      }
     </GestureHandlerRootView>
   )
 }
