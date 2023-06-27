@@ -18,7 +18,11 @@ It requires some setup of the app project.
 
 To support multiple scenes, these are two steps need to setup in your Xcode project:
 
-1. Edit `Info.plist` for enable multiple scenes & disable full screen:
+1. Edit Xcode workspace: Add iPad target in `Supported Destinations`:
+
+<img width="243" alt="Screenshot 2023-06-27 at 11 09 34" src="https://github.com/mybigday/react-native-external-display/assets/3001525/0cd9c0e8-c1f4-4b07-a2bc-80b9f4fdda5c">
+
+2. Edit `Info.plist` for enable multiple scenes & disable full screen:
 
 ```patch
 --- Info.prev.plist	2023-06-26 13:53:27
@@ -39,7 +43,7 @@ To support multiple scenes, these are two steps need to setup in your Xcode proj
  	<key>UIRequiredDeviceCapabilities</key>
 ```
 
-2. Edit `AppDelegate.mm` to use UIScene:
+3. Edit `AppDelegate.mm` to use UIScene:
 
 ```patch
 --- AppDelegate.prev.mm	2023-06-27 09:14:18
@@ -153,6 +157,8 @@ To enable Stage Manager on iPad simulator:
 
 These are some issues may support/fix in the future or not:
 
+- Currently Touchable / Pressable is not working on new scenes.
+  - We can use [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) instead. (Tested in RNGH v2.12.0)
 - Currently it not supported drag-and-drop to create new scene
 - Currently the multiple scenes not working on macOS (Tested on 13.4), `requestSceneSessionActivation` always failed even `UIApplicationSupportsMultipleScenes` is enabled
 - SafeAreaView has no effect on new scenes

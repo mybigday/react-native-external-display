@@ -1,5 +1,5 @@
 {
-  "name": "rnexternaldisplayfabricexample",
+  "name": "IPadNoMainSceneExample",
   "version": "0.6.0-rc.2",
   "private": true,
   "workspaces": {
@@ -7,7 +7,8 @@
       "react-native",
       "react-native/**",
       "react-native-external-display",
-      "react-native-webview"
+      "react-native-webview",
+      "react-native-gesture-handler"
     ]
   },
   "scripts": {
