@@ -23,7 +23,7 @@
       configurationForConnectingSceneSession:connectingSceneSession
       options:options
       sceneOptions:@{
-        @"noMainScene": @NO
+        @"headless": @NO
       }
     ];
   // You can put custom configuration here
