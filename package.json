@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint .",
     "release": "./scripts/release.sh",
-    "postinstall": "yarnw-sync-deps && yarn --ignore-scripts"
+    "postinstall": "yarnw-sync-deps && yarn --ignore-scripts && patch-package && cd packages/IPadNoMainSceneExample && patch-package"
   },
   "dependencies": {
     "@babel/core": "^7.20.0",
@@ -20,6 +20,7 @@
     "hermes-eslint": "^0.12.1",
     "lerna": "^7.0.0",
     "metro-react-native-babel-preset": "0.73.10",
+    "patch-package": "^7.0.0",
     "react": "18.2.0",
     "react-native": "0.71.11",
     "react-native-gesture-handler": "^2.12.0",

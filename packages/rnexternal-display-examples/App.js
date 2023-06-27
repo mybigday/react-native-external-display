@@ -8,6 +8,7 @@ import ScreenSize from './ScreenSize'
 import ScrollView from './ScrollView'
 import WebView from './WebView'
 import IPadMultipleScenes from './IPadMultipleScenes'
+import Touch from './Touch'
 
 const exampleMap = {
   SimpleTextInterval,
@@ -18,6 +19,7 @@ const exampleMap = {
 }
 if (SceneManager.isAvailable()) {
   exampleMap.IPadMultipleScenes = IPadMultipleScenes
+  exampleMap.Touch = Touch
 }
 
 function App() {
