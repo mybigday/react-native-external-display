@@ -1,12 +1,12 @@
 // @flow
 
 import React, { useState } from 'react'
-import { SafeAreaView, Text, View, Button } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import ExternalDisplay, {
   useExternalDisplay,
   useScreenSize,
 } from 'react-native-external-display'
-import SceneManager from './utils/SceneManager'
+import ScreenControl from './utils/ScreenControl'
 
 const InScreen = () => {
   const { id, width, height } = useScreenSize() || {}
@@ -18,17 +18,17 @@ const InScreen = () => {
         backgroundColor: '#333',
       }}
     >
-      <Text style={{ color: 'red', fontSize: 40 }}>
+      <Text style={{ color: 'red', fontSize: 40, textAlign: 'center' }}>
         ID:
         {' '}
         {id || '(Main)'}
       </Text>
-      <Text style={{ color: 'red', fontSize: 40 }}>
+      <Text style={{ color: 'red', fontSize: 40, textAlign: 'center' }}>
         Width: 
         {' '}
         {width || '(Main)'}
       </Text>
-      <Text style={{ color: 'red', fontSize: 40 }}>
+      <Text style={{ color: 'red', fontSize: 40, textAlign: 'center' }}>
         Height: 
         {' '}
         {height || '(Main)'}
@@ -65,13 +65,14 @@ export default function Example(props: Props) {
           </ExternalDisplay>
         )}
       </View>
-      <Button onPress={() => setOn(d => !d)} title={on ? 'OFF' : 'ON'} />
-      <Button
-        onPress={() => setMount(d => !d)}
-        title={mount ? 'UNMOUNT' : 'MOUNT'}
+      <ScreenControl 
+        on={on}
+        mount={mount}
+        onSelectScreen={setScreen}
+        onChangeMount={setMount}
+        onToggle={setOn}
+        onBack={onBack}
       />
-      <SceneManager onSelectScreen={setScreen} />
-      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }

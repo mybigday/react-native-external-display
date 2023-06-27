@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, Text, View, Button, Modal } from 'react-native'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
-import SceneManager from './utils/SceneManager'
+import ScreenControl from './utils/ScreenControl'
 
 type Props = {
   onBack: () => void,
@@ -62,13 +62,14 @@ export default function Example(props: Props) {
         onPress={() => setOpen(d => !d)}
         title={open ? 'Close' : 'Open'}
       />
-      <Button onPress={() => setOn(d => !d)} title={on ? 'OFF' : 'ON'} />
-      <Button
-        onPress={() => setMount(d => !d)}
-        title={mount ? 'UNMOUNT' : 'MOUNT'}
+      <ScreenControl 
+        on={on}
+        mount={mount}
+        onSelectScreen={setScreen}
+        onChangeMount={setMount}
+        onToggle={setOn}
+        onBack={onBack}
       />
-      <SceneManager onSelectScreen={setScreen} />
-      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }

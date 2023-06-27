@@ -1,10 +1,10 @@
 // @flow
 
 import React, { useState } from 'react'
-import { SafeAreaView, View, Button } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import WebView from 'react-native-webview'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
-import SceneManager from './utils/SceneManager'
+import ScreenControl from './utils/ScreenControl'
 
 type Props = {
   onBack: () => void,
@@ -43,13 +43,14 @@ export default function Example(props: Props) {
           </ExternalDisplay>
         )}
       </View>
-      <Button onPress={() => setOn((d) => !d)} title={on ? 'OFF' : 'ON'} />
-      <Button
-        onPress={() => setMount((d) => !d)}
-        title={mount ? 'UNMOUNT' : 'MOUNT'}
+      <ScreenControl 
+        on={on}
+        mount={mount}
+        onSelectScreen={setScreen}
+        onChangeMount={setMount}
+        onToggle={setOn}
+        onBack={onBack}
       />
-      <SceneManager onSelectScreen={setScreen} />
-      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }

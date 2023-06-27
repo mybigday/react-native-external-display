@@ -18,6 +18,7 @@ type Props = {
 }
 
 export default function SceneManagerComponent(props: Props) {
+  const { onSelectScreen } = props
   const screens = useExternalDisplay()
 
   if (!SceneManager.isAvailable()) return null
@@ -25,8 +26,8 @@ export default function SceneManagerComponent(props: Props) {
     <>
       {Object.keys(screens).map((id) => (
         <View key={id} style={styles.screen}>
-          <Text style={styles.text}>{`Screen: ${id}`}</Text>
-          <Button title="SELECT" onPress={() => props.onSelectScreen(id)} />
+          <Text style={styles.text}>{`Screen: ${id.substring(0, 6)}...`}</Text>
+          <Button title="SELECT" onPress={() => onSelectScreen(id)} />
           <Button
             title="CLOSE"
             onPress={() => SceneManager.closeScene(id)}
