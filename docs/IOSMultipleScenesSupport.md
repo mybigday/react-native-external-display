@@ -1,4 +1,4 @@
-# Multiple Scenes on iOS
+# Multiple Scenes support on iPad targets
 
 __*Platform: iOS 15.0+__
 
