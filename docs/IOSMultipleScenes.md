@@ -2,13 +2,16 @@
 
 __*Platform: iOS 15.0+__
 
-It is able to use multiple windows on iPad ([More details](https://developer.apple.com/documentation/uikit/uiscenedelegate/supporting_multiple_windows_on_ipad)): 
+This package is able to use `<ExternalDisplay>` for multiple windows on iPad ([More details](https://developer.apple.com/documentation/uikit/uiscenedelegate/supporting_multiple_windows_on_ipad)), currently tested on the `Designed for iPad` targets: iPadOS, visionOS (Currently not support on macOS).
 
-[TODO Screenshot iPadOS]
+The following screenshots are the example from [IPadNoMainSceneExample](../packages/IPadNoMainSceneExample), it's very simple browser implementation:
+
+<img width="600" alt="Screenshot 2023-06-27 at 14 39 09" src="https://github.com/mybigday/react-native-external-display/assets/3001525/5afd64c9-6e31-40f2-a8a6-a3b3f8352542">
 
 > iOS Simulator (`iPad Pro (11-inch)`)
 
-[TODO Screenshot visionOS]
+<img width="600" alt="Screenshot 2023-06-27 at 14 46 39" src="https://github.com/mybigday/react-native-external-display/assets/3001525/be24b3d7-96a7-4315-88bc-9aeaf4b533c4">
+
 
 > visionOS Simulator (`Apple Vision Pro (Designed for iPad)`)
 
@@ -157,8 +160,8 @@ To enable Stage Manager on iPad simulator:
 
 These are some issues may support/fix in the future or not:
 
-- Currently Touchable / Pressable is not working on new scenes.
+- Touchable / Pressable is not working on new scenes.
   - We can use [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) instead. (Tested in RNGH v2.12.0)
-- Currently it not supported drag-and-drop to create new scene
-- Currently the multiple scenes not working on macOS (Tested on 13.4), `requestSceneSessionActivation` always failed even `UIApplicationSupportsMultipleScenes` is enabled
+- Drag-and-Drop to create new scene is not supported yet
+- The multiple scenes not working on macOS (Tested on 13.4), `requestSceneSessionActivation` always failed even `UIApplicationSupportsMultipleScenes` is enabled
 - SafeAreaView has no effect on new scenes
