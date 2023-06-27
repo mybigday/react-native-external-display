@@ -6,7 +6,7 @@
 - Example
   - Example project: [old arch](packages/RNExternalDisplayExample) / [new arch](packages/RNExternalDisplayFabricExample)
   - [Examples JS code](packages/rnexternal-display-examples)
-- iPad Multiple Scenes example project: [Simple Multiple Windows Browser](packages/IPadNoMainSceneExample)
+- iPad Multiple Scenes example project: [Simple Multiple Windows Browser](packages/IPadMultiScenesHeadlessExample)
 
 ## Introdution
 

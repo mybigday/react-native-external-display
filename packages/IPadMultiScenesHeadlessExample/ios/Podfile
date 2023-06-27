@@ -21,7 +21,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'IPadNoMainSceneExample' do
+target 'IPadMultiScenesHeadlessExample' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -41,7 +41,7 @@ target 'IPadNoMainSceneExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'IPadNoMainSceneExampleTests' do
+  target 'IPadMultiScenesHeadlessExampleTests' do
     inherit! :complete
     # Pods for testing
   end

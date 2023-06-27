@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint .",
     "release": "./scripts/release.sh",
-    "postinstall": "yarnw-sync-deps && yarn --ignore-scripts && patch-package && cd packages/IPadNoMainSceneExample && patch-package"
+    "postinstall": "yarnw-sync-deps && yarn --ignore-scripts && patch-package && cd packages/IPadMultiScenesHeadlessExample && patch-package"
   },
   "dependencies": {
     "@babel/core": "^7.20.0",

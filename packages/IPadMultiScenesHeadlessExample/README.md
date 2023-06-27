@@ -1,4 +1,4 @@
-# IPadNoMainSceneExample
+# IPadMultiScenesHeadlessExample
 
 ## Usage
 

@@ -4,7 +4,7 @@ __*Platform: iOS 15.0+__
 
 This package is able to use `<ExternalDisplay>` for multiple windows on iPad ([More details](https://developer.apple.com/documentation/uikit/uiscenedelegate/supporting_multiple_windows_on_ipad)), currently tested on the `Designed for iPad` targets: iPadOS, visionOS (Currently not support on macOS).
 
-The following screenshots are the example from [IPadNoMainSceneExample](../packages/IPadNoMainSceneExample), it's very simple browser implementation:
+The following screenshots are the example from [IPadMultiScenesHeadlessExample](../packages/IPadMultiScenesHeadlessExample), it's very simple browser implementation:
 
 <img width="600" alt="Screenshot 2023-06-27 at 14 39 09" src="https://github.com/mybigday/react-native-external-display/assets/3001525/5afd64c9-6e31-40f2-a8a6-a3b3f8352542">
 
@@ -152,7 +152,7 @@ For a multi-window app with exactly the same layout, maybe you can close the mai
 - Edit `AppDelegate.mm`: Use `noMainScene: @YES` scene option (`UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options sceneOptions:@{ @"noMainScene": @YES }];`) so it will not create the main scene to show the root view.
 - Make sure your app can automatically create new scene & render views by `<ExternalDisplay>`.
 
-Example: [IPadNoMainSceneExample](../packages/IPadNoMainSceneExample)
+Example: [IPadMultiScenesHeadlessExample](../packages/IPadMultiScenesHeadlessExample)
 
 ## Test multiple scenes on iPad simulator
 
