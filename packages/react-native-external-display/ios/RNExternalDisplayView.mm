@@ -46,10 +46,10 @@
 
 - (void)invalidateWindow {
   if (_window) {
-    for (UIView *subview in _subviews) {
-      [subview removeFromSuperview];
-    }
     dispatch_async(dispatch_get_main_queue(), ^{
+      for (UIView *subview in _subviews) {
+        [subview removeFromSuperview];
+      }
       [UIApplication.sharedApplication.delegate.window makeKeyAndVisible];
     });
   }
