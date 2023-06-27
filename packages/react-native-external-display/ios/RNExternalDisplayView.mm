@@ -80,6 +80,15 @@
 #endif
 }
 
+- (void)setViewControllerIfNeeded {
+  if (!_window) return;
+  if (!_window.rootViewController) {
+    UIViewController *rootViewController = [UIViewController new];
+    rootViewController.view = [RCTView new];
+    _window.rootViewController = rootViewController;
+  }
+}
+
 - (UIWindow *)getScreenWindow {
   NSArray *screens = [UIScreen screens];
   int index = [_screen intValue];
@@ -89,9 +98,7 @@
     [self setHighestWidthMode:screen];
 
     if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
-    UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = [RCTView new];
-    _window.rootViewController = rootViewController;
+    [self setViewControllerIfNeeded];
     [_window setScreen:screen];
   }
 
@@ -109,7 +116,11 @@
   [self setHighestWidthMode:screen];
 
   if (!_window) _window = scene.windows.firstObject;
-  [_window setWindowScene:scene];
+  if (!_window) {
+    _window = [[UIWindow alloc] initWithWindowScene:scene];
+    _window.frame = scene.coordinateSpace.bounds;
+    [self setViewControllerIfNeeded];
+  }
   return _window;
 }
 

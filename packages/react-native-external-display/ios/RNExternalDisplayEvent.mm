@@ -145,11 +145,18 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
       )
     ) {
       UIWindow *window = scene.windows.firstObject;
+      CGFloat width = window.bounds.size.width;
+      CGFloat height = window.bounds.size.height;
+      // If window is not attached before, use screen size
+      if (!width || !height) {
+        width = scene.screen.bounds.size.width;
+        height = scene.screen.bounds.size.height;
+      }
       [screenInfo
         setValue:@{
           @"id": scene.session.persistentIdentifier,
-          @"width": @(window.bounds.size.width),
-          @"height": @(window.bounds.size.height),
+          @"width": @(width),
+          @"height": @(height),
           @"mirrored": @(scene.screen.mirroredScreen == UIScreen.mainScreen),
 #if !TARGET_OS_TV
           @"wantsSoftwareDimming": @(scene.screen.wantsSoftwareDimming),
