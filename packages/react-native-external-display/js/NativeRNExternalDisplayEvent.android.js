@@ -5,10 +5,6 @@ import { TurboModuleRegistry } from 'react-native'
 export interface Spec extends TurboModule {
   getInitialScreens: () => {||},
   init: () => void,
-  requestScene: (options: {}) => boolean,
-  closeScene: (sceneId: string) => boolean,
-  isMainSceneActive: () => boolean,
-  resumeMainScene: () => boolean,
 }
 
 export default (TurboModuleRegistry.get<Spec>('RNExternalDisplayEvent'): ?Spec)

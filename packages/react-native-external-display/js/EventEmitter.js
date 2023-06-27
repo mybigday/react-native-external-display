@@ -4,7 +4,7 @@ import {
   Platform,
   Dimensions,
 } from 'react-native'
-import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent'
+import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent.android'
 
 let scale
 let EventEmitter

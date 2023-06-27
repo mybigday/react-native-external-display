@@ -1,4 +1,4 @@
-import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent'
+import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent.android'
 
 export default {
   isAvailable: () => !!RNExternalDisplayEvent.SUPPORT_MULTIPLE_SCENES,
