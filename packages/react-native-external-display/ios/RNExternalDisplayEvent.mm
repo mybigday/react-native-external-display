@@ -152,10 +152,14 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
         width = scene.screen.bounds.size.width;
         height = scene.screen.bounds.size.height;
       }
+      NSString *type = [RNExternalAppDelegateUtil getSceneType:scene];
+      if (type == nil) {
+        type = RN_EXTERNAL_SCENE_TYPE_EXTERNAL;
+      }
       [screenInfo
         setValue:@{
           @"id": scene.session.persistentIdentifier,
-          @"type": [RNExternalAppDelegateUtil getSceneType:scene], 
+          @"type": type, 
           @"width": @(width),
           @"height": @(height),
           @"mirrored": @(scene.screen.mirroredScreen == UIScreen.mainScreen),

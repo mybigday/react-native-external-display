@@ -145,6 +145,7 @@
 }
 
 + (bool)isUsedSceneType:(UIScene *)scene {
+  if (scene == nil) return false;
   NSString* type = [self getSceneType:scene];
   return type != nil;
 }
