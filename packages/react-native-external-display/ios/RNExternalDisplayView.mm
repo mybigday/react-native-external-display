@@ -30,13 +30,13 @@
   [super removeReactSubview:subview];
 }
 
-- (void)didMoveToSuperview
-{
-  [super didMoveToSuperview];
-  if (!self.superview) {
-    [self invalidate];
-  }
-}
+// - (void)didMoveToSuperview
+// {
+//   [super didMoveToSuperview];
+//   if (!self.superview) {
+//     [self invalidate];
+//   }
+// }
 
 - (void)didUpdateReactSubviews {
   if (_fallbackInMainScreen && !_window) {
@@ -46,7 +46,7 @@
 
 - (void)invalidateWindow {
   if (_window) {
-    for (UIView *subview in _subviews) {
+    for (UIView *subview in self->_subviews) {
       [subview removeFromSuperview];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -57,53 +57,97 @@
 }
 
 - (void)invalidate {
-  [self invalidateWindow];
-  [self.delegate removeView:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self invalidateWindow];
+    [self.delegate removeView:self];
+  });
 }
 
 #if defined(TARGET_OS_TV) && TARGET_OS_TV == 1
   #define MA_APPLE_TV
 #endif
 
+- (void)setHighestWidthMode:(UIScreen *)screen {
+#if !defined(MA_APPLE_TV)
+  __block UIScreenMode *highestWidthMode = NULL;
+
+  [screen.availableModes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    UIScreenMode *currentModeInLoop = obj;
+    if (!highestWidthMode || currentModeInLoop.size.width > highestWidthMode.size.width)
+      highestWidthMode = currentModeInLoop;
+  }];
+
+  screen.currentMode = highestWidthMode;
+  screen.overscanCompensation = UIScreenOverscanCompensationScale;
+#endif
+}
+
+- (void)setViewControllerIfNeeded {
+  if (!_window) return;
+  if (!_window.rootViewController) {
+    UIViewController *rootViewController = [UIViewController new];
+    rootViewController.view = [RCTView new];
+    _window.rootViewController = rootViewController;
+  }
+}
+
+- (UIWindow *)getScreenWindow {
+  NSArray *screens = [UIScreen screens];
+  int index = [_screen intValue];
+  if (index > 0 && index < [screens count]) {
+    UIScreen* screen = [screens objectAtIndex:index];
+
+    [self setHighestWidthMode:screen];
+
+    if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+    [self setViewControllerIfNeeded];
+    [_window setScreen:screen];
+  }
+
+  return _window;
+}
+
+// iOS 13+ only
+- (UIWindow *)getSceneWindow {
+  NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+
+  UIWindowScene* scene = [[scenes filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"session.persistentIdentifier == %@", _screen]] anyObject];
+  if (scene == nil) return _window;
+
+  UIScreen *screen = scene.screen;
+  [self setHighestWidthMode:screen];
+
+  if (!_window) _window = scene.windows.firstObject;
+  if (!_window) {
+    _window = [[UIWindow alloc] initWithWindowScene:scene];
+    _window.frame = scene.coordinateSpace.bounds;
+    [self setViewControllerIfNeeded];
+  }
+  return _window;
+}
+
 - (void)updateScreen {
   if ([_subviews count] == 0) {
     return;
   }
-  NSArray *screens = [UIScreen screens];
-  int index = [_screen intValue];
-  if (index > 0 && index < [screens count]) {
-    // NSLog(@"[RNExternalDisplay] Selected External Display");
-    UIScreen* screen = [screens objectAtIndex:index];
 
-#if !defined(MA_APPLE_TV)
-    __block UIScreenMode *highestWidthMode = NULL;
-
-    [screen.availableModes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-      UIScreenMode *currentModeInLoop = obj;
-      if (!highestWidthMode || currentModeInLoop.size.width > highestWidthMode.size.width)
-        highestWidthMode = currentModeInLoop;
-    }];
-
-    screen.currentMode = highestWidthMode;
-    screen.overscanCompensation = UIScreenOverscanCompensationScale;
-#endif
-
-    if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
-
-    UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = [RCTView new];
+  UIWindow *window = nil;
+  if (@available(iOS 13.0, tvOS 13.0, *)) {
+    window = [self getSceneWindow];
+  } else {
+    window = [self getScreenWindow];
+  }
+  if (window) {
     int i = 0;
     for (UIView *subview in _subviews) {
 #ifdef RCT_NEW_ARCH_ENABLED
       [subview removeFromSuperview];
-      [rootViewController.view mountChildComponentView:subview index:i];
+      [_window.rootViewController.view mountChildComponentView:subview index:i];
 #else
-      [rootViewController.view insertSubview:subview atIndex:i];
+      [_window.rootViewController.view insertSubview:subview atIndex:i];
 #endif
       i++;
     }
-    _window.rootViewController = rootViewController;
-    [_window setScreen:screen];
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
 #ifdef RCT_NEW_ARCH_ENABLED
@@ -123,7 +167,6 @@
 }
 
 - (void)setScreen:(NSString*)screen {
-  NSLog(@"[RNExternalDisplay] setScreen: %@", screen);
   if (screen != _screen) {
     [self invalidateWindow];
   }

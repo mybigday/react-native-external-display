@@ -1,33 +1,35 @@
 // @flow
 
 import React, { useState } from 'react'
-import { SafeAreaView, Text, View, Button } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import ExternalDisplay, {
   useExternalDisplay,
   useScreenSize,
 } from 'react-native-external-display'
+import ScreenControl from './utils/ScreenControl'
 
 const InScreen = () => {
   const { id, width, height } = useScreenSize() || {}
   return (
     <View
       style={{
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#333',
       }}
     >
-      <Text style={{ color: 'red', fontSize: 40 }}>
+      <Text style={{ color: 'red', fontSize: 28, textAlign: 'center' }}>
         ID:
         {' '}
         {id || '(Main)'}
       </Text>
-      <Text style={{ color: 'red', fontSize: 40 }}>
+      <Text style={{ color: 'red', fontSize: 28, textAlign: 'center' }}>
         Width: 
         {' '}
         {width || '(Main)'}
       </Text>
-      <Text style={{ color: 'red', fontSize: 40 }}>
+      <Text style={{ color: 'red', fontSize: 28, textAlign: 'center' }}>
         Height: 
         {' '}
         {height || '(Main)'}
@@ -45,6 +47,7 @@ export default function Example(props: Props) {
   const info = useExternalDisplay()
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
+  const [screen, setScreen] = useState(null)
   return (
     <SafeAreaView
       style={{
@@ -55,22 +58,22 @@ export default function Example(props: Props) {
       <View style={{ flex: 1 }}>
         {mount && (
           <ExternalDisplay
-            mainScreenStyle={{
-              flex: 1,
-            }}
+            mainScreenStyle={{ flex: 1 }}
             fallbackInMainScreen
-            screen={on && Object.keys(info)[0]}
+            screen={on && (screen || Object.keys(info)[0])}
           >
             <InScreen />
           </ExternalDisplay>
         )}
       </View>
-      <Button onPress={() => setOn(d => !d)} title={on ? 'OFF' : 'ON'} />
-      <Button
-        onPress={() => setMount(d => !d)}
-        title={mount ? 'UNMOUNT' : 'MOUNT'}
+      <ScreenControl 
+        on={on}
+        mount={mount}
+        onSelectScreen={setScreen}
+        onChangeMount={setMount}
+        onToggle={setOn}
+        onBack={onBack}
       />
-      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }

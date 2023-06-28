@@ -3,14 +3,17 @@
 > React Native view renderer in External Display.
 
 - [Package (react-native-external-display)](packages/react-native-external-display)
-- [Example project](packages/RNExternalDisplayExample)
-- [Example project (Fabric)](packages/RNExternalDisplayFabricExample)
-- [Examples used by Example project](packages/rnexternal-display-examples)
+- Example
+  - Example project: [old arch](packages/RNExternalDisplayExample) / [new arch](packages/RNExternalDisplayFabricExample)
+  - [Examples JS code](packages/rnexternal-display-examples)
+- iPad Multiple Scenes example project: [Simple Multiple Windows Browser](packages/IPadMultiScenesHeadlessExample)
 
 ## Introdution
 
-- [iOS - Displaying Content on a Connected Screen](https://developer.apple.com/documentation/uikit/windows_and_screens/displaying_content_on_a_connected_screen)
-- [Android - Presentation API](https://developer.android.com/reference/android/app/Presentation)
+- iOS
+  - [Displaying Content on a Connected Screen](https://developer.apple.com/documentation/uikit/windows_and_screens/displaying_content_on_a_connected_screen)
+  - [Multiple Scenes support on iPad targets](docs/IOSMultipleScenesSupport.md)
+- Android - [Presentation API](https://developer.android.com/reference/android/app/Presentation)
 
 ```js
 import React from 'react'

@@ -756,12 +756,20 @@ PODS:
     - React-jsi (= 0.71.11)
     - React-logger (= 0.71.11)
     - React-perflogger (= 0.71.11)
-  - RNExternalDisplay (0.6.0-rc.1):
+  - RNExternalDisplay (0.6.0-rc.2):
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
     - React-Codegen
     - React-Core
+    - React-RCTFabric
+    - ReactCommon/turbomodule/core
+  - RNGestureHandler (2.12.0):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-Codegen
     - React-RCTFabric
     - ReactCommon/turbomodule/core
   - SocketRocket (0.6.0)
@@ -835,6 +843,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNExternalDisplay (from `../node_modules/react-native-external-display`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -934,6 +943,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNExternalDisplay:
     :path: "../node_modules/react-native-external-display"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -989,7 +1000,8 @@ SPEC CHECKSUMS:
   React-rncore: fcf3558280eaeac247a24b81c8715aa351ae3172
   React-runtimeexecutor: 4817d63dbc9d658f8dc0ec56bd9b83ce531129f0
   ReactCommon: 08723d2ed328c5cbcb0de168f231bc7bae7f8aa1
-  RNExternalDisplay: 3385d598d40f81255f85bc2bd83d748d6bd0e5ce
+  RNExternalDisplay: da9d4e73c187fd5e8fa5c76a9041eeacebe8a0b2
+  RNGestureHandler: d8224aad6d7081834ae6e6cf925397059485b69e
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: f7decafdc5e8c125e6fa0da38a687e35238420fa
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

@@ -1,8 +1,9 @@
 // @flow
 
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, Text, View, Button } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import ExternalDisplay, { getScreens } from 'react-native-external-display'
+import ScreenControl from './utils/ScreenControl'
 
 type Props = {
   onBack: () => void,
@@ -15,6 +16,7 @@ export default function Example(props: Props) {
 
   const [on, setOn] = useState(true)
   const [mount, setMount] = useState(true)
+  const [screen, setScreen] = useState(null)
   useEffect(() => {
     const interval = setInterval(() => setT((d) => d + 1), 1000)
     return () => clearInterval(interval)
@@ -33,12 +35,13 @@ export default function Example(props: Props) {
               flex: 1,
             }}
             fallbackInMainScreen
-            screen={on && Object.keys(info)[0]}
+            screen={on && (screen || Object.keys(info)[0])}
             onScreenConnect={setInfo}
             onScreenDisconnect={setInfo}
           >
             <View
               style={{
+                flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: '#333',
@@ -49,12 +52,14 @@ export default function Example(props: Props) {
           </ExternalDisplay>
         )}
       </View>
-      <Button onPress={() => setOn((d) => !d)} title={on ? 'OFF' : 'ON'} />
-      <Button
-        onPress={() => setMount((d) => !d)}
-        title={mount ? 'UNMOUNT' : 'MOUNT'}
+      <ScreenControl 
+        on={on}
+        mount={mount}
+        onSelectScreen={setScreen}
+        onChangeMount={setMount}
+        onToggle={setOn}
+        onBack={onBack}
       />
-      <Button onPress={onBack} title="BACK" />
     </SafeAreaView>
   )
 }
