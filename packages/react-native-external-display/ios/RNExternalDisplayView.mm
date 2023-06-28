@@ -167,7 +167,6 @@
 }
 
 - (void)setScreen:(NSString*)screen {
-  NSLog(@"[RNExternalDisplay] setScreen: %@", screen);
   if (screen != _screen) {
     [self invalidateWindow];
   }

@@ -50,20 +50,20 @@ RCT_EXPORT_METHOD(init:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectB
 }
 
 RCT_EXPORT_METHOD(requestScene:(NSDictionary *)options resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-  if (![self supportMultipleScenes]) {
-    reject(@"error", @"Not supported multiple scenes", nil);
-    return;
-  }
-  if (options[@"userInfo"] && ![options[@"userInfo"] isKindOfClass:[NSDictionary class]]) {
-    reject(@"error", @"options.userInfo must be object", nil);
-    return;
-  }
-  NSMutableDictionary *userInfo = [options[@"userInfo"] mutableCopy];
-  if (!userInfo) userInfo = [NSMutableDictionary new];
-  if (options[@"windowBackgroundColor"]) {
-    userInfo[@"windowBackgroundColor"] = options[@"windowBackgroundColor"];
-  }
   dispatch_async(dispatch_get_main_queue(), ^{
+    if (![self supportMultipleScenes]) {
+      reject(@"error", @"Not supported multiple scenes", nil);
+      return;
+    }
+    if (options[@"userInfo"] && ![options[@"userInfo"] isKindOfClass:[NSDictionary class]]) {
+      reject(@"error", @"options.userInfo must be object", nil);
+      return;
+    }
+    NSMutableDictionary *userInfo = [options[@"userInfo"] mutableCopy];
+    if (!userInfo) userInfo = [NSMutableDictionary new];
+    if (options[@"windowBackgroundColor"]) {
+      userInfo[@"windowBackgroundColor"] = options[@"windowBackgroundColor"];
+    }
     NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:RN_EXTERNAL_SCENE_TYPE_CREATE];
     userActivity.userInfo = userInfo;
     [UIApplication.sharedApplication
@@ -77,11 +77,11 @@ RCT_EXPORT_METHOD(requestScene:(NSDictionary *)options resolve:(RCTPromiseResolv
 }
 
 RCT_EXPORT_METHOD(closeScene:(NSString *)sceneId resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-  if (![self supportMultipleScenes]) {
-    reject(@"error", @"Not supported multiple scenes", nil);
-    return;
-  }
   dispatch_async(dispatch_get_main_queue(), ^{
+    if (![self supportMultipleScenes]) {
+      reject(@"error", @"Not supported multiple scenes", nil);
+      return;
+    }
     NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
     for (UIWindowScene* scene in scenes) {
       if ([scene.session.persistentIdentifier isEqual:sceneId]) {
@@ -99,21 +99,21 @@ RCT_EXPORT_METHOD(closeScene:(NSString *)sceneId resolve:(RCTPromiseResolveBlock
 }
 
 RCT_EXPORT_METHOD(isMainSceneActive:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-  if (![self supportMultipleScenes]) {
-    reject(@"error", @"Not supported multiple scenes", nil);
-    return;
-  }
   dispatch_async(dispatch_get_main_queue(), ^{
+    if (![self supportMultipleScenes]) {
+      reject(@"error", @"Not supported multiple scenes", nil);
+      return;
+    }
     resolve(@([RNExternalAppDelegateUtil isMainSceneActive]));
   });
 }
 
 RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
-  if (![self supportMultipleScenes]) {
-    reject(@"error", @"Not supported multiple scenes", nil);
-    return;
-  }
   dispatch_async(dispatch_get_main_queue(), ^{
+    if (![self supportMultipleScenes]) {
+      reject(@"error", @"Not supported multiple scenes", nil);
+      return;
+    }
     [UIApplication.sharedApplication
       requestSceneSessionActivation:nil
       userActivity:nil // No activity as main scene

@@ -58,7 +58,6 @@
   NSMutableDictionary *userInfo = [connectionOptions.userActivities.anyObject.userInfo mutableCopy];
   if (!userInfo) userInfo = [NSMutableDictionary new];
 
-  NSLog(@"RNExternalDisplay: session.role: %@", session.role);
   if (session.role == UIWindowSceneSessionRoleExternalDisplay) {
     [userInfo setValue:RN_EXTERNAL_SCENE_TYPE_EXTERNAL forKey:RN_EXTERNAL_SCENE_TYPE_KEY];
   } else {
