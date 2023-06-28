@@ -111,7 +111,7 @@ const isMultipleScenesAvailable = SceneManager.isAvailable();
 
 // Request new scene
 SceneManager.requestScene({
-  windowBackgroundColor: '#ccc', // Default to black
+  windowBackgroundColor: '#cccccc', // Default to black
   userInfo: {
     // Custom data, that can be accessed in `screen.userInfo` from getScreens()
   },
