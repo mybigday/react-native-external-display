@@ -48,6 +48,7 @@
 
 @end
 
+#define RN_EXTERNAL_SCENE_TYPE_KEY @"@RNExternalDisplaySceneType"
 
 @implementation RNExternalSceneDelegate
 
@@ -56,7 +57,13 @@
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
   NSMutableDictionary *userInfo = [connectionOptions.userActivities.anyObject.userInfo mutableCopy];
   if (!userInfo) userInfo = [NSMutableDictionary new];
-  [userInfo setValue:RN_EXTERNAL_SCENE_TYPE_CREATE forKey:@"type"];
+
+  NSLog(@"RNExternalDisplay: session.role: %@", session.role);
+  if (session.role == UIWindowSceneSessionRoleExternalDisplay) {
+    [userInfo setValue:RN_EXTERNAL_SCENE_TYPE_EXTERNAL forKey:RN_EXTERNAL_SCENE_TYPE_KEY];
+  } else {
+    [userInfo setValue:RN_EXTERNAL_SCENE_TYPE_CREATE forKey:RN_EXTERNAL_SCENE_TYPE_KEY];
+  }
 
   UIWindowScene *windowScene = (UIWindowScene *)scene;
   windowScene.session.userInfo = userInfo;
@@ -87,7 +94,6 @@
 }
 
 @end
-
 
 @implementation RNExternalAppDelegateUtil
 
@@ -122,7 +128,7 @@
   bool isMainActive = false;
   for (UIScene *scene in scenes) {
     if (
-      ![self isSceneTypeCreate:scene] &&
+      ![self isUsedSceneType:scene] &&
       scene.activationState != UISceneActivationStateUnattached
     ) {
       isMainActive = true;
@@ -131,12 +137,17 @@
   return isMainActive;
 }
 
-+ (bool)isSceneTypeCreate:(UIScene *)scene {
++ (NSString *)getSceneType:(UIScene *)scene {
   NSString* type = nil;
   if ([scene.session.userInfo isKindOfClass:[NSDictionary class]]) {
-    type = scene.session.userInfo[@"type"];
+    type = scene.session.userInfo[RN_EXTERNAL_SCENE_TYPE_KEY];
   }
-  return [type isEqual:RN_EXTERNAL_SCENE_TYPE_CREATE];
+  return type;
+}
+
++ (bool)isUsedSceneType:(UIScene *)scene {
+  NSString* type = [self getSceneType:scene];
+  return type != nil;
 }
 
 @end

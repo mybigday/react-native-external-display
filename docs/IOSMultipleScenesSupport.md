@@ -151,6 +151,7 @@ For a multi-window app with exactly the same layout, we can consider that we don
 
 - Edit `AppDelegate.mm`: Use `headless: @YES` scene option (`UISceneConfiguration * configuration = [RNExternalAppDelegateUtil application:application configurationForConnectingSceneSession:connectingSceneSession options:options sceneOptions:@{ @"headless": @YES }];`) so it will not create the main scene to show the root view.
 - Make sure your app can automatically create new scene & render views by `<ExternalDisplay>`.
+- Exclude external screen by check `screen.type == SceneManager.types.EXTERNAL_DISPLAY`, and you can use it for other purposes
 
 Example: [IPadMultiScenesHeadlessExample](../packages/IPadMultiScenesHeadlessExample)
 

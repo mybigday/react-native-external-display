@@ -46,7 +46,7 @@
 
 - (void)invalidateWindow {
   if (_window) {
-    for (UIView *subview in _subviews) {
+    for (UIView *subview in self->_subviews) {
       [subview removeFromSuperview];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -57,8 +57,10 @@
 }
 
 - (void)invalidate {
-  [self invalidateWindow];
-  [self.delegate removeView:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self invalidateWindow];
+    [self.delegate removeView:self];
+  });
 }
 
 #if defined(TARGET_OS_TV) && TARGET_OS_TV == 1

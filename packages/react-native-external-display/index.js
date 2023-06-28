@@ -22,6 +22,7 @@ export const useScreenSize = (): Screen => useContext(ScreenContext)
 
 type Props = {
   ...ViewProps,
+  style?: ViewProps.style,
   mainScreenStyle?: ViewProps.style,
   screen?: string,
   fallbackInMainScreen?: boolean,
@@ -35,6 +36,7 @@ const ExternalDisplayView = (props: Props) => {
     screen,
     fallbackInMainScreen,
     mainScreenStyle,
+    style,
     onScreenConnect,
     onScreenChange,
     onScreenDisconnect,
@@ -51,12 +53,13 @@ const ExternalDisplayView = (props: Props) => {
         pointerEvents={!scr ? 'box-none' : 'auto'}
         {...nativeProps}
         style={[
-          !scr && mainScreenStyle,
           scr && styles.screen,
           scr && {
             width: scr.width,
             height: scr.height,
           },
+          style,
+          !scr && mainScreenStyle,
         ]}
         screen={scr ? screen : ''}
         fallbackInMainScreen={fallbackInMainScreen}
@@ -66,6 +69,7 @@ const ExternalDisplayView = (props: Props) => {
 }
 
 ExternalDisplayView.defaultProps = {
+  style: undefined,
   mainScreenStyle: undefined,
   screen: '',
   fallbackInMainScreen: false,

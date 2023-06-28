@@ -15,8 +15,8 @@
 @interface RNExternalSceneDelegate : UIResponder <UIWindowSceneDelegate>
 @end
 
-
-#define RN_EXTERNAL_SCENE_TYPE_CREATE @"@RNExternalDisplay_create"
+#define RN_EXTERNAL_SCENE_TYPE_EXTERNAL @"@RNExternalDisplay_externalDisplay"
+#define RN_EXTERNAL_SCENE_TYPE_CREATE @"@RNExternalDisplay_createdScene"
 
 @interface RNExternalAppDelegateUtil : NSObject
 
@@ -25,6 +25,7 @@
   options:(UISceneConnectionOptions *)connectionOptions
   sceneOptions:(NSDictionary *)sceneOptions;
 + (bool)isMainSceneActive;
-+ (bool)isSceneTypeCreate:(UIScene *)scene;
++ (NSString *)getSceneType:(UIScene *)scene;
++ (bool)isUsedSceneType:(UIScene *)scene;
 
 @end

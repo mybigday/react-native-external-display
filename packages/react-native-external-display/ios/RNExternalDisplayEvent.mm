@@ -140,7 +140,7 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
     if (
       ![scene.session.role isEqual:UIWindowSceneSessionRoleApplication] ||
       (
-        [RNExternalAppDelegateUtil isSceneTypeCreate:scene] &&
+        [RNExternalAppDelegateUtil isUsedSceneType:scene] &&
         scene.activationState != UISceneActivationStateUnattached
       )
     ) {
@@ -155,6 +155,7 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
       [screenInfo
         setValue:@{
           @"id": scene.session.persistentIdentifier,
+          @"type": [RNExternalAppDelegateUtil getSceneType:scene], 
           @"width": @(width),
           @"height": @(height),
           @"mirrored": @(scene.screen.mirroredScreen == UIScreen.mainScreen),
