@@ -1,8 +1,10 @@
 # Multiple Scenes support on iPad targets
 
-__*Platform: iOS 15.0+__
+__*Platform: iOS 13.0+__
 
-This package is able to use `<ExternalDisplay>` for multiple windows on iPad ([More details](https://developer.apple.com/documentation/uikit/uiscenedelegate/supporting_multiple_windows_on_ipad)), currently tested on the `Designed for iPad` targets: iPadOS, visionOS (Currently not support on macOS).
+This package is able to use `<ExternalDisplay>` for Split View or Multiple Windows on iPad, currently tested on the `Designed for iPad` targets: iPadOS, visionOS (Currently not support on macOS).
+
+Please visit [Notice](#notice) section first to know the current limitation of this feature.
 
 The following screenshots are the example from [IPadMultiScenesHeadlessExample](../packages/IPadMultiScenesHeadlessExample), it's very simple browser implementation:
 
@@ -11,7 +13,6 @@ The following screenshots are the example from [IPadMultiScenesHeadlessExample](
 > iOS Simulator (`iPad Pro (11-inch)`)
 
 <img width="600" alt="Screenshot 2023-06-27 at 14 46 39" src="https://github.com/mybigday/react-native-external-display/assets/3001525/be24b3d7-96a7-4315-88bc-9aeaf4b533c4">
-
 
 > visionOS Simulator (`Apple Vision Pro (Designed for iPad)`)
 
@@ -155,13 +156,15 @@ For a multi-window app with exactly the same layout, we can consider that we don
 
 Example: [IPadMultiScenesHeadlessExample](../packages/IPadMultiScenesHeadlessExample)
 
-## Test multiple scenes on iPad simulator
+## Test Multiple Scenes on iPad simulator
+
+You can use Split View feature by default, or use Stage Manager (iOS 16.0+).
 
 To enable Stage Manager on iPad simulator:
 - Option 1 - Setting: Choose Home Screen & Multitasking. Tap Stage Manager at the bottom of the Home Screen & Multitasking screen.
 - Option 2 - Command: `xcrun simctl spawn booted defaults write -g SBChamoisWindowingEnabled -bool true`
 
-## Notices
+## Notice
 
 These are some issues may support/fix in the future or not:
 
