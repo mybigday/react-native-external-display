@@ -8,11 +8,11 @@ Please visit [Notice](#notice) section first to know the current limitation of t
 
 The following screenshots are the example from [IPadMultiScenesHeadlessExample](../packages/IPadMultiScenesHeadlessExample), it's very simple browser implementation:
 
-<img width="600" alt="Screenshot 2023-06-27 at 14 39 09" src="https://github.com/mybigday/react-native-external-display/assets/3001525/5afd64c9-6e31-40f2-a8a6-a3b3f8352542">
+<img width="600" alt="ipad-simulator" src="https://github.com/mybigday/react-native-external-display/assets/3001525/f6c434a2-cef6-4084-928a-88daa266a306">
 
 > iOS Simulator (`iPad Pro (11-inch)`)
 
-<img width="600" alt="Screenshot 2023-06-27 at 14 46 39" src="https://github.com/mybigday/react-native-external-display/assets/3001525/be24b3d7-96a7-4315-88bc-9aeaf4b533c4">
+<img width="600" alt="vision-simulator" src="https://github.com/mybigday/react-native-external-display/assets/3001525/5d1bfc42-a4af-40a8-b78b-6f48f9ac650b">
 
 > visionOS Simulator (`Apple Vision Pro (Designed for iPad)`)
 
