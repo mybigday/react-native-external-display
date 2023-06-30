@@ -7,8 +7,7 @@
       "react-native",
       "react-native/**",
       "react-native-external-display",
-      "react-native-webview",
-      "react-native-gesture-handler"
+      "react-native-webview"
     ]
   },
   "scripts": {
@@ -21,7 +20,6 @@
     "react": "18.2.0",
     "react-native": "0.71.11",
     "react-native-external-display": "^0.6.0-rc.4",
-    "react-native-gesture-handler": "^2.12.0",
     "react-native-webview": "^13.2.2",
     "rn-external-display-examples": "^0.6.0-rc.3"
   },

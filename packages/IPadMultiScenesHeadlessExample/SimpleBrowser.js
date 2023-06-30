@@ -1,8 +1,7 @@
 // @flow
 
 import React, { useState, useRef } from 'react'
-import { View, Text, TextInput } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { View, Text, TextInput, Button } from 'react-native'
 import WebView from 'react-native-webview'
 import { SceneManager } from 'react-native-external-display'
 
@@ -44,22 +43,18 @@ export default function SimpleBrowser(props: Props) {
           onChangeText={setUrl}
           autoCapitalize="none"
         />
-        <TouchableOpacity
-          style={{ padding: 8 }}
+        <Button
+          title="New Window"
           onPress={() => {
             SceneManager.requestScene({
               userInfo: { testField: 'testValue' },
             })
           }}
-        >
-          <Text style={{ color: 'white' }}>New Window</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{ padding: 8 }}
+        />
+        <Button
+          title="Close"
           onPress={() => SceneManager.closeScene(screenId)}
-        >
-          <Text style={{ color: 'white' }}>Close</Text>
-        </TouchableOpacity>
+        />
       </View>
       <WebView
         ref={webview}
