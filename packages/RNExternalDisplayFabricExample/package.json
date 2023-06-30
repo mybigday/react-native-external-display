@@ -1,6 +1,6 @@
 {
   "name": "rnexternaldisplayfabricexample",
-  "version": "0.6.0-rc.4",
+  "version": "0.6.0",
   "private": true,
   "workspaces": {
     "nohoist": [
@@ -19,10 +19,10 @@
   "dependencies": {
     "react": "18.2.0",
     "react-native": "0.71.11",
-    "react-native-external-display": "^0.6.0-rc.4",
+    "react-native-external-display": "^0.6.0",
     "react-native-gesture-handler": "^2.12.0",
     "react-native-webview": "^13.2.2",
-    "rn-external-display-examples": "^0.6.0-rc.3"
+    "rn-external-display-examples": "^0.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
