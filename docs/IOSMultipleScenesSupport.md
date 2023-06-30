@@ -168,8 +168,6 @@ To enable Stage Manager on iPad simulator:
 
 These are some issues may support/fix in the future or not:
 
-- Touchable / Pressable is not working on new scenes.
-  - We can use [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) instead. (Tested in RNGH v2.12.0)
 - Drag-and-Drop to create new scene is not supported yet
 - The multiple scenes not working on macOS (Tested on 13.4), `requestSceneSessionActivation` always failed even `UIApplicationSupportsMultipleScenes` is enabled
 - SafeAreaView has no effect on new scenes
