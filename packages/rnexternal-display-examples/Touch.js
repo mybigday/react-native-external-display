@@ -47,7 +47,7 @@ export default function Example(props: Props) {
               }}
             >
               <Button
-                title="React Native Button (Not working)"
+                title="React Native Button"
                 onPress={() => alert('Working')}
               />
               <TouchableOpacity
