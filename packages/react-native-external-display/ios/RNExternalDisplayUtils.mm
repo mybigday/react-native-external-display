@@ -23,11 +23,11 @@
   RCTView *view = [RCTView new];
 
 #ifdef RCT_NEW_ARCH_ENABLED
-  RCTSurfaceTouchHandler *_touchHandler = [[RCTSurfaceTouchHandler alloc] init];
-  [_touchHandler attachToView:view];
+  RCTSurfaceTouchHandler *touchHandler = [[RCTSurfaceTouchHandler alloc] init];
+  [touchHandler attachToView:view];
 #else
-  RCTTouchHandler *_touchHandler = [[RCTTouchHandler alloc] initWithBridge:[RCTBridge currentBridge]];
-  [_touchHandler attachToView:view];
+  RCTTouchHandler *touchHandler = [[RCTTouchHandler alloc] initWithBridge:[RCTBridge currentBridge]];
+  [touchHandler attachToView:view];
 #endif
   viewController.view = view;
   return viewController;
