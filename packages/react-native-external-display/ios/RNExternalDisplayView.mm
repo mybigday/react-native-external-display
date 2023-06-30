@@ -6,10 +6,16 @@
 #import <React/RCTFabricComponentsPlugins.h>
 #import <react/renderer/components/RNExternalDisplaySpec/ComponentDescriptors.h>
 #import <react/renderer/components/RNExternalDisplaySpec/Props.h>
+#import "RCTSurfaceTouchHandler.h"
+#define RCTTouchHandler RCTSurfaceTouchHandler
+#else
+#import <React/RCTBridge+Private.h>
+#import "RCTTouchHandler.h"
 #endif
 
 @implementation RNExternalDisplayView {
   UIWindow *_window;
+  RCTTouchHandler *_touchHandler;
   NSMutableArray<UIView *> *_subviews;
   NSString *_screen;
   BOOL _fallbackInMainScreen;
@@ -54,6 +60,7 @@
     });
   }
   _window = nil;
+  _touchHandler = nil;
 }
 
 - (void)invalidate {
@@ -91,6 +98,15 @@
   }
 }
 
+- (void)attachTouchHandler {
+#ifdef RCT_NEW_ARCH_ENABLED
+  _touchHandler = [[RCTSurfaceTouchHandler alloc] init];
+#else
+  _touchHandler = [[RCTTouchHandler alloc] initWithBridge:[RCTBridge currentBridge]];
+#endif
+  [_touchHandler attachToView:_window.rootViewController.view];
+}
+
 - (UIWindow *)getScreenWindow {
   NSArray *screens = [UIScreen screens];
   int index = [_screen intValue];
@@ -99,7 +115,10 @@
 
     [self setHighestWidthMode:screen];
 
-    if (!_window) _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+    if (!_window) {
+      _window = [[UIWindow alloc] initWithFrame:screen.bounds];
+      [self attachTouchHandler];
+    }
     [self setViewControllerIfNeeded];
     [_window setScreen:screen];
   }
@@ -117,11 +136,15 @@
   UIScreen *screen = scene.screen;
   [self setHighestWidthMode:screen];
 
-  if (!_window) _window = scene.windows.firstObject;
+  if (!_window) {
+    _window = scene.windows.firstObject;
+    if (_window) [self attachTouchHandler];
+  }
   if (!_window) {
     _window = [[UIWindow alloc] initWithWindowScene:scene];
     _window.frame = scene.coordinateSpace.bounds;
     [self setViewControllerIfNeeded];
+    [self attachTouchHandler];
   }
   return _window;
 }
@@ -139,15 +162,18 @@
   }
   if (window) {
     int i = 0;
-    for (UIView *subview in _subviews) {
 #ifdef RCT_NEW_ARCH_ENABLED
+    for (UIView *subview in _subviews) {
       [subview removeFromSuperview];
       [_window.rootViewController.view mountChildComponentView:subview index:i];
-#else
-      [_window.rootViewController.view insertSubview:subview atIndex:i];
-#endif
       i++;
     }
+#else
+    for (UIView *subview in _subviews) {
+      [_window.rootViewController.view insertSubview:subview atIndex:i];
+      i++;
+    }
+#endif
     [_window makeKeyAndVisible];
   } else if (_fallbackInMainScreen) {
 #ifdef RCT_NEW_ARCH_ENABLED

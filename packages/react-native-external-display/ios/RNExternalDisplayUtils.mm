@@ -1,16 +1,12 @@
 #import <Foundation/Foundation.h>
 
 #import "RNExternalDisplayUtils.h"
-#import <React/RCTBridge+Private.h>
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/RCTViewComponentView.h>
 #define RCTView RCTViewComponentView
-
-#import "RCTSurfaceTouchHandler.h"
 #else
 #import <React/RCTView.h>
-#import "RCTTouchHandler.h"
 #endif
 
 @implementation RNExternalDisplayWindowViewController {
@@ -20,16 +16,7 @@
 + (instancetype)initWithCompletionHandler:(void (^)(void))completionHandler {
   RNExternalDisplayWindowViewController *viewController = [[RNExternalDisplayWindowViewController alloc] init];
   viewController->_completionHandler = completionHandler;
-  RCTView *view = [RCTView new];
-
-#ifdef RCT_NEW_ARCH_ENABLED
-  RCTSurfaceTouchHandler *touchHandler = [[RCTSurfaceTouchHandler alloc] init];
-  [touchHandler attachToView:view];
-#else
-  RCTTouchHandler *touchHandler = [[RCTTouchHandler alloc] initWithBridge:[RCTBridge currentBridge]];
-  [touchHandler attachToView:view];
-#endif
-  viewController.view = view;
+  viewController.view = [RCTView new];
   return viewController;
 }
 
