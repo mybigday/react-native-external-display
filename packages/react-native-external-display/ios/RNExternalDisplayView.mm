@@ -126,8 +126,7 @@
   return _window;
 }
 
-// iOS 13+ only
-- (UIWindow *)getSceneWindow {
+- (UIWindow *)getSceneWindow API_AVAILABLE(ios(13.0)) {
   NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
 
   UIWindowScene* scene = [[scenes filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"session.persistentIdentifier == %@", _screen]] anyObject];

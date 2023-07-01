@@ -37,7 +37,7 @@
 
 @synthesize window = _window;
 
-- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions API_AVAILABLE(ios(13.0)) {
   UIApplication *app = [UIApplication sharedApplication];
 
   UIWindowScene *windowScene = (UIWindowScene *)scene;
@@ -55,7 +55,7 @@
 
 @synthesize window = _window;
 
-- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions API_AVAILABLE(ios(13.0)) {
   NSMutableDictionary *userInfo = [connectionOptions.userActivities.anyObject.userInfo mutableCopy];
   if (!userInfo) userInfo = [NSMutableDictionary new];
 
@@ -101,6 +101,7 @@
   configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession
   options:(UISceneConnectionOptions *)connectionOptions
   sceneOptions:(NSDictionary *)sceneOptions
+  API_AVAILABLE(ios(13.0))
 {
   NSUserActivity *userActivity = connectionOptions.userActivities.anyObject;
   NSString* activityType = userActivity.activityType;
@@ -123,7 +124,7 @@
   return configuration;
 }
 
-+ (bool)isMainSceneActive {
++ (bool)isMainSceneActive API_AVAILABLE(ios(13.0)) {
   NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
   bool isMainActive = false;
   for (UIScene *scene in scenes) {
@@ -137,7 +138,7 @@
   return isMainActive;
 }
 
-+ (NSString *)getSceneType:(UIScene *)scene {
++ (NSString *)getSceneType:(UIScene *)scene API_AVAILABLE(ios(13.0)) {
   NSString* type = nil;
   if ([scene.session.userInfo isKindOfClass:[NSDictionary class]]) {
     type = scene.session.userInfo[RN_EXTERNAL_SCENE_TYPE_KEY];
@@ -145,7 +146,7 @@
   return type;
 }
 
-+ (bool)isUsedSceneType:(UIScene *)scene {
++ (bool)isUsedSceneType:(UIScene *)scene API_AVAILABLE(ios(13.0)) {
   if (scene == nil) return false;
   NSString* type = [self getSceneType:scene];
   return type != nil;

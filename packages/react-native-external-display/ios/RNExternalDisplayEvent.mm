@@ -55,24 +55,28 @@ RCT_EXPORT_METHOD(requestScene:(NSDictionary *)options resolve:(RCTPromiseResolv
       reject(@"error", @"Not supported multiple scenes", nil);
       return;
     }
-    if (options[@"userInfo"] && ![options[@"userInfo"] isKindOfClass:[NSDictionary class]]) {
-      reject(@"error", @"options.userInfo must be object", nil);
-      return;
+    if (@available(iOS 13.0, tvOS 13.0, *)) {
+      if (options[@"userInfo"] && ![options[@"userInfo"] isKindOfClass:[NSDictionary class]]) {
+        reject(@"error", @"options.userInfo must be object", nil);
+        return;
+      }
+      NSMutableDictionary *userInfo = [options[@"userInfo"] mutableCopy];
+      if (!userInfo) userInfo = [NSMutableDictionary new];
+      if (options[@"windowBackgroundColor"]) {
+        userInfo[@"windowBackgroundColor"] = options[@"windowBackgroundColor"];
+      }
+      NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:RN_EXTERNAL_SCENE_TYPE_CREATE];
+      userActivity.userInfo = userInfo;
+      [UIApplication.sharedApplication
+        requestSceneSessionActivation:nil
+        userActivity:userActivity
+        options:nil
+        errorHandler:nil // NOTE: No completion handler here so it is hard to use promise
+      ];
+      resolve(@YES);
+    } else {
+      reject(@"error", @"Required iOS 13.0 or above", nil);
     }
-    NSMutableDictionary *userInfo = [options[@"userInfo"] mutableCopy];
-    if (!userInfo) userInfo = [NSMutableDictionary new];
-    if (options[@"windowBackgroundColor"]) {
-      userInfo[@"windowBackgroundColor"] = options[@"windowBackgroundColor"];
-    }
-    NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:RN_EXTERNAL_SCENE_TYPE_CREATE];
-    userActivity.userInfo = userInfo;
-    [UIApplication.sharedApplication
-      requestSceneSessionActivation:nil
-      userActivity:userActivity
-      options:nil
-      errorHandler:nil // NOTE: No completion handler here so it is hard to use promise
-    ];
-    resolve(@YES);
   });
 }
 
@@ -82,19 +86,23 @@ RCT_EXPORT_METHOD(closeScene:(NSString *)sceneId resolve:(RCTPromiseResolveBlock
       reject(@"error", @"Not supported multiple scenes", nil);
       return;
     }
-    NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
-    for (UIWindowScene* scene in scenes) {
-      if ([scene.session.persistentIdentifier isEqual:sceneId]) {
-        [UIApplication.sharedApplication
-          requestSceneSessionDestruction:scene.session
-          options:nil
-          errorHandler:nil // NOTE: No completion handler here so it is hard to use promise
-        ];
-        resolve(@YES);
-        return;
+    if (@available(iOS 13.0, tvOS 13.0, *)) {
+      NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+      for (UIWindowScene* scene in scenes) {
+        if ([scene.session.persistentIdentifier isEqual:sceneId]) {
+          [UIApplication.sharedApplication
+            requestSceneSessionDestruction:scene.session
+            options:nil
+            errorHandler:nil // NOTE: No completion handler here so it is hard to use promise
+          ];
+          resolve(@YES);
+          return;
+        }
       }
+      reject(@"error", @"No scene found", nil);
+    } else {
+      reject(@"error", @"Required iOS 13.0 or above", nil);
     }
-    reject(@"error", @"No scene found", nil);
   });
 }
 
@@ -104,7 +112,12 @@ RCT_EXPORT_METHOD(isMainSceneActive:(RCTPromiseResolveBlock)resolve reject:(RCTP
       reject(@"error", @"Not supported multiple scenes", nil);
       return;
     }
-    resolve(@([RNExternalAppDelegateUtil isMainSceneActive]));
+      
+    if (@available(iOS 13.0, tvOS 13.0, *)) {
+      resolve(@([RNExternalAppDelegateUtil isMainSceneActive]));
+    } else {
+      reject(@"error", @"Required iOS 13.0 or above", nil);
+    }
   });
 }
 
@@ -114,13 +127,17 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
       reject(@"error", @"Not supported multiple scenes", nil);
       return;
     }
-    [UIApplication.sharedApplication
-      requestSceneSessionActivation:nil
-      userActivity:nil // No activity as main scene
-      options:nil
-      errorHandler:nil // NOTE: No completion handler here so it is hard to use promise
-    ];
-    resolve(@YES);
+    if (@available(iOS 13.0, tvOS 13.0, *)) {
+      [UIApplication.sharedApplication
+        requestSceneSessionActivation:nil
+        userActivity:nil // No activity as main scene
+        options:nil
+        errorHandler:nil // NOTE: No completion handler here so it is hard to use promise
+      ];
+      resolve(@YES);
+    } else {
+      reject(@"error", @"Required iOS 13.0 or above", nil);
+    }
   });
 }
 
@@ -132,8 +149,7 @@ RCT_EXPORT_METHOD(resumeMainScene:(RCTPromiseResolveBlock)resolve reject:(RCTPro
   ];
 }
 
-// iOS 13+ only
--(NSDictionary *)getUISceneInfo {
+-(NSDictionary *)getUISceneInfo API_AVAILABLE(ios(13.0)) {
   NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
   NSMutableDictionary *screenInfo = [[NSMutableDictionary alloc] init];
   for (UIWindowScene* scene in scenes) {

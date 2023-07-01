@@ -66,7 +66,7 @@ To support multiple scenes, these are two steps need to setup in your Xcode proj
    return [super application:application didFinishLaunchingWithOptions:launchOptions];
  }
  
-+- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
++- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options API_AVAILABLE(ios(13.0)) {
 +  UISceneConfiguration * configuration =
 +    [RNExternalAppDelegateUtil application:application
 +      configurationForConnectingSceneSession:connectingSceneSession

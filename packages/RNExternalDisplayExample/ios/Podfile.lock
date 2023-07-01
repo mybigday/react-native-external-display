@@ -415,7 +415,7 @@ PODS:
     - React-jsi (= 0.71.11)
     - React-logger (= 0.71.11)
     - React-perflogger (= 0.71.11)
-  - RNExternalDisplay (0.6.0-rc.4):
+  - RNExternalDisplay (0.6.0):
     - React-Core
   - RNGestureHandler (2.12.0):
     - React-Core
@@ -630,7 +630,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: f09f08de63e4122deb32506e20ca4cae6e4e14c1
   React-runtimeexecutor: 4817d63dbc9d658f8dc0ec56bd9b83ce531129f0
   ReactCommon: 08723d2ed328c5cbcb0de168f231bc7bae7f8aa1
-  RNExternalDisplay: f51ffbbd9deafb651f2ccbfcc7957c9361788ee2
+  RNExternalDisplay: 9f029092780c7b6cf29ddf5ffb271a435a17bee5
   RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: f7decafdc5e8c125e6fa0da38a687e35238420fa
