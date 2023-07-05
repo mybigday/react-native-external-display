@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/mybigday/react-native-external-display/compare/v0.6.0...v0.6.1) (2023-07-05)
+
+
+### Bug Fixes
+
+* **ios:** warnings of UIScene usage ([01131c7](https://github.com/mybigday/react-native-external-display/commit/01131c70dbcc7f79fb8c8a351e5ef78359ce21a8))
+
+
+
+
+
 # [0.6.0](https://github.com/mybigday/react-native-external-display/compare/v0.6.0-rc.4...v0.6.0) (2023-06-30)
 
 
