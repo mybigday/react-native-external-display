@@ -1,6 +1,8 @@
 [![CI Status](https://github.com/mybigday/react-native-external-display/workflows/CI/badge.svg)](https://github.com/mybigday/react-native-external-display)
 
-> React Native view renderer in External Display.
+# react-native-external-display
+
+React Native view renderer on External Display. Also supports [Multiple Scenes](docs/IOSMultipleScenesSupport.md) on iOS.
 
 - [Package (react-native-external-display)](packages/react-native-external-display)
 - Example

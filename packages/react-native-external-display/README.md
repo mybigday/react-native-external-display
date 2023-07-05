@@ -1,6 +1,8 @@
 # react-native-external-display
 
-> React Native view renderer in External Display.
+React Native view renderer on External Display. Also supports Multiple Scenes on iOS.
+
+> For Multiple Scenes usage on iOS, please read [this documentation](https://github.com/mybigday/react-native-external-display/blob/master/docs/IOSMultipleScenesSupport.md).
 
 ## Installation
 
