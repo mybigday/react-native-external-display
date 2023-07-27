@@ -20,7 +20,7 @@
     "hermes-eslint": "^0.15.0",
     "lerna": "^7.0.0",
     "metro-react-native-babel-preset": "0.73.10",
-    "patch-package": "^7.0.0",
+    "patch-package": "^8.0.0",
     "react": "18.2.0",
     "react-native": "0.71.11",
     "react-native-gesture-handler": "^2.12.0",
