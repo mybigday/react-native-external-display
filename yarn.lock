@@ -7634,9 +7634,9 @@ react-native-version@^4.0.0:
     semver "^7.0.0"
 
 react-native-webview@^13.2.2:
-  version "13.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.4.0.tgz#8cea2ba2b7c40813886eba7fec3575133e71b023"
-  integrity sha512-yJFfUNsFH7fetbDlhfk0WvxjyyvSZYlH8HRE0phE7EvakDUS1kyJpk6TBiL6KjH2+3Zc13N9SY4k1IUsZ6bZ9g==
+  version "13.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.5.1.tgz#1b8e41cea1bdb075c3cc2fde16b0a2208527d124"
+  integrity sha512-SZQJqFUMxYYj1xYWy1Z48WcHpqOGvbXKS5R1cnaLQY/JxefS+1NOVMqWxy1Zwmc128vqtRklES8l9Jus8tKSLg==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
