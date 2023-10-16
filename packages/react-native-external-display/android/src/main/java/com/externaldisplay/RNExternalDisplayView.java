@@ -59,13 +59,14 @@ public class RNExternalDisplayView extends ReactRootView implements LifecycleEve
 
   @Override
   public void removeViewAt(int index) {
-    if (index > 0) return;
     View child = getChildAt(index);
     super.removeView(child);
     subviews.remove(index);
-    if (wrap != null && wrap.getChildCount() > 0) {
+    if (wrap != null) {
       for (int i = 0; i < wrap.getChildCount(); i++) {
-        wrap.removeViewAt(i);
+        if (i == index) {
+          wrap.removeViewAt(i);
+        }
       }
     }
   }
