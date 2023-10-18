@@ -1,6 +1,6 @@
 {
   "name": "react-native-external-display",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "React Native view renderer in External Display",
   "scripts": {},
   "author": "Jhen-Jie Hong <developer@jhen.me>",

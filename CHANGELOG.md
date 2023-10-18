@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/mybigday/react-native-external-display/compare/v0.6.1...v0.6.2) (2023-10-18)
+
+
+### Bug Fixes
+
+* **android:** properly remove subviews ([#762](https://github.com/mybigday/react-native-external-display/issues/762)) ([a1ab2fd](https://github.com/mybigday/react-native-external-display/commit/a1ab2fded815a1d7f2bdb4a2fdbe696b8529377e))
+* **deps:** patch ([1870ef9](https://github.com/mybigday/react-native-external-display/commit/1870ef91814386757361e0e045a74c9faa4d87f7))
+
+
+
+
+
 ## [0.6.1](https://github.com/mybigday/react-native-external-display/compare/v0.6.0...v0.6.1) (2023-07-05)
 
 
