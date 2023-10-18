@@ -6,7 +6,7 @@ index 085c8c7..eff5980 100644
 -import pack from 'react-native/package.json';
 -
 -const [majorStr, minorStr] = pack.version.split('.');
-+const [majorStr, minorStr] = '2.12.0'.split('.');
++const [majorStr, minorStr] = '2.13.2'.split('.');
  export const REACT_NATIVE_VERSION = {
    major: parseInt(majorStr, 10),
    minor: parseInt(minorStr, 10),
