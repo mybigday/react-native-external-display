@@ -5,10 +5,8 @@
 React Native view renderer on External Display. Also supports [Multiple Scenes](docs/IOSMultipleScenesSupport.md) on iOS.
 
 - [Package (react-native-external-display)](packages/react-native-external-display)
-- Example
-  - Example project: [old arch](packages/RNExternalDisplayExample) / [new arch](packages/RNExternalDisplayFabricExample)
-  - [Examples JS code](packages/rnexternal-display-examples)
-- iPad Multiple Scenes example project: [Simple Multiple Windows Browser](packages/IPadMultiScenesHeadlessExample)
+- [Example](packages/RNExternalDisplayFabricExample)
+- [Example of iPad Multiple Scenes - Simple Multiple Windows Browser](packages/IPadMultiScenesHeadlessExample)
 
 ## Introdution
 

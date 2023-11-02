@@ -11,7 +11,6 @@
     ]
   },
   "scripts": {
-    "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "postinstall": "patch-package"
@@ -20,8 +19,7 @@
     "react": "18.2.0",
     "react-native": "0.71.11",
     "react-native-external-display": "^0.6.2",
-    "react-native-webview": "^13.2.2",
-    "rn-external-display-examples": "^0.6.0"
+    "react-native-webview": "^13.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
