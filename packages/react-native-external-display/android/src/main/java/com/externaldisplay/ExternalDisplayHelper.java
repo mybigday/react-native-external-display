@@ -39,7 +39,10 @@ class ExternalDisplayHelper implements DisplayManager.DisplayListener {
     HashMap<String, Object> info = new HashMap<String, Object>();
     for (Display display : displays) {
       int displayId = display.getDisplayId();
-      if (display.getDisplayId() == Display.DEFAULT_DISPLAY) {
+      if (
+        display.getDisplayId() == Display.DEFAULT_DISPLAY ||
+        (display.getFlags() & Display.FLAG_PRESENTATION) == 0
+      ) {
         continue;
       }
       HashMap<String, Object> data = new HashMap<String, Object>();
