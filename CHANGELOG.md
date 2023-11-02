@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/mybigday/react-native-external-display/compare/v0.6.2...v0.6.3) (2023-11-02)
+
+
+### Bug Fixes
+
+* **android:** skip display that no a presentation display ([aa2142a](https://github.com/mybigday/react-native-external-display/commit/aa2142a7c34bcd269045ca7881309290a36cf71c))
+
+
+
+
+
 ## [0.6.2](https://github.com/mybigday/react-native-external-display/compare/v0.6.1...v0.6.2) (2023-10-18)
 
 
