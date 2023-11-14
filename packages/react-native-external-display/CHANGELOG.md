@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/mybigday/react-native-external-display/compare/v0.6.3...v0.6.4) (2023-11-14)
+
+
+### Features
+
+* add typescript declaration files ([#776](https://github.com/mybigday/react-native-external-display/issues/776)) ([6324b00](https://github.com/mybigday/react-native-external-display/commit/6324b009f075019e5994b650e355b22dd8d4f1f1))
+
+
+
+
+
 ## [0.6.3](https://github.com/mybigday/react-native-external-display/compare/v0.6.2...v0.6.3) (2023-11-02)
 
 

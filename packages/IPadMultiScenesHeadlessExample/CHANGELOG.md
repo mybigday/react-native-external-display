@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/mybigday/react-native-external-display/compare/v0.6.3...v0.6.4) (2023-11-14)
+
+**Note:** Version bump only for package IPadMultiScenesHeadlessExample
+
+
+
+
+
 ## [0.6.3](https://github.com/mybigday/react-native-external-display/compare/v0.6.2...v0.6.3) (2023-11-02)
 
 **Note:** Version bump only for package IPadMultiScenesHeadlessExample
