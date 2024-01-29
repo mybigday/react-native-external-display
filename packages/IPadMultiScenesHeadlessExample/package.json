@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.71.11",
+    "react-native": "0.73.2",
     "react-native-external-display": "^0.6.4",
     "react-native-webview": "^13.2.2"
   },
