@@ -3656,9 +3656,9 @@ eslint-module-utils@^2.7.4:
     debug "^3.2.7"
 
 eslint-plugin-ft-flow@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ft-flow/-/eslint-plugin-ft-flow-3.0.3.tgz#6d8f41b5f06c00bb1b59b3a09d902799b7ae3ccd"
-  integrity sha512-dym24KLcyCZWMv3bKvDRFJeqs4cijIyp9Ld3Ip8/hM8dQUgEU8SKaVhYllO9EvNqF2eWiK1Bb84ts3mE1lr3ug==
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ft-flow/-/eslint-plugin-ft-flow-3.0.4.tgz#cd19ead98c03e39aff186382edc5bca3215d359d"
+  integrity sha512-afH0HSk5BPbnNFE8G7aNzTK+DQNgAA3/xZ6wSxYexmERo3iBFiYtWpd8QoPa4xwxnC2Us5bJTA1AGSlkJfkHBg==
   dependencies:
     lodash "^4.17.21"
     string-natural-compare "^3.0.1"
