@@ -54,7 +54,7 @@ function App() {
 
 #### ios
 
-- Developer menu and keyborad shoutcuts may not work properly if you attached view renderer into external screen, until it leaves the external screen. As an alternative, you can use dev menu functions from `DevSettings` module of React Native. (Such as through [`react-native-debugger`](https://github.com/jhen0409/react-native-debugger))
+- Developer menu and keyboard shoutcuts may not work properly if you attached view renderer into external screen, until it leaves the external screen. As an alternative, you can use dev menu functions from `DevSettings` module of React Native. (Such as through [`react-native-debugger`](https://github.com/jhen0409/react-native-debugger))
 
 #### android
 
