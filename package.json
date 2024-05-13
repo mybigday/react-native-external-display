@@ -17,7 +17,7 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^8.43.0",
     "eslint-plugin-ft-flow": "^3.0.0",
-    "hermes-eslint": "^0.19.2",
+    "hermes-eslint": "^0.21.1",
     "lerna": "^7.0.0",
     "metro-react-native-babel-preset": "0.73.10",
     "patch-package": "^8.0.0",
