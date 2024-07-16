@@ -1,6 +1,6 @@
 #import "RNExternalDisplayView.h"
-#import "UIView+React.h"
-#import "RCTShadowView.h"
+#import <React/UIView+React.h>
+#import <React/RCTShadowView.h>
 #import <React/RCTLog.h>
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <React/RCTFabricComponentsPlugins.h>
@@ -10,7 +10,7 @@
 #define RCTTouchHandler RCTSurfaceTouchHandler
 #else
 #import <React/RCTBridge+Private.h>
-#import "RCTTouchHandler.h"
+#import <React/RCTTouchHandler.h>
 #endif
 
 @implementation RNExternalDisplayView {
@@ -34,15 +34,16 @@
 - (void)removeReactSubview:(UIView *)subview
 {
   [super removeReactSubview:subview];
+  [_subviews removeObject:subview];
 }
 
-// - (void)didMoveToSuperview
-// {
-//   [super didMoveToSuperview];
-//   if (!self.superview) {
-//     [self invalidate];
-//   }
-// }
+- (void)didMoveToSuperview
+{
+  [super didMoveToSuperview];
+  if (!self.superview) {
+    [self invalidate];
+  }
+}
 
 - (void)didUpdateReactSubviews {
   if (_fallbackInMainScreen && !_window) {
