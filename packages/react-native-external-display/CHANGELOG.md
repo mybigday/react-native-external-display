@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/mybigday/react-native-external-display/compare/v0.6.4...v0.6.5) (2024-07-16)
+
+
+### Bug Fixes
+
+* **ios:** remove subview in _subviews ([abbf0eb](https://github.com/mybigday/react-native-external-display/commit/abbf0eb8f8e9e514fc33d47dc34f4e432b2727ff))
+* **ios:** use synchronized for pointer array op to avoid possible crash ([afccdea](https://github.com/mybigday/react-native-external-display/commit/afccdeab264583311b739efd91eaf1a72d2edb10))
+
+
+
+
+
 ## [0.6.4](https://github.com/mybigday/react-native-external-display/compare/v0.6.3...v0.6.4) (2023-11-14)
 
 
