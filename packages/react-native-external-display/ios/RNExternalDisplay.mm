@@ -17,10 +17,12 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
 {
   RNExternalDisplayView *view = [RNExternalDisplayView new];
   view.delegate = self;
-  if (!_views) {
-    _views = [NSPointerArray weakObjectsPointerArray];
+  @synchronized(self) {
+    if (!_views) {
+      _views = [NSPointerArray weakObjectsPointerArray];
+    }
+    [_views addPointer:(__bridge void *)view];
   }
-  [_views addPointer:(__bridge void *)view];
   return view;
 }
 
@@ -48,12 +50,14 @@ RCT_EXPORT_VIEW_PROPERTY(fallbackInMainScreen, BOOL)
 
 - (void)removeView:(RNExternalDisplayView*)target
 {
-  NSUInteger index = 0;
-  for (RNExternalDisplayView *view in _views) {
-    if (view == target) {
-      [_views removePointerAtIndex:index];
+  @synchronized(self) {
+    NSUInteger index = 0;
+    for (RNExternalDisplayView *view in _views) {
+      if (view == target) {
+        [_views removePointerAtIndex:index];
+      }
+      index++;
     }
-    index++;
   }
 }
 
