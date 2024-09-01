@@ -4,7 +4,6 @@ import android.content.Context;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.ReadableMap;
 
 import android.view.Display;
 import android.hardware.display.DisplayManager;
@@ -34,18 +33,4 @@ public class RNExternalDisplayModule extends ReactContextBaseJavaModule {
     map.put("SCREEN_INFO", ExternalDisplayHelper.getScreenInfo(dm.getDisplays()));
     return map;
   }
-
-  // --- Mock methods (from iOS) ---
-
-  @Override
-  public boolean requestScene(ReadableMap options) { return false; }
-
-  @Override
-  public boolean closeScene(String sceneId) { return false; }
-
-  @Override
-  public boolean isMainSceneActive() { return false; }
-
-  @Override
-  public boolean resumeMainScene() { return false; }
 }
