@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/mybigday/react-native-external-display/compare/v0.6.5...v0.6.6) (2024-09-01)
+
+**Note:** Version bump only for package rnexternaldisplayexample
+
+
+
+
+
 ## [0.6.5](https://github.com/mybigday/react-native-external-display/compare/v0.6.4...v0.6.5) (2024-07-16)
 
 **Note:** Version bump only for package rnexternaldisplayexample

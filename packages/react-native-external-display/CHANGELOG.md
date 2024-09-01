@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/mybigday/react-native-external-display/compare/v0.6.5...v0.6.6) (2024-09-01)
+
+
+### Bug Fixes
+
+* **android:** unnecessary methods in old arch ([c88b8fe](https://github.com/mybigday/react-native-external-display/commit/c88b8fe6db4c652a7a72718aa0c820add66f5650))
+* **ios:** new arch setup in podspec ([9c9350c](https://github.com/mybigday/react-native-external-display/commit/9c9350c45d1da8a089ddc4acb94d249285aa6183))
+* new arch codegen by unify NativeRNExternalDisplayEvent ([88057a7](https://github.com/mybigday/react-native-external-display/commit/88057a7d94b94c3b8579664cd2f0d102aa95c804))
+
+
+
+
+
 ## [0.6.5](https://github.com/mybigday/react-native-external-display/compare/v0.6.4...v0.6.5) (2024-07-16)
 
 
