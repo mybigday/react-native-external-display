@@ -4,6 +4,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "lint": "eslint .",
     "release": "./scripts/release.sh",
