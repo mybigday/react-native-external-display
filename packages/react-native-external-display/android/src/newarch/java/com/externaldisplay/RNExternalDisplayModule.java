@@ -3,6 +3,7 @@ package com.externaldisplay;
 import android.content.Context;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.Arguments;
 
@@ -37,4 +38,18 @@ public class RNExternalDisplayModule extends NativeRNExternalDisplayEventSpec {
 
   @Override
   public void init() {}
+
+  // --- Mock methods (from iOS) ---
+
+  @Override
+  public boolean requestScene(ReadableMap options) { return false; }
+
+  @Override
+  public boolean closeScene(String sceneId) { return false; }
+
+  @Override
+  public boolean isMainSceneActive() { return false; }
+
+  @Override
+  public boolean resumeMainScene() { return false; }
 }

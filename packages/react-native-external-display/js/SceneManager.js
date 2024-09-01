@@ -1,4 +1,4 @@
-import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent.android'
+import RNExternalDisplayEvent from './NativeRNExternalDisplayEvent'
 
 const sceneTypes = {
   EXTERNAL_DISPLAY: '@RNExternalDisplay_externalDisplay',
