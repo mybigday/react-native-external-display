@@ -21,15 +21,15 @@ export const useExternalDisplay = ({
 
   useEffect(() => {
     const { connect, change, disconnect } = listenEvent({
-      onScreenConnect: info => {
+      onScreenConnect: (info) => {
         setScreens(info)
         if (onScreenConnect) onScreenConnect(info)
       },
-      onScreenChange: info => {
+      onScreenChange: (info) => {
         setScreens(info)
         if (onScreenChange) onScreenChange(info)
       },
-      onScreenDisconnect: info => {
+      onScreenDisconnect: (info) => {
         setScreens(info)
         if (onScreenDisconnect) onScreenDisconnect(info)
       },
@@ -39,7 +39,7 @@ export const useExternalDisplay = ({
       change.remove()
       disconnect.remove()
     }
-  }, [])
+  }, [onScreenChange, onScreenConnect, onScreenDisconnect])
 
   return screens
 }

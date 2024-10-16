@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "external-display-example",
+    "slug": "external-display-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "externaldisplay",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.externaldisplay.exampleApp"
+    },
+    "android": {
+      "package": "com.externaldisplay.exampleApp",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "newArchEnabled": true
+          },
+          "android": {
+            "newArchEnabled": true
+          }
+        }
+      ]
+    ]
+  }
+}

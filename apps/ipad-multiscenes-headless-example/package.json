@@ -1,0 +1,28 @@
+{
+  "name": "ipad-multiscenes-headless-example",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo run:ios",
+    "android": "expo run:android"
+  },
+  "main": "./index.tsx",
+  "dependencies": {
+    "@expo/config-plugins": "^8.0.10",
+    "expo": "~51.0.28",
+    "expo-system-ui": "~3.0.7",
+    "react": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-external-display": "workspace:*",
+    "react-native-gesture-handler": "^2.20.0",
+    "react-native-webview": "^13.12.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.2.45",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
+  },
+  "private": true,
+  "packageManager": "yarn@4.5.0"
+}

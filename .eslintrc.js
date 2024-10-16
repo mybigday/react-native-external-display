@@ -5,9 +5,7 @@ module.exports = {
     // 'plugin:ft-flow/recommended',
   ],
   parser: 'hermes-eslint',
-  plugins: [
-    'ft-flow'
-  ],
+  plugins: ['ft-flow'],
   env: {
     node: true,
     browser: true,
@@ -15,11 +13,19 @@ module.exports = {
   },
   rules: {
     'import/order': 0,
+    'react/jsx-props-no-multi-spaces': 'off',
   },
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.json', '.native.js', '.ios.js', '.android.js'],
+        extensions: [
+          '.js',
+          '.jsx',
+          '.json',
+          '.native.js',
+          '.ios.js',
+          '.android.js',
+        ],
       },
     },
   },

@@ -19,7 +19,7 @@ if (Platform.OS === 'ios') {
   EventEmitter = DeviceEventEmitter
 }
 
-const handleScreensChange = info =>
+const handleScreensChange = (info) =>
   Object.entries(info).reduce((result, [screenId, screen]) => {
     result[screenId] = {
       ...screen,
@@ -51,17 +51,17 @@ export default function listenEvent({
 }) {
   const connect = EventEmitter.addListener(
     '@RNExternalDisplay_screenDidConnect',
-    info => onScreenConnect(handleScreensChange(info)),
+    (info) => onScreenConnect(handleScreensChange(info)),
   )
 
   const change = EventEmitter.addListener(
     '@RNExternalDisplay_screenDidChange',
-    info => onScreenChange(handleScreensChange(info)),
+    (info) => onScreenChange(handleScreensChange(info)),
   )
 
   const disconnect = EventEmitter.addListener(
     '@RNExternalDisplay_screenDidDisconnect',
-    info => onScreenDisconnect(handleScreensChange(info)),
+    (info) => onScreenDisconnect(handleScreensChange(info)),
   )
 
   return {

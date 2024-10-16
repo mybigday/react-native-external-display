@@ -44,9 +44,11 @@ const ExternalDisplayView = (props: Props) => {
   } = props
   const screens = useExternalDisplay(props)
   const scr = screens[screen]
+
   if (!scr && !fallbackInMainScreen) {
     return null
   }
+
   return (
     <ScreenContext.Provider value={scr}>
       <RNExternalDisplay
