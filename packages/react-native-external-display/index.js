@@ -31,18 +31,21 @@ type Props = {
   onScreenDisconnect?: Function,
 }
 
-const ExternalDisplayView = (props: Props) => {
-  const {
-    screen,
-    fallbackInMainScreen,
-    mainScreenStyle,
-    style,
+const ExternalDisplayView = ({
+  style = undefined,
+  mainScreenStyle = undefined,
+  screen = '',
+  fallbackInMainScreen = false,
+  onScreenConnect = () => {},
+  onScreenChange = () => {},
+  onScreenDisconnect = () => {},
+  ...nativeProps
+}: Props) => {
+  const screens = useExternalDisplay({
     onScreenConnect,
     onScreenChange,
     onScreenDisconnect,
-    ...nativeProps
-  } = props
-  const screens = useExternalDisplay(props)
+  })
   const scr = screens[screen]
   if (!scr && !fallbackInMainScreen) {
     return null
@@ -66,16 +69,6 @@ const ExternalDisplayView = (props: Props) => {
       />
     </ScreenContext.Provider>
   )
-}
-
-ExternalDisplayView.defaultProps = {
-  style: undefined,
-  mainScreenStyle: undefined,
-  screen: '',
-  fallbackInMainScreen: false,
-  onScreenConnect: () => {},
-  onScreenChange: () => {},
-  onScreenDisconnect: () => {},
 }
 
 export { getScreens, useExternalDisplay, SceneManager }
