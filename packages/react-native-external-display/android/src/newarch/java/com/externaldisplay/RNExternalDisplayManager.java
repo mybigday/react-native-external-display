@@ -27,11 +27,11 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplayView>
-    implements ExternalDisplayHelper.Listener, RNExternalDisplayManagerInterface<RNExternalDisplayView> {
+    implements RNExternalDisplayManagerInterface<RNExternalDisplayView> {
   public static final String REACT_CLASS = "RNExternalDisplay";
-  private ExternalDisplayHelper helper;
+  private static final String TAG = "RNExternalDisplayEvent";
   private ReactApplicationContext reactContext;
-  private Map<RNExternalDisplayView, RNExternalDisplayView> views = new HashMap<RNExternalDisplayView, RNExternalDisplayView>();
+  //private Map<RNExternalDisplayView, RNExternalDisplayView> views = new HashMap<RNExternalDisplayView, RNExternalDisplayView>();
 
   private final ViewManagerDelegate<RNExternalDisplayView> mDelegate;
 
@@ -54,22 +54,28 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
 
   @Override
   public RNExternalDisplayView createViewInstance(ThemedReactContext context) {
-    if (this.helper == null) {
-      this.helper = new ExternalDisplayHelper(reactContext, this);
+    // Retrieve the module to access the helper
+    RNExternalDisplayModule module = context.getNativeModule(RNExternalDisplayModule.class);
+    ExternalDisplayHelper helper = null;
+    if (module != null) {
+      helper = module.getExternalDisplayHelper();
+    } else {
     }
-    RNExternalDisplayView view = new RNExternalDisplayView(context, this.helper);
-    views.put(view, view);
+
+    RNExternalDisplayView view = new RNExternalDisplayView(context, helper);
     return view;
   }
 
   @Override
   public void onDropViewInstance(RNExternalDisplayView view) {
-    views.remove(view);
+    //views.remove(view);
     super.onDropViewInstance(view);
     view.onDropInstance();
   }
-
+/*
   private void checkScreen() {
+    Log.d("RNExternalDisplayEvent", "RNExternalDisplayManager checkScreen");
+
     int screenId = -1;
     for (RNExternalDisplayView view : views.values()) {
       int viewScreenId = view.getScreen();
@@ -83,45 +89,16 @@ public class RNExternalDisplayManager extends ViewGroupManager<RNExternalDisplay
     }
   }
 
+ */
+
   @ReactProp(name = "screen")
-  public void setScreen(RNExternalDisplayView view, @Nullable String screen) {
+  public void setScreen(RNExternalDisplayView view, String screen) {
     view.setScreen(screen);
-    checkScreen();
+    //checkScreen();
   }
 
   @ReactProp(name = "fallbackInMainScreen", defaultBoolean = false)
   public void setFallbackInMainScreen(RNExternalDisplayView view, boolean fallbackInMainScreen) {
     view.setFallbackInMainScreen(fallbackInMainScreen);
-  }
-
-  private void sendEvent(String eventName, @Nullable WritableMap params) {
-    reactContext
-      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-      .emit(eventName, params);
-  }
-
-  public void onDisplayAdded(Display[] displays, int displayId) {
-    sendEvent(
-      "@RNExternalDisplay_screenDidConnect",
-      Arguments.makeNativeMap(
-        ExternalDisplayHelper.getScreenInfo(displays)
-      )
-    );
-  }
-  public void onDisplayChanged(Display[] displays, int displayId) {
-    sendEvent(
-      "@RNExternalDisplay_screenDidChange",
-      Arguments.makeNativeMap(
-        ExternalDisplayHelper.getScreenInfo(displays)
-      )
-    );
-  }
-  public void onDisplayRemoved(Display[] displays, int displayId) {
-    sendEvent(
-      "@RNExternalDisplay_screenDidDisconnect",
-      Arguments.makeNativeMap(
-        ExternalDisplayHelper.getScreenInfo(displays)
-      )
-    );
   }
 }
