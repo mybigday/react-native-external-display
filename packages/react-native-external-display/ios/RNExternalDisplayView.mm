@@ -6,7 +6,7 @@
 #import <React/RCTFabricComponentsPlugins.h>
 #import <react/renderer/components/RNExternalDisplaySpec/ComponentDescriptors.h>
 #import <react/renderer/components/RNExternalDisplaySpec/Props.h>
-#import "RCTSurfaceTouchHandler.h"
+#import <React/RCTSurfaceTouchHandler.h>
 #define RCTTouchHandler RCTSurfaceTouchHandler
 #else
 #import <React/RCTBridge+Private.h>
